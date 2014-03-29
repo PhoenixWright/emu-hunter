@@ -13,6 +13,8 @@ public class GameState : MonoBehaviour
 
 	public GameModes gameMode = GameModes.Normal;
 
+	private GUIStyle guiStyle;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -23,5 +25,12 @@ public class GameState : MonoBehaviour
 	void Update ()
 	{
 
+	}
+
+	void OnGUI () {
+		if (gameMode == GameModes.BloodRage) {
+			GUI.backgroundColor = Color.red;
+			GUI.Button(new Rect (0, 0, Screen.width, Screen.height), "");
+		}
 	}
 }
