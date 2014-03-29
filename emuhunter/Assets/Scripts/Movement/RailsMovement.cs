@@ -29,6 +29,11 @@ public class RailsMovement : MonoBehaviour {
 		direction *= speed;
 		Debug.Log ("with '" + direction + "'");
 		return direction * Time.deltaTime;
+
+		Vector3 targetDirection = Camera.main.transform.forward;
+		targetDirection.y = 0.0f;
+		targetDirection.Normalize();
+		Quaternion targetRotation = Quaternion.LookRotation(targetDirection, Vector3.up);
 	}
 
 	// Update is called once per frame
