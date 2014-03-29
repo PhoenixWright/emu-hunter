@@ -19,6 +19,6 @@ public class Score : MonoBehaviour
 
 	void OnGUI ()
 	{
-		GUI.Box(new Rect(Screen.width - 150, 0, 150, 50), "Health: " + gameState.health.ToString() + "\r\nEmus Murdered: " + gameState.emusDestroyed.ToString()); 
+		GUI.Box(new Rect(Screen.width - 150, 0, 150, 50), "Health: " + gameState.playerScript.health.ToString() + "\r\nEmus Murdered: " + gameState.emusDestroyed.ToString()); 
 	}
 }

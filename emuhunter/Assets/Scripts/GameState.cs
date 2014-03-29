@@ -8,7 +8,8 @@ public enum GameModes {
 
 public class GameState : MonoBehaviour
 {
-	public int health = 0; // hits left
+	public GameObject playerObject;
+	public Player playerScript;
 	public int emusDestroyed = 0;
 
 	public GameModes gameMode = GameModes.Normal;
@@ -19,7 +20,8 @@ public class GameState : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		health = 3;
+		playerObject = GameObject.FindGameObjectWithTag("Player");
+		playerScript = playerObject.GetComponent<Player>();
 		bloodRage = Camera.main.GetComponent<BloodRageLens>();
 	}
 
