@@ -24,8 +24,13 @@ public class EnemyMovements : MonoBehaviour {
 		newRotation.x = 90;
 		transform.rotation = Quaternion.Euler (newRotation);
 
-		transform.position = Vector3.Lerp(transform.position, playerPos, speed);
+		//transform.position = Vector3.Lerp(transform.position, playerPos, speed);
+		rigidbody.MovePosition(Vector3.Lerp (transform.position, playerPos, speed));
 
+	}
 
+	public void OnMouseDown() {
+		// tell GameState that an emu was killed
+		Destroy(this.gameObject);	
 	}
 }
