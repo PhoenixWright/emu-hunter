@@ -16,6 +16,10 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		health -= 1;
+		EnemyMovements enemyMovements = collision.gameObject.GetComponent<EnemyMovements>();
+		if (enemyMovements) {
+			// we got hit by an emu
+			health -= 1;
+		}
 	}
 }
