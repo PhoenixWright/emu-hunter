@@ -17,12 +17,10 @@ public class GenerateLevel : MonoBehaviour {
 	};
 
 	private Queue<KeyValuePair<Direction, int>> _path; // int == segment length
-	private GameObject _camera;
 
 	// Use this for initialization
 	void Start () {
 		_path = new Queue<KeyValuePair<Direction, int>> ();
-		_camera = GameObject.Find ("FirstPersonController");
 		// Initially generate segments
 		for (uint i = 0; i < InitialSegmentCount; ++i) {
 			AppendValidSegmentToPath();
@@ -31,7 +29,6 @@ public class GenerateLevel : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		_camera.collider.
 	}
 
 	void AppendValidSegmentToPath () {
