@@ -2,35 +2,36 @@
 using System.Collections;
 
 public class RailsMovement : MonoBehaviour {
-	private CharacterController playerController;
-	private Vector3 moveDirection;
-	private float horizontalAxis;
-	private float verticalAxis;
+	private CharacterController controller;
+	private Vector3 movement;
 
 	// public members
 	public float speed = 6.0F;
 
 	// Use this for initialization
 	void Start () {
-		this.playerController = GetComponent<CharacterController>();
-		this.moveDirection = Vector3.one;
-		//this.horizontalAxis = Input.GetAxis ("Horizontal");
-		//this.verticalAxis = Input.GetAxis ("Vertical");
+		this.controller = GetComponent<CharacterController>();
+	}
+
+	Vector3 GetDirectionToMove(float xAxis, float yAxis) {
+		//Vector3 direction = new Vector3(xAxis, 0, yAxis);
+		Vector3 direction = this.transform.forward;
+		Debug.Log ("basic '" + direction + "'");
+		direction = this.transform.TransformDirection (direction);
+		Debug.Log ("transformDirection '" + direction + "'");
+
+		//Multiply it by speed.
+		direction *= speed;
+		Debug.Log ("with '" + direction + "'");
+		return direction;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		this.horizontalAxis = Input.GetAxis ("Horizontal");
-		this.verticalAxis = Input.GetAxis ("Vertical");
+		float xCoord = Input.GetAxis ("Horizontal");
+		float yCoord = Input.GetAxis ("Vertical");
 
-		Vector3 direction = new Vector3(this.horizontalAxis, 0, this.verticalAxis);
-		this.moveDirection = this.transform.TransformDirection (direction);
-		Debug.LogWarning (this.moveDirection);
-
-		//Multiply it by speed.
-		this.moveDirection *= speed;
-		this.playerController.Move (moveDirection);// * Time.deltaTime);
-
-		Debug.Log (this.moveDirection.x + " " + this.moveDirection.y + " " + this.moveDirection.z);
+		Vector3 direction = GetDirectionToMove (xCoord, yCoord);
+		this.controller.Move (direction);// * Time.deltaTime);
 	}
 }
