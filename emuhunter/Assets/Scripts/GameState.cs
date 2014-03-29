@@ -13,24 +13,19 @@ public class GameState : MonoBehaviour
 
 	public GameModes gameMode = GameModes.Normal;
 
+	private BloodRage bloodRage;
 	private GUIStyle guiStyle;
 
 	// Use this for initialization
 	void Start ()
 	{
 		health = 3;
+		bloodRage = GetComponent<BloodRage>();
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
 
-	}
-
-	void OnGUI () {
-		if (gameMode == GameModes.BloodRage) {
-			GUI.backgroundColor = Color.red;
-			GUI.Button(new Rect (0, 0, Screen.width, Screen.height), "");
-		}
 	}
 }
