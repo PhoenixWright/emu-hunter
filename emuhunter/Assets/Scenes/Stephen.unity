@@ -190,7 +190,7 @@ GameObject:
   - 64: {fileID: 201933529}
   - 23: {fileID: 201933528}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,7 +246,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -.1184709, y: -.234599471, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 5}
-  m_Children: []
+  m_Children:
+  - {fileID: 1607438897}
   m_Father: {fileID: 0}
 --- !u!1001 &447989938
 Prefab:
@@ -352,7 +353,7 @@ GameObject:
   - 65: {fileID: 1607438895}
   - 23: {fileID: 1607438894}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Wall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -405,10 +406,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1607438893}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -.0412278175, y: 0, z: 20.6645164}
-  m_LocalScale: {x: 20, y: 8, z: 1}
+  m_LocalPosition: {x: .0154486168, y: .0469198935, z: 4.13290358}
+  m_LocalScale: {x: 4, y: 1.60000002, z: .200000003}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 201933531}
 --- !u!1 &1651274288
 GameObject:
   m_ObjectHideFlags: 0
