@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public enum GameModes {
@@ -13,19 +13,26 @@ public class GameState : MonoBehaviour
 
 	public GameModes gameMode = GameModes.Normal;
 
-	private BloodRage bloodRage;
+	private BloodRageLens bloodRage;
 	private GUIStyle guiStyle;
 
 	// Use this for initialization
 	void Start ()
 	{
 		health = 3;
-		bloodRage = GetComponent<BloodRage>();
+		bloodRage = Camera.main.GetComponent<BloodRageLens>();
 	}
 
 	// Update is called once per frame
 	void Update ()
 	{
 
+	}
+
+	public void EmuKilled() {
+		emusDestroyed += 1;
+		if (emusDestroyed == 3) {
+			bloodRage.Enable();
+		}
 	}
 }
