@@ -9,7 +9,7 @@ public class GameState : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-
+		health = 3;
 	}
 
 	// Update is called once per frame

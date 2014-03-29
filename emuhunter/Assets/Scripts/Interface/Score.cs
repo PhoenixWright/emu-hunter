@@ -19,6 +19,6 @@ public class Score : MonoBehaviour
 
 	void OnGUI ()
 	{
-		GUI.Box(new Rect(Screen.width - 100,0,100,50), gameState.emusDestroyed.ToString());
+		GUI.Box(new Rect(Screen.width - 100,0,100,50), gameState.health.ToString() + ' ' + gameState.emusDestroyed.ToString());
 	}
 }
