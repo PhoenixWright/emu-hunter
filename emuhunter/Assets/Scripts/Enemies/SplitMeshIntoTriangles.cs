@@ -48,7 +48,7 @@ public class SplitMeshIntoTriangles : MonoBehaviour
 		}
 		MR.enabled = false;
 		
-		Time.timeScale = 0.2f;
+		//Time.timeScale = 0.2f;
 		yield return new WaitForSeconds(0.8f);
 		Time.timeScale = 1.0f;
 		Destroy(gameObject);

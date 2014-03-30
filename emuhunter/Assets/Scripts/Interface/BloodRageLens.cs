@@ -9,11 +9,11 @@ public class BloodRageLens : MonoBehaviour {
 	
 	public int bloodRageLength = 10;
 
-	public AudioSource announceThisShit;
+	public AudioSource[] announceThisShit;
 
 	// Use this for initialization
 	void Start () {
-		announceThisShit = GetComponent<AudioSource>();
+		announceThisShit = GetComponents<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -25,14 +25,35 @@ public class BloodRageLens : MonoBehaviour {
 		rageEnabled = true;
 		secondsLeft = bloodRageLength;
 
-		// play sound
-		announceThisShit.PlayOneShot(announceThisShit.clip);
+		// play sounds
+		foreach(AudioSource a in announceThisShit) {
+			a.Play();
+			Debug.Log ("volume: " + a.volume);
+		}
 
 		StartCoroutine(WaitAndDisable());
 	}
 
 	public void Disable() {
 		rageEnabled = false;
+		
+		foreach(AudioSource a in announceThisShit) {
+			if(a.isPlaying) {
+				StartCoroutine(FadeOut(a));				
+			}
+		}
+	}
+	
+	private IEnumerator FadeOut(AudioSource a) {	
+		yield return new WaitForSeconds(0.01f);	
+		if (a.volume > 0) {
+			Debug.Log ("volume: " + a.volume);
+			a.volume -= 0.01f;
+			StartCoroutine(FadeOut(a));
+		}
+		else {
+			a.Stop();
+		}
 	}
 	
 	void OnGUI () {
