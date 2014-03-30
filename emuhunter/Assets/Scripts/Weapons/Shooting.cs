@@ -23,13 +23,11 @@ public class Shooting : MonoBehaviour {
 		Light lightGameObject = instantiatedProjectile.gameObject.AddComponent<Light> ();
 		lightGameObject.light.color = this.lightColor;
 		lightGameObject.light.intensity = this.lightIntensity;
-		//lightGameObject.light.transform.position = instantiatedProjectile.position;
 		Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 		if (Input.GetButtonDown ("Fire1")) {
 			Attack();
 		}
