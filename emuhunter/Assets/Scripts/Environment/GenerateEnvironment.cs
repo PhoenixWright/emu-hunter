@@ -35,14 +35,20 @@ public class GenerateEnvironment : MonoBehaviour {
 		var next = _levelGenerator.Next();
 		AppendCorridorSegment(next, last);
 
-		string name = _corridor.Peek ().name;
-		do {
-			Debug.Log ("Destroying " + name);
-			var obj = _corridor.Dequeue ();
-			obj.transform.position = new Vector3(0, 100, 0);
-			name = _corridor.Peek ().name;
-		} while (!name.Contains("Corner"));
-
+		int corners = 0;
+		foreach (var c in _corridor) {
+			if (c.name.Contains("Corner"))
+				++corners;
+		}
+		if (corners >= 4) {
+			string name = _corridor.Peek ().name;
+			do {
+				Debug.Log ("Destroying " + name);
+				var obj = _corridor.Dequeue ();
+				Destroy(obj);
+				name = _corridor.Peek ().name;
+			} while (!name.Contains("Corner"));
+		}
 		return _where;
 	}
 	
