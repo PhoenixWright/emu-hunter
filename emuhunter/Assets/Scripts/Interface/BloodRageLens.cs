@@ -9,9 +9,11 @@ public class BloodRageLens : MonoBehaviour {
 	
 	public int bloodRageLength = 10;
 
+	public AudioSource announceThisShit;
+
 	// Use this for initialization
 	void Start () {
-	
+		announceThisShit = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -22,6 +24,11 @@ public class BloodRageLens : MonoBehaviour {
 	public void Enable() {
 		rageEnabled = true;
 		secondsLeft = bloodRageLength;
+
+		// play sound
+		announceThisShit.PlayOneShot(announceThisShit.clip);
+
+
 		StartCoroutine(WaitAndDisable());
 	}
 
