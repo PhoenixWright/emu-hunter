@@ -32,6 +32,8 @@ public class EnemyStats : MonoBehaviour {
 
 		if (player) {
 			Attack(player);
+			EnemyMovements movements = GetComponent<EnemyMovements>();
+			movements.AddKnockback();
 		}
 		else if (bullet) {
 			health -= bullet.damage;
