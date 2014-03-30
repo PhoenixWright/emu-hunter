@@ -47,7 +47,7 @@ public class PlayerStats : MonoBehaviour {
 		item.transform.parent = armLeft.transform;
 		item.transform.localPosition = new Vector3(0.0F, 0.0F, 0.0F);
 		weaponLeft = (Weapon)armLeft.transform.GetChild (0).GetComponent (typeof(Weapon));
-		Debug.Log ("Equipped weapon: " + weaponLeft);
+		//Debug.Log ("Equipped weapon: " + weaponLeft);
 	}
 	
 	void OnGUI() {
@@ -68,7 +68,6 @@ public class PlayerStats : MonoBehaviour {
 			GUI.Label(new Rect(0, 0, Screen.width, Screen.height), endMsg);
 		
 			GUI.skin.button.fontSize = 48;
-			Debug.Log(Screen.width.ToString());
 			if (GUI.Button(new Rect ((Screen.width / 2) - 100, Screen.height - 100, 200, 50), "Restart")){
 				Application.LoadLevel(Application.loadedLevel);
 				Time.timeScale = 1.0f;

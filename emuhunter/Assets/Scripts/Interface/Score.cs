@@ -7,6 +7,7 @@ public class Score : MonoBehaviour
 	public int highKills;
 	public float bestTime;
 
+	public Texture sriracha;
 
 	// Use this for initialization
 	void Start ()
@@ -15,6 +16,7 @@ public class Score : MonoBehaviour
 		PlayerPrefs.DeleteAll();
 		highKills = PlayerPrefs.GetInt ("highKills");
 		bestTime = PlayerPrefs.GetFloat ("bestTime");
+		sriracha = (Texture)Resources.Load("sriracha");
 	}
 
 	// Update is called once per frame

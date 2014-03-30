@@ -33,7 +33,7 @@ public class RailsMovement : MonoBehaviour {
 		float difference = (transform.position - nextWaypoint).magnitude;
 		if (difference < 1.2F) {
 			if (waypoints.Count > 0) {
-				Debug.Log("Moving to next waypoint.");
+				//Debug.Log("Moving to next waypoint.");
 				nextWaypoint = waypoints.Dequeue();
 			}
 		}

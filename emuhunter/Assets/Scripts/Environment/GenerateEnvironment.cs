@@ -85,7 +85,7 @@ public class GenerateEnvironment : MonoBehaviour {
 			obj.transform.position = location;
 			_corridor.Enqueue(obj);
 			FrontSpawnPoint = obj.renderer.bounds.center;
-			Debug.Log("Front spawn point: " + FrontSpawnPoint);
+			//Debug.Log("Front spawn point: " + FrontSpawnPoint);
 		}
 		_where = location;
 	}
