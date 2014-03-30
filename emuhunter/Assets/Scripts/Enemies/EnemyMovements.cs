@@ -33,13 +33,10 @@ public class EnemyMovements : MonoBehaviour {
 
 		if (knockbackLeft == 0) {
 			rigidbody.MovePosition (move);
-			Debug.Log("moving to: " + move.ToString());
 		} else {
 			var newPlace = transform.position + knockbackLeft * knockbackLeft * (transform.position - move);
 			rigidbody.MovePosition (newPlace);
 			knockbackLeft -= 1;
-			
-			Debug.Log("moving to: " + newPlace.ToString());
 		}
 
 	}
