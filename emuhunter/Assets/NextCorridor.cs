@@ -20,8 +20,8 @@ public class NextCorridor : MonoBehaviour {
 		}
 	}
 
-	void OnCollisionEnter(Collision collision) {
-		if (collision.gameObject.GetComponent<PlayerStats> ()) {
+	void OnTriggerEnter(Collider collision) {
+		if (!_cornerTriggered && collision.gameObject.GetComponent<PlayerStats> ()) {
 			_cornerTriggered = true;
 			if (_generateEnvironment) {
 				var nextWayPoint = _generateEnvironment.Next();

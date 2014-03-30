@@ -34,13 +34,13 @@ public class GenerateEnvironment : MonoBehaviour {
 		var last = _levelGenerator.Path.Peek(); // Must be executed before Next()
 		var next = _levelGenerator.Next();
 		AppendCorridorSegment(next, last);
-
+		/*
 		string name = _corridor.Peek ().name;
 		while (name != "Corner") {
 			var obj = _corridor.Dequeue();
 			Destroy(obj);
 		}
-
+*/
 		direction = next;
 		return _where;
 	}
