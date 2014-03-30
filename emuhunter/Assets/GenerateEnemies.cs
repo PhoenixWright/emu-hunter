@@ -44,7 +44,7 @@ public class GenerateEnemies : MonoBehaviour {
 	}
 	
 	void addTinyEmu(Vector3 pos) {
-		addEmu (pos, 0.3f, 0.1f, 3, 3);
+		addEmu (pos, 0.3f, 0.1f, 1, 3);
 	}
 	
 	void addBigEmu(Vector3 pos) {
@@ -52,7 +52,7 @@ public class GenerateEnemies : MonoBehaviour {
 	}
 	
 	void addNormalEmu(Vector3 pos) {
-		addEmu (pos, 0.1f, 0.2f, 10, 10);
+		addEmu (pos, 0.1f, 0.2f, 5, 10);
 	}
 	
 	void addTankEmu(Vector3 pos) {

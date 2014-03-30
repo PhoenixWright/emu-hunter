@@ -6,7 +6,7 @@ public class Shooting : Weapon {
 	private readonly float bulletLifeTime = 3F;
 	private readonly float lightIntensity = 10.0F;
 	private readonly Color lightColor = Color.red + Color.yellow;
-	private readonly Vector3 velocityVector = new Vector3(0.0F, 0.0F, 80.0F);
+	private readonly Vector3 velocityVector = new Vector3(0.0F, 0.0F, 180.0F);
 
 	private Transform ammoExit;
 

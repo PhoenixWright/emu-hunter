@@ -89,6 +89,7 @@ GameObject:
   - 54: {fileID: 109131913}
   - 114: {fileID: 109131912}
   - 114: {fileID: 109131919}
+  - 114: {fileID: 109131920}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -108,7 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   attack: 10
 --- !u!54 &109131913
 Rigidbody:
@@ -206,6 +207,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &109131920
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1174415276}
+  m_GameObject: {fileID: 109131911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993990b100ff4e2fbc7ec2536107b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: 34a05149ae14143b7a4bc2067ab012a7, type: 3}
 --- !u!1001 &177411215
 Prefab:
   m_ObjectHideFlags: 0
@@ -427,6 +441,7 @@ GameObject:
   - 54: {fileID: 688908134}
   - 114: {fileID: 688908133}
   - 114: {fileID: 688908140}
+  - 114: {fileID: 688908141}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -446,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   attack: 10
 --- !u!54 &688908134
 Rigidbody:
@@ -544,6 +559,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &688908141
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1265293394}
+  m_GameObject: {fileID: 688908132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993990b100ff4e2fbc7ec2536107b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: 34a05149ae14143b7a4bc2067ab012a7, type: 3}
 --- !u!1 &884609513
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,6 +587,7 @@ GameObject:
   - 54: {fileID: 884609515}
   - 114: {fileID: 884609514}
   - 114: {fileID: 884609521}
+  - 114: {fileID: 884609522}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -578,7 +607,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   attack: 10
 --- !u!54 &884609515
 Rigidbody:
@@ -676,6 +705,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &884609522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1118905614}
+  m_GameObject: {fileID: 884609513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993990b100ff4e2fbc7ec2536107b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: 34a05149ae14143b7a4bc2067ab012a7, type: 3}
 --- !u!1 &888214129
 GameObject:
   m_ObjectHideFlags: 0
@@ -794,6 +836,7 @@ GameObject:
   - 54: {fileID: 992651688}
   - 114: {fileID: 992651687}
   - 114: {fileID: 992651694}
+  - 114: {fileID: 992651695}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -813,7 +856,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   attack: 10
 --- !u!54 &992651688
 Rigidbody:
@@ -911,6 +954,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &992651695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 177411215}
+  m_GameObject: {fileID: 992651686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993990b100ff4e2fbc7ec2536107b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: 34a05149ae14143b7a4bc2067ab012a7, type: 3}
 --- !u!1 &1053950020
 GameObject:
   m_ObjectHideFlags: 0
@@ -926,6 +982,7 @@ GameObject:
   - 54: {fileID: 1053950022}
   - 114: {fileID: 1053950021}
   - 114: {fileID: 1053950028}
+  - 114: {fileID: 1053950029}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1043,6 +1100,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1053950029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 956041875}
+  m_GameObject: {fileID: 1053950020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993990b100ff4e2fbc7ec2536107b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: 34a05149ae14143b7a4bc2067ab012a7, type: 3}
 --- !u!1001 &1118905614
 Prefab:
   m_ObjectHideFlags: 0
@@ -2407,6 +2477,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 0}
+  highKills: 0
+  bestTime: 0
 --- !u!4 &1393925316
 Transform:
   m_ObjectHideFlags: 0
@@ -2730,6 +2802,7 @@ GameObject:
   - 54: {fileID: 1532814264}
   - 114: {fileID: 1532814265}
   - 114: {fileID: 1532814262}
+  - 114: {fileID: 1532814266}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2845,8 +2918,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 3
   attack: 10
+--- !u!114 &1532814266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1926572588}
+  m_GameObject: {fileID: 1532814257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993990b100ff4e2fbc7ec2536107b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splat: {fileID: 2800000, guid: 34a05149ae14143b7a4bc2067ab012a7, type: 3}
 --- !u!1 &1608051491
 GameObject:
   m_ObjectHideFlags: 0
@@ -3015,7 +3101,8 @@ MonoBehaviour:
   rageEnabled: 0
   secondsLeft: 0
   bloodRageLength: 10
-  announceThisShit: []
+  announceThisShit:
+  - {fileID: 0}
 --- !u!81 &1718034804
 AudioListener:
   m_ObjectHideFlags: 0
