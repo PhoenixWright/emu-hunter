@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public interface Weapon {
+public abstract class Weapon : MonoBehaviour {
 
-	void Attack();
+	public abstract void Attack();
 
 }
