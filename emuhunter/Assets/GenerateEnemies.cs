@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class GenerateEnemies : MonoBehaviour {
-	private int emuSpawnCount = 10;
+	private int emuSpawnCount = 20;
 
 	// Use this for initialization
 	void Start () {
@@ -21,7 +21,7 @@ public class GenerateEnemies : MonoBehaviour {
 		addNormalEmu (new Vector3(0f,3f,0f));
 		emuSpawnCount -= 1;
 		if(emuSpawnCount > 0) {
-			StartCoroutine(SpawnEmus (3));
+			StartCoroutine(SpawnEmus (1));
 		}
 	}
 	

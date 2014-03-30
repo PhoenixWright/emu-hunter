@@ -44,6 +44,17 @@ public class EnemyStats : MonoBehaviour {
 
 			if (health < 1) {
 				gameState.EmuKilled();
+				
+				float bulletLifeTime = 1F;
+				if(rage) {
+					int n = Random.Range (5, 15);
+					for(int i = 0; i < n; i++) {
+						Vector3 velocityVector = new Vector3(Random.Range (-80.0f, 80.0f), Random.Range (-80.0f, 80.0f), Random.Range (-80.0f, 80.0f));
+						Rigidbody instantiatedProjectile = ((GameObject)Instantiate(Resources.Load("Bullet"))).GetComponent<Rigidbody>();
+						instantiatedProjectile.velocity = transform.TransformDirection(velocityVector);
+						Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
+					}
+				}
 
 				if (rage) {
 					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
