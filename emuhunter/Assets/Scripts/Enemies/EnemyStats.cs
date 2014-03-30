@@ -22,7 +22,7 @@ public class EnemyStats : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		// checking for Blood Rage!!
 		
-		bool rage = Camera.main.GetComponent<BloodRageLens>().enabled;
+		bool rage = Camera.main.GetComponent<BloodRageLens>().rageEnabled;
 		
 		// grab all components we want to try
 		PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
@@ -58,6 +58,10 @@ public class EnemyStats : MonoBehaviour {
 
 				if (rage) {
 					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
+					SplitMeshIntoTriangles splitter = GetComponent<SplitMeshIntoTriangles>();
+					if (splitter) {
+						StartCoroutine(splitter.SplitMesh());
+					}
 				}
 
 
