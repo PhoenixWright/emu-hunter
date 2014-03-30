@@ -591,6 +591,7 @@ GameObject:
   - 114: {fileID: 606626142}
   - 81: {fileID: 606626141}
   - 114: {fileID: 606626140}
+  - 114: {fileID: 606626146}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -618,9 +619,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 606626138}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3464e8003e445e890b4d6757364bf0, type: 3}
+  m_Script: {fileID: 11500000, guid: 22746f0c4cdd89349b2b4bfd979bee33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enabled: 0
+  secondsLeft: 0
+  bloodRageLength: 10
 --- !u!81 &606626141
 AudioListener:
   m_ObjectHideFlags: 0
@@ -694,6 +698,18 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
   m_OcclusionCulling: 1
+--- !u!114 &606626146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400016, guid: 679a7103c5f0a4162a82e72981210535,
+    type: 2}
+  m_PrefabInternal: {fileID: 810092199}
+  m_GameObject: {fileID: 606626138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 104e5334f1707419a9f4ce618ed7c46d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &712006680
 Prefab:
   m_ObjectHideFlags: 0
@@ -829,7 +845,8 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
   m_RootGameObject: {fileID: 2058257292}
   m_IsPrefabParent: 0

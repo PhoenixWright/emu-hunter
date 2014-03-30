@@ -8,7 +8,6 @@ public class EnemyMovements : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log ("Enemy start");
 		player = GameObject.FindGameObjectWithTag ("Player");
 		knockbackLeft = 0;
 	}
