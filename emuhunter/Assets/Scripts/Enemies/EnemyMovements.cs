@@ -6,10 +6,15 @@ public class EnemyMovements : MonoBehaviour {
 	public float speed;
 	private int knockbackLeft;
 
+	private float tilt = 0.2f;
+
+
 	// Use this for initialization
 	void Start () {
 		player = GameObject.FindGameObjectWithTag ("Player");
 		knockbackLeft = 0;
+
+		StartCoroutine(WaitAndTilt());
 	}
 	
 	// Update is called once per frame
@@ -29,7 +34,10 @@ public class EnemyMovements : MonoBehaviour {
 		//transform.LookAt (playerPos);
 		var newRotation = Quaternion.LookRotation (playerPos - transform.position).eulerAngles;
 		newRotation.x = 90;
-		transform.rotation = Quaternion.Euler (newRotation);
+		var euler = Quaternion.Euler (newRotation);
+		Debug.Log ("Euler = " + euler.ToString());
+		euler.x += tilt;
+		transform.rotation = euler;
 		
 		var frac = speed / Vector3.Distance (transform.position, playerPos);
 
@@ -47,5 +55,13 @@ public class EnemyMovements : MonoBehaviour {
 
 	public void AddKnockback () {
 		knockbackLeft += 5;
+	}
+
+	private IEnumerator WaitAndTilt() {
+		yield return new WaitForSeconds(0.4f);
+
+		tilt = -tilt;
+
+		StartCoroutine(WaitAndTilt());
 	}
 }
