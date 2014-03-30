@@ -35,7 +35,7 @@ public class GenerateEnvironment : MonoBehaviour {
 		var next = _levelGenerator.Next();
 		AppendCorridorSegment(next, last);
 
-		string name = _corridor.Peek ();
+		string name = _corridor.Peek ().name;
 		while (name != "Corner") {
 			var obj = _corridor.Dequeue();
 			Destroy(obj);
