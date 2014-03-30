@@ -416,7 +416,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c6899fc47f7f49f980980da8d48f265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  playerObject: {fileID: 0}
+  playerScript: {fileID: 0}
   emusDestroyed: 0
   gameMode: 0
 --- !u!4 &1728642639
@@ -501,9 +502,10 @@ GameObject:
   - 114: {fileID: 2098353573}
   - 114: {fileID: 2098353572}
   - 114: {fileID: 2098353576}
+  - 114: {fileID: 2098353577}
   m_Layer: 0
   m_Name: First Person Controller
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -636,3 +638,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+--- !u!114 &2098353577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: 9d4133d5d30b644bd87802a347eaccbe,
+    type: 2}
+  m_PrefabInternal: {fileID: 447989938}
+  m_GameObject: {fileID: 2098353570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b4dacd4fde34ebe84f8d685baea337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
