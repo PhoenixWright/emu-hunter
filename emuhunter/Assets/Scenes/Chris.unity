@@ -2881,6 +2881,7 @@ GameObject:
   - 114: {fileID: 1718034805}
   - 81: {fileID: 1718034804}
   - 114: {fileID: 1718034803}
+  - 82: {fileID: 1718034809}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -2914,6 +2915,7 @@ MonoBehaviour:
   rageEnabled: 0
   secondsLeft: 0
   bloodRageLength: 10
+  announceThisShit: {fileID: 0}
 --- !u!81 &1718034804
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2987,6 +2989,65 @@ Camera:
   m_TargetTexture: {fileID: 0}
   m_HDR: 0
   m_OcclusionCulling: 1
+--- !u!82 &1718034809
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 8200000, guid: 679a7103c5f0a4162a82e72981210535,
+    type: 2}
+  m_PrefabInternal: {fileID: 1807689425}
+  m_GameObject: {fileID: 1718034801}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: a575ba9d84fb94f6094a350e458f7695, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1728642637
 GameObject:
   m_ObjectHideFlags: 0
