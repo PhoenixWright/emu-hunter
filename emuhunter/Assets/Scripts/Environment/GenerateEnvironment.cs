@@ -20,7 +20,7 @@ public class GenerateEnvironment : MonoBehaviour {
 			AppendCorridorSegment(p, last);
 			last = p;
 			if (rails)
-				rails.AddWaypoint(p);
+				rails.AddWaypoint(_where);
 		}
 	}
 	
@@ -36,7 +36,7 @@ public class GenerateEnvironment : MonoBehaviour {
 		AppendCorridorSegment(next, last);
 		// TODO: Remove unused corridor game objects
 		direction = next;
-		return direction;
+		return _where;
 	}
 	
 	void AppendCorridorSegment (Vector3 p, Vector3? lastDir)
