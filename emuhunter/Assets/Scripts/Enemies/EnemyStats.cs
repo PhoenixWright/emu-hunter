@@ -19,7 +19,11 @@ public class EnemyStats : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter(Collision collision) {	
+	void OnCollisionEnter(Collision collision) {
+		// checking for Blood Rage!!
+		
+		bool rage = Camera.main.GetComponent<BloodRageLens>().rageEnabled;
+		
 		// grab all components we want to try
 		PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
 		BulletStats bullet = collision.gameObject.GetComponent<BulletStats>();
@@ -36,10 +40,31 @@ public class EnemyStats : MonoBehaviour {
 			movements.AddKnockback();
 		}
 		else if (bullet) {
-			health -= bullet.damage;
-			//Debug.Log ("health: " + health.ToString());
+			health -= rage ? 2 * bullet.damage : bullet.damage;
+
 			if (health < 1) {
 				gameState.EmuKilled();
+				
+				float bulletLifeTime = 1F;
+				if(rage) {
+					int n = Random.Range (5, 15);
+					for(int i = 0; i < n; i++) {
+						Vector3 velocityVector = new Vector3(Random.Range (-80.0f, 80.0f), Random.Range (-80.0f, 80.0f), Random.Range (-80.0f, 80.0f));
+						Rigidbody instantiatedProjectile = ((GameObject)Instantiate(Resources.Load("Bullet"))).GetComponent<Rigidbody>();
+						instantiatedProjectile.velocity = transform.TransformDirection(velocityVector);
+						Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
+					}
+				}
+
+				if (rage) {
+					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
+					SplitMeshIntoTriangles splitter = GetComponent<SplitMeshIntoTriangles>();
+					if (splitter) {
+						StartCoroutine(splitter.SplitMesh());
+					}
+				}
+
+
 				Destroy(gameObject);
 			}
 		}

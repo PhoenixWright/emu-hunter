@@ -1,31 +1,35 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shooting : MonoBehaviour, Weapon {
-	public Rigidbody projectile;
-	public float speed = 80;
+public class Shooting : MonoBehaviour {
+	/// constants
+	private readonly float bulletLifeTime = 3F;
+	private readonly float lightIntensity = 10.0F;
+	private readonly Color lightColor = Color.red + Color.yellow;
+	private readonly Vector3 velocityVector = new Vector3(0.0F, 0.0F, 80.0F);
 
-	private Transform ammoExit;
+	/// mutables
+	public Rigidbody projectile;
 
 	// Use this for initialization
 	void Start () {
-		ammoExit = transform.Find ("Barrel").FindChild ("AmmoExit");
+	}
+
+	void Attack() {
+		Rigidbody instantiatedProjectile = Instantiate(projectile, transform.position, Quaternion.identity)
+			as Rigidbody;
+		instantiatedProjectile.velocity = transform.TransformDirection(velocityVector);
+
+		Light lightGameObject = instantiatedProjectile.gameObject.AddComponent<Light> ();
+		lightGameObject.light.color = this.lightColor;
+		lightGameObject.light.intensity = this.lightIntensity;
+		Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
-	}
-
-	public void Attack () {
-		Rigidbody instantiatedProjectile = Instantiate(projectile,
-		                                               ammoExit.position,
-		                                               ammoExit.rotation) as Rigidbody;
-
-		instantiatedProjectile.velocity = transform.TransformDirection(
-			new Vector3(0, 0, speed));
-
-		Destroy(instantiatedProjectile.gameObject, 3F);
-
+		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
+			Attack();
+		}
 	}
 }

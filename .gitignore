@@ -8,3 +8,5 @@
 *.userprefs
 Library/
 Temp/
+*.exe
+*_Data*
