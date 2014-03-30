@@ -2634,7 +2634,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b4dacd4fde34ebe84f8d685baea337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 1
 --- !u!114 &1485203597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3588,6 +3588,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
+      propertyPath: health
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

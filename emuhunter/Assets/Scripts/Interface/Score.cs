@@ -12,7 +12,7 @@ public class Score : MonoBehaviour
 	void Start ()
 	{
 		gameState = (GameState)GameObject.FindGameObjectWithTag("GlobalScripts").GetComponent<GameState>();
-		//PlayerPrefs.DeleteAll();
+		PlayerPrefs.DeleteAll();
 		highKills = PlayerPrefs.GetInt ("highKills");
 		bestTime = PlayerPrefs.GetFloat ("bestTime");
 	}
