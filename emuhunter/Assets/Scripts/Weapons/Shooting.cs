@@ -3,11 +3,12 @@ using System.Collections;
 
 public class Shooting : Weapon {
 	/// constants
-	private readonly float bulletLifeTime = 3F;
-	private readonly float lightIntensity = 10.0F;
-	private readonly Color lightColor = Color.red + Color.yellow;
-	private readonly Vector3 velocityVector = new Vector3(0.0F, 0.0F, 180.0F);
+	public Vector3 velocityVector = new Vector3(0.0F, 0.0F, 100.0F);
 
+	private float bulletLifeTime = 3F;
+	private float lightIntensity = 10.0F;
+	private Color lightColor = Color.red + Color.yellow;
+	
 	private Transform ammoExit;
 
 	/// mutables
