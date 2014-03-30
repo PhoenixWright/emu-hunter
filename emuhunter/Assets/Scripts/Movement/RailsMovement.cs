@@ -31,8 +31,9 @@ public class RailsMovement : MonoBehaviour {
 
 	Vector3 GetTargetPosition(Transform transform) {
 		float difference = (transform.position - nextWaypoint).magnitude;
-		if (difference < 1.0F) {
+		if (difference < 1.2F) {
 			if (waypoints.Count > 0) {
+				Debug.Log("Moving to next waypoint.");
 				nextWaypoint = waypoints.Dequeue();
 			}
 		}
@@ -47,6 +48,6 @@ public class RailsMovement : MonoBehaviour {
 	void Update () {
 		Vector3 nextPosition = GetTargetPosition(this.controller.transform);
 		Vector3 movement = GetMovement(this.controller.transform, nextPosition);
-		this.controller.Move (movement);
+		this.controller.Move(movement);
 	}
 }
