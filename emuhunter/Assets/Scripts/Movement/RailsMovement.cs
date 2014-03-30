@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class RailsMovement : MonoBehaviour {
 	private CharacterController controller;
 	private GenerateEnvironment environmentGenerator;
-	private Vector3 next;
+	private Vector3 nextWaypoint;
 
 	// public members
 	public float speed = 1.01F;
@@ -15,7 +15,7 @@ public class RailsMovement : MonoBehaviour {
 		this.controller = GetComponent<CharacterController>();
 		this.environmentGenerator = GameObject.FindGameObjectWithTag ("GlobalScripts")
 			.GetComponent<GenerateEnvironment> ();
-		next = this.environmentGenerator.Next ();
+		nextWaypoint = this.environmentGenerator.Next ();
 	}
 
 	Vector3 GetRotationForCamera() {
@@ -28,16 +28,15 @@ public class RailsMovement : MonoBehaviour {
 		Vector3 directionToMove = nextPosition - transform.position;
 		Vector3 normalizedDirection = directionToMove.normalized;
 		/// Multiply the direction, speed, based on the framerate
-		Vector3 movement = normalizedDirection * speed * Time.deltaTime;
-		return movement;
+		return normalizedDirection * speed * Time.deltaTime;
 	}
 
 	Vector3 GetTargetPosition(Transform transform) {
-		float difference = (transform.position - next).magnitude;
+		float difference = (transform.position - nextWaypoint).magnitude;
 		if (difference < 1.0F) {
-			next = this.environmentGenerator.Next ();
+			nextWaypoint = this.environmentGenerator.Next ();
 		}
-		return next;
+		return nextWaypoint;
 	}
 
 	// Update is called once per frame
