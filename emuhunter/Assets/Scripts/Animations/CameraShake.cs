@@ -9,11 +9,11 @@ public class CameraShake : MonoBehaviour
 	private float shakeDecay;
 	private float shakeIntensity;
 	
-	void OnGUI() {
+	/*void OnGUI() {
         if (GUI.Button(new Rect(20, 40, 80, 20), "Shake")) {
             Shake();
         }
-    }
+    }*/
 	
 	void Update() {
 		if (shakeIntensity > 0) {
@@ -27,7 +27,7 @@ public class CameraShake : MonoBehaviour
 		}
 	}
 	
-	void Shake(float intensity = 0.2f, float decay = 0.02f) {
+	public void Shake(float intensity = 0.2f, float decay = 0.02f) {
 		originPosition = transform.position;
 		originRotation = transform.rotation;
 		shakeIntensity = intensity;

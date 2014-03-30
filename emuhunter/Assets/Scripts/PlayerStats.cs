@@ -5,8 +5,11 @@ public class PlayerStats : MonoBehaviour {
 
 	public int health;
 
+	private CameraShake cameraShake;
+
 	// Use this for initialization
 	void Start () {
+		cameraShake = Camera.main.GetComponent<CameraShake>();
 	}
 	
 	// Update is called once per frame
@@ -15,5 +18,10 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
+		EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
+
+		if (enemy) {
+			cameraShake.Shake();
+		}
 	}
 }
