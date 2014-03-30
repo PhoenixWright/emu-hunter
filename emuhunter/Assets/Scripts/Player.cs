@@ -3,11 +3,10 @@ using System.Collections;
 
 public class Player : MonoBehaviour {
 
-	public int health = 0;
+	public int health;
 
 	// Use this for initialization
 	void Start () {
-		health = 3;
 	}
 	
 	// Update is called once per frame
@@ -16,10 +15,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		EnemyMovements enemyMovements = collision.gameObject.GetComponent<EnemyMovements>();
-		if (enemyMovements) {
-			// we got hit by an emu
-			health -= 1;
-		}
 	}
+
+
 }

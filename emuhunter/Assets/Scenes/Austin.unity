@@ -273,7 +273,7 @@ Transform:
   m_PrefabParentObject: {fileID: 400008, guid: 1d48c432d2e3444689b3d574ec9f3379, type: 2}
   m_PrefabInternal: {fileID: 816242424}
   m_GameObject: {fileID: 299439152}
-  m_LocalRotation: {x: -.707106888, y: 0, z: 0, w: .707106769}
+  m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106709}
   m_LocalPosition: {x: 0, y: .5, z: 0}
   m_LocalScale: {x: .100000001, y: 10, z: .100000001}
   m_Children: []
@@ -441,6 +441,7 @@ GameObject:
   - 65: {fileID: 471277117}
   - 114: {fileID: 471277121}
   - 54: {fileID: 471277122}
+  - 114: {fileID: 471277123}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -532,6 +533,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &471277123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 460540350}
+  m_GameObject: {fileID: 471277116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  attack: 0
 --- !u!1001 &712006680
 Prefab:
   m_ObjectHideFlags: 0
@@ -625,6 +640,7 @@ GameObject:
   - 65: {fileID: 840043784}
   - 114: {fileID: 840043788}
   - 54: {fileID: 840043789}
+  - 114: {fileID: 840043790}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -716,6 +732,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &840043790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 712006680}
+  m_GameObject: {fileID: 840043783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  attack: 0
 --- !u!1 &1469888100
 GameObject:
   m_ObjectHideFlags: 0
@@ -963,6 +993,7 @@ GameObject:
   - 65: {fileID: 1922994786}
   - 114: {fileID: 1922994790}
   - 54: {fileID: 1922994791}
+  - 114: {fileID: 1922994792}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1054,6 +1085,20 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1922994792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 2116541809}
+  m_GameObject: {fileID: 1922994785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
+  attack: 0
 --- !u!1 &2004427781
 GameObject:
   m_ObjectHideFlags: 0
@@ -1200,6 +1245,7 @@ GameObject:
   - 114: {fileID: 2098353573}
   - 114: {fileID: 2098353572}
   - 114: {fileID: 2098353576}
+  - 114: {fileID: 2098353577}
   m_Layer: 0
   m_Name: First Person Controller
   m_TagString: Player
@@ -1335,6 +1381,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 6
+--- !u!114 &2098353577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400010, guid: 9d4133d5d30b644bd87802a347eaccbe,
+    type: 2}
+  m_PrefabInternal: {fileID: 447989938}
+  m_GameObject: {fileID: 2098353570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b4dacd4fde34ebe84f8d685baea337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!1001 &2116541809
 Prefab:
   m_ObjectHideFlags: 0
