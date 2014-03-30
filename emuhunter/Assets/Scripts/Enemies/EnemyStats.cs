@@ -8,10 +8,14 @@ public class EnemyStats : MonoBehaviour {
 	public int health;
 	public int attack; // damage done by emu
 
+	private GroundSplatter splatter;
+
 	// Use this for initialization
 	void Start () {
 		var obj = GameObject.FindGameObjectWithTag("GlobalScripts");
 		gameState = obj.GetComponent<GameState>();
+
+		splatter = GetComponent<GroundSplatter>();
 	}
 	
 	// Update is called once per frame
@@ -37,11 +41,12 @@ public class EnemyStats : MonoBehaviour {
 		}
 		else if (bullet) {
 			health -= bullet.damage;
-			//Debug.Log ("health: " + health.ToString());
+
+			// blood splatter
+			splatter.Splat();
+
 			if (health < 1) {
 				gameState.EmuKilled();
-
-				// blood splatter
 
 				Destroy(gameObject);
 			}
