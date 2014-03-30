@@ -45,6 +45,10 @@ public class EnemyStats : MonoBehaviour {
 			if (health < 1) {
 				gameState.EmuKilled();
 
+				if (rage) {
+					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-Insanity"));
+				}
+
 				Destroy(gameObject);
 			}
 		}
