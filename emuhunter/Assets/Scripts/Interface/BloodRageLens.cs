@@ -27,8 +27,8 @@ public class BloodRageLens : MonoBehaviour {
 
 		// play sounds
 		foreach(AudioSource a in announceThisShit) {
+			a.volume = 1.0f;
 			a.Play();
-			Debug.Log ("volume: " + a.volume);
 		}
 
 		StartCoroutine(WaitAndDisable());
@@ -47,7 +47,6 @@ public class BloodRageLens : MonoBehaviour {
 	private IEnumerator FadeOut(AudioSource a) {	
 		yield return new WaitForSeconds(0.01f);	
 		if (a.volume > 0) {
-			Debug.Log ("volume: " + a.volume);
 			a.volume -= 0.01f;
 			StartCoroutine(FadeOut(a));
 		}
