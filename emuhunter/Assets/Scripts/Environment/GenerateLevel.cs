@@ -11,7 +11,19 @@ public class GenerateLevel {
 		get { return _path; }
 		private set { Path = value; }
 	}
+	public Vector3 Last {
+		get { return _last; }
+		private set { Last = value; }
+	}
 
+	private Vector3[] _points = {
+		Vector3.forward * 2,
+		Vector3.left * 5,
+		Vector3.back * 4,
+		Vector3.right * 2,
+		Vector3.back
+	};
+	private static int _loc = 0;
 	private Queue<Vector3> _path; // int == segment length
 	private Vector3 _last;
 
@@ -39,6 +51,16 @@ public class GenerateLevel {
 		}
 		_path.Enqueue (segment);
 		_last = segment;
+/*
+		Vector3 v;
+		if (_loc < _points.Length) {
+			v = _points [_loc++];
+		} else {
+			v = (((_loc++ & 2) == 1) ? Vector3.back : Vector3.right);
+		}
+		_path.Enqueue (v);
+		_last = v;
+		*/
 	}
 
 	// Create a new segment
@@ -68,7 +90,8 @@ public class GenerateLevel {
 
 	public Vector3 Next() {
 		AppendValidSegmentToPath ();
-		return _path.Dequeue();
+		_path.Dequeue ();
+		return _last;
 	}
 
 }

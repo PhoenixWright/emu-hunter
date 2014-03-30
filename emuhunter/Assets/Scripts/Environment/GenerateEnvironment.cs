@@ -31,8 +31,7 @@ public class GenerateEnvironment : MonoBehaviour {
 	public Vector3 Next ()
 	{
 		Debug.Log ("Generating new content...");
-		Vector3 direction = new Vector3();
-		var last = _levelGenerator.Path.Peek(); // Must be executed before Next()
+		var last = _levelGenerator.Last; // Must be executed before Next()
 		var next = _levelGenerator.Next();
 		AppendCorridorSegment(next, last);
 
@@ -44,7 +43,6 @@ public class GenerateEnvironment : MonoBehaviour {
 			name = _corridor.Peek ().name;
 		} while (!name.Contains("Corner"));
 
-		direction = next;
 		return _where;
 	}
 	
