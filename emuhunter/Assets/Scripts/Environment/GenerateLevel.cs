@@ -6,7 +6,7 @@ public class GenerateLevel {
 	
 	public int SegmentMinimum = 1;
 	public int SegmentMaximum = 10;
-	public uint InitialSegmentCount = 20;
+	public uint InitialSegmentCount = 3;
 	public Queue<Vector3> Path {
 		get { return _path; }
 		private set { Path = value; }
