@@ -4,8 +4,9 @@ using System.Collections.Generic;
 
 public class RailsMovement : MonoBehaviour {
 	private CharacterController controller;
-	private GenerateEnvironment environmentGenerator;
 	private Vector3 nextWaypoint;
+
+	private Queue<Vector3> waypoints = new Queue<Vector3>();
 
 	// public members
 	public float speed = 1.01F;
@@ -13,9 +14,6 @@ public class RailsMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.controller = GetComponent<CharacterController>();
-		this.environmentGenerator = GameObject.FindGameObjectWithTag ("GlobalScripts")
-			.GetComponent<GenerateEnvironment> ();
-		nextWaypoint = this.environmentGenerator.Next ();
 	}
 
 	Vector3 GetRotationForCamera() {
@@ -34,15 +32,19 @@ public class RailsMovement : MonoBehaviour {
 	Vector3 GetTargetPosition(Transform transform) {
 		float difference = (transform.position - nextWaypoint).magnitude;
 		if (difference < 1.0F) {
-			nextWaypoint = this.environmentGenerator.Next ();
+			nextWaypoint = waypoints.Dequeue();
 		}
 		return nextWaypoint;
+	}
+
+	public void AddWaypoint(Vector3 waypoint) {
+		waypoints.Enqueue(waypoint);
 	}
 
 	// Update is called once per frame
 	void Update () {
 		Vector3 nextPosition = GetTargetPosition(this.controller.transform);
-		Vector3 movement = GetMovement (this.controller.transform, nextPosition);
+		Vector3 movement = GetMovement(this.controller.transform, nextPosition);
 		this.controller.Move (movement);
 	}
 }
