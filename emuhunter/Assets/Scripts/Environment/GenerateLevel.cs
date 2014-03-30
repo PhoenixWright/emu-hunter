@@ -15,16 +15,12 @@ public class GenerateLevel {
 	private Queue<Vector3> _path; // int == segment length
 
 	// Use this for initialization
-	void Start () {
+	public GenerateLevel () {
 		_path = new Queue<Vector3> ();
 		// Initially generate segments
 		for (uint i = 0; i < InitialSegmentCount; ++i) {
 			AppendValidSegmentToPath();
 		}
-	}
-	
-	// Update is called once per frame
-	void Update () {
 	}
 
 	void AppendValidSegmentToPath () {
