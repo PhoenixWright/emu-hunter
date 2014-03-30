@@ -30,17 +30,20 @@ public class GenerateEnvironment : MonoBehaviour {
 
 	public Vector3 Next ()
 	{
+		Debug.Log ("Generating new content...");
 		Vector3 direction = new Vector3();
 		var last = _levelGenerator.Path.Peek(); // Must be executed before Next()
 		var next = _levelGenerator.Next();
 		AppendCorridorSegment(next, last);
-		/*
+
 		string name = _corridor.Peek ().name;
-		while (name != "Corner") {
-			var obj = _corridor.Dequeue();
-			Destroy(obj);
-		}
-*/
+		do {
+			Debug.Log ("Destroying " + name);
+			var obj = _corridor.Dequeue ();
+			obj.transform.position = new Vector3(0, 100, 0);
+			name = _corridor.Peek ().name;
+		} while (!name.Contains("Corner"));
+
 		direction = next;
 		return _where;
 	}
@@ -50,6 +53,7 @@ public class GenerateEnvironment : MonoBehaviour {
 		Vector3 location = _where;
 		int corner_y_rot = 0;
 		if (lastDir.HasValue) {
+			Debug.Log("LastDir: " + lastDir.Value + ", Current: " + p);
 			if (p.normalized == Vector3.forward) {
 				corner_y_rot = ((lastDir.Value.normalized == Vector3.right) ? 180 : 270);
 			} else if (p.normalized == Vector3.back) {

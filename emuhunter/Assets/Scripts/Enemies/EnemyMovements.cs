@@ -35,7 +35,7 @@ public class EnemyMovements : MonoBehaviour {
 		var newRotation = Quaternion.LookRotation (playerPos - transform.position).eulerAngles;
 		newRotation.x = 90;
 		var euler = Quaternion.Euler (newRotation);
-		Debug.Log ("Euler = " + euler.ToString());
+		//Debug.Log ("Euler = " + euler.ToString());
 		euler.x += tilt;
 		transform.rotation = euler;
 		
