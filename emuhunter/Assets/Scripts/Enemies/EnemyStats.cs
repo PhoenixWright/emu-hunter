@@ -19,7 +19,7 @@ public class EnemyStats : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter(Collision collision) {
+	void OnCollisionEnter(Collision collision) {	
 		// grab all components we want to try
 		PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
 		BulletStats bullet = collision.gameObject.GetComponent<BulletStats>();
@@ -37,6 +37,7 @@ public class EnemyStats : MonoBehaviour {
 		}
 		else if (bullet) {
 			health -= bullet.damage;
+			//Debug.Log ("health: " + health.ToString());
 			if (health < 1) {
 				gameState.EmuKilled();
 				Destroy(gameObject);
