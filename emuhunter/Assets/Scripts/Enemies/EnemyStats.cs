@@ -46,7 +46,7 @@ public class EnemyStats : MonoBehaviour {
 				gameState.EmuKilled();
 
 				if (rage) {
-					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-MushroomCloud"));
+					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-Upwards"));
 				}
 
 
