@@ -39,14 +39,14 @@ public class GameState : MonoBehaviour
 		}
 	}
 
-	public void EmuKilled() {
+	public void EmuKilled(float rageToAdd = 33.0f) {
 		emusDestroyed += 1;
 
 		if (rageValue == 0) {
 			StartCoroutine(WaitAndCalmDown());
 		}
 
-		rageValue += 33.0f;
+		rageValue += rageToAdd;
 		
 		if(bloodRage.rageEnabled) {
 			bloodRage.secondsLeft++;
