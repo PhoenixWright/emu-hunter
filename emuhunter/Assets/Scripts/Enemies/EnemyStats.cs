@@ -56,7 +56,7 @@ public class EnemyStats : MonoBehaviour {
 					}
 
 					// explode
-					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
+					Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
 					SplitMeshIntoTriangles splitter = GetComponent<SplitMeshIntoTriangles>();
 					if (splitter) {
 						splitter.SplitMesh();
