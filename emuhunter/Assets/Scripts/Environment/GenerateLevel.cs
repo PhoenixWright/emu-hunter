@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class GenerateLevel : MonoBehaviour {
+public class GenerateLevel {
 	
 	public int SegmentMinimum = 1;
 	public int SegmentMaximum = 10;
@@ -39,20 +39,24 @@ public class GenerateLevel : MonoBehaviour {
 	// Create a new segment
 	Vector3 GenerateSegment () {
 		Vector3 direction = new Vector3(); // Some random direction
-		switch (Random.Range (0, 4)) {
-		case 0:
+		if (_path.Count > 0) {
+			switch (Random.Range (0, 4)) {
+			case 0:
+					direction = Vector3.forward;
+					break;
+			case 1:
+					direction = Vector3.right;
+					break;
+			case 2:
+					direction = Vector3.back;
+					break;
+			case 3:
+					direction = Vector3.left;
+					break;
+			}
+		} else {
 			direction = Vector3.forward;
-			break;
-		case 1:
-			direction = Vector3.right;
-			break;
-		case 2:
-			direction = Vector3.back;
-			break;
-		case 3:
-			direction = Vector3.left;
-			break;
-	}
+		}
 		direction *= Random.Range (SegmentMinimum, SegmentMaximum); // Some random length
 		return direction;
 	}
