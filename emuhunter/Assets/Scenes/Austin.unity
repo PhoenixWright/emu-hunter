@@ -241,6 +241,7 @@ GameObject:
   - 114: {fileID: 442779618}
   - 54: {fileID: 442779617}
   - 114: {fileID: 442779623}
+  - 114: {fileID: 442779624}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -346,6 +347,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   attack: 10
+--- !u!114 &442779624
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 59973282}
+  m_GameObject: {fileID: 442779616}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &460540350
 Prefab:
   m_ObjectHideFlags: 0
@@ -400,6 +413,7 @@ GameObject:
   - 114: {fileID: 471277121}
   - 54: {fileID: 471277122}
   - 114: {fileID: 471277123}
+  - 114: {fileID: 471277124}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -505,6 +519,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   attack: 10
+--- !u!114 &471277124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 460540350}
+  m_GameObject: {fileID: 471277116}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &650318849
 GameObject:
   m_ObjectHideFlags: 0
@@ -651,6 +677,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   emusDestroyed: 0
   gameMode: 1
+  recentKillCount: 0
 --- !u!4 &775774497
 Transform:
   m_ObjectHideFlags: 0
@@ -669,7 +696,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1883752022}
   m_GameObject: {fileID: 775774495}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 86077b1869c114820ab31d0ec4df4790, type: 3}
   m_Name: 
@@ -700,6 +727,7 @@ GameObject:
   - 114: {fileID: 840043788}
   - 54: {fileID: 840043789}
   - 114: {fileID: 840043790}
+  - 114: {fileID: 840043791}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -805,6 +833,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   attack: 10
+--- !u!114 &840043791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 712006680}
+  m_GameObject: {fileID: 840043783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &971375332
 GameObject:
   m_ObjectHideFlags: 0
@@ -1935,6 +1975,7 @@ GameObject:
   - 81: {fileID: 1121915047}
   - 114: {fileID: 1121915046}
   - 82: {fileID: 1121915052}
+  - 82: {fileID: 1121915053}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -1968,7 +2009,7 @@ MonoBehaviour:
   rageEnabled: 0
   secondsLeft: 0
   bloodRageLength: 10
-  announceThisShit: {fileID: 0}
+  announceThisShit: []
 --- !u!81 &1121915047
 AudioListener:
   m_ObjectHideFlags: 0
@@ -2101,6 +2142,64 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!82 &1121915053
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1121915044}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_audioClip: {fileID: 8300000, guid: c76a5dc1b4f1a3e499cf6d4e0ee5a6e3, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!1 &1170289484
 GameObject:
   m_ObjectHideFlags: 0
@@ -2112,7 +2211,7 @@ GameObject:
   - 114: {fileID: 1170289485}
   m_Layer: 0
   m_Name: Interface
-  m_TagString: Untagged
+  m_TagString: Interface
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2130,6 +2229,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 0}
+  highKills: 0
+  bestTime: 0
 --- !u!4 &1170289486
 Transform:
   m_ObjectHideFlags: 0
@@ -2210,7 +2311,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 2135581711}
   m_GameObject: {fileID: 1269291542}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75953f816805c48eaae5f2938e4c1b93, type: 3}
   m_Name: 
@@ -2496,6 +2597,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 7cae964c4dc0e42a3af74c9c6279d8ac, type: 2}
+      propertyPath: m_TagString
+      value: Interface
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7cae964c4dc0e42a3af74c9c6279d8ac, type: 2}
   m_RootGameObject: {fileID: 1170289484}
@@ -2766,7 +2871,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400004, guid: 9f3b808562a9b4093843a0f3650dbe1c, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9f3b808562a9b4093843a0f3650dbe1c, type: 2}
@@ -2787,6 +2892,7 @@ GameObject:
   - 114: {fileID: 1922994790}
   - 54: {fileID: 1922994791}
   - 114: {fileID: 1922994792}
+  - 114: {fileID: 1922994793}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2892,6 +2998,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 10
   attack: 10
+--- !u!114 &1922994793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 2116541809}
+  m_GameObject: {fileID: 1922994785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2022525505
 GameObject:
   m_ObjectHideFlags: 0
@@ -3044,7 +3162,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400008, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}

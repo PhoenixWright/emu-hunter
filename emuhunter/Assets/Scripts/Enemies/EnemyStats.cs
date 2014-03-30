@@ -20,7 +20,10 @@ public class EnemyStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(transform.position.y < -100) {
+			health = 0;
+			Destroy(gameObject);
+		}
 	}
 
 	void OnCollisionEnter(Collision collision) {
