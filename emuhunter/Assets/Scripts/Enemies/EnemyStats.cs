@@ -17,7 +17,7 @@ public class EnemyStats : MonoBehaviour {
 
 	void OnCollisionEnter(Collision collision) {
 		// grab all components we want to try
-		Player player = collision.gameObject.GetComponent<Player>();
+		PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
 		//Bullet bullet = collision.gameObject.GetComponent<>();
 		//Weapon weapon = etc.
 
@@ -35,7 +35,7 @@ public class EnemyStats : MonoBehaviour {
 
 	}
 
-	private void Attack(Player player) {
+	private void Attack(PlayerStats player) {
 		player.health -= attack;
 	}
 }
