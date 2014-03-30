@@ -21,7 +21,9 @@ public class PlayerStats : MonoBehaviour {
 		EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
 
 		if (enemy) {
-			cameraShake.Shake();
+			if (cameraShake) {
+				cameraShake.Shake();
+			}
 		}
 	}
 }

@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BloodRageLens : MonoBehaviour {
 
-	public bool enabled = false;
+	public bool rageEnabled = false;
 	public int secondsLeft = 0;
 	public int bloodRageLength = 10;
 
@@ -18,17 +18,17 @@ public class BloodRageLens : MonoBehaviour {
 	}
 
 	public void Enable() {
-		enabled = true;
+		rageEnabled = true;
 		secondsLeft = 10;
 		StartCoroutine(WaitAndDisable());
 	}
 
 	public void Disable() {
-		enabled = false;
+		rageEnabled = false;
 	}
 	
 	void OnGUI () {
-		if (enabled) {
+		if (rageEnabled) {
 			GUI.backgroundColor = Color.red;
 			GUI.Button(new Rect (0, 0, Screen.width, Screen.height), secondsLeft.ToString());
 		}
