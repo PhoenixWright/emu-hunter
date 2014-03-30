@@ -40,6 +40,9 @@ public class EnemyStats : MonoBehaviour {
 			//Debug.Log ("health: " + health.ToString());
 			if (health < 1) {
 				gameState.EmuKilled();
+
+				// blood splatter
+
 				Destroy(gameObject);
 			}
 		}

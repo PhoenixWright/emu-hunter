@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11400002}
   - 81: {fileID: 8100000}
   - 114: {fileID: 11400014}
+  - 114: {fileID: 11400018}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -569,7 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b3464e8003e445e890b4d6757364bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enabled: 0
+  rageEnabled: 0
   secondsLeft: 0
   bloodRageLength: 10
 --- !u!114 &11400016
@@ -583,6 +584,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e5334f1707419a9f4ce618ed7c46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &11400018
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d993990b100ff4e2fbc7ec2536107b73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  splat: {fileID: 100000, guid: d6ea64ac94f1f498e9b933dcb89d38e9, type: 2}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1
