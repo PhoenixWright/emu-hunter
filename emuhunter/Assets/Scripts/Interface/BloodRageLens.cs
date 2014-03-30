@@ -36,6 +36,8 @@ public class BloodRageLens : MonoBehaviour {
 
 	public void Disable() {
 		rageEnabled = false;
+		GameState stateC = (GameObject.FindGameObjectWithTag ("GlobalScripts")).GetComponent<GameState>();
+		stateC.rageValue = 0;
 		
 		foreach(AudioSource a in announceThisShit) {
 			if(a.isPlaying) {
