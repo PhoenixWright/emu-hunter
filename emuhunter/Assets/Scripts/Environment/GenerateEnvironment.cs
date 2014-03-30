@@ -6,12 +6,14 @@ public class GenerateEnvironment : MonoBehaviour {
 
 	private GenerateLevel _levelGenerator;
 	private Queue<GameObject> _corridor;
+	private Vector3 _where;
 
 	// Use this for initialization
 	void Start () {
 		_corridor = new Queue<GameObject> ();
 		_levelGenerator = new GenerateLevel();
 		Vector3? last = null;
+		_where = new Vector3 ();
 		foreach (var p in _levelGenerator.Path) {
 			AppendCorridorSegment(p, last);
 			last = p;
@@ -35,33 +37,40 @@ public class GenerateEnvironment : MonoBehaviour {
 	
 	void AppendCorridorSegment (Vector3 p, Vector3? lastDir)
 	{
-		Vector3 location = new Vector3();
-		if (_corridor.Count > 0) {
-			var last = _corridor.Peek();
-			location = last.transform.position;
-		}
+		Vector3 location = _where;
 		int corner_y_rot = 0;
 		if (lastDir.HasValue) {
 			if (p.normalized == Vector3.forward) {
-				corner_y_rot = lastDir.Value == Vector3.right ? 90 : -180;
+				corner_y_rot = ((lastDir.Value.normalized == Vector3.right) ? 180 : 270);
 			} else if (p.normalized == Vector3.back) {
-				corner_y_rot = lastDir.Value == Vector3.left ? -90 : 0;
+				corner_y_rot = ((lastDir.Value.normalized == Vector3.right) ? 90 : 0);
 			} else if (p.normalized == Vector3.left) {
-				corner_y_rot = lastDir.Value == Vector3.forward ? 0 : 90;
+				corner_y_rot = ((lastDir.Value.normalized == Vector3.forward) ? 90 : 180);
 			} else if (p.normalized == Vector3.right) {
-				corner_y_rot = lastDir.Value == Vector3.forward ? -90 : -180;
+				corner_y_rot = ((lastDir.Value.normalized == Vector3.forward) ? 0 : 270);
 			}
 			var obj = (GameObject)Instantiate(Resources.Load("Corner"));
-			obj.transform.TransformPoint(location);
-			obj.transform.Rotate(new Vector3(0, corner_y_rot, 0));
+			var newRotation = Quaternion.LookRotation (obj.transform.position).eulerAngles;
+			newRotation.y = corner_y_rot;
+			obj.transform.rotation = Quaternion.Euler (newRotation);
+			obj.transform.position = location;
+			Debug.Log ("Creating corner at " + location + " with rotation " + obj.transform.rotation);
 			_corridor.Enqueue(obj);
 			location += p.normalized * 10;
 		}
 		for (int i = 0; i < p.magnitude; ++i, location += p.normalized * 10) {
 			var obj = (GameObject)Instantiate(Resources.Load("Hallway"));
-			obj.transform.Rotate(new Vector3(0, Vector3.Angle(obj.transform.position, p.normalized + obj.transform.position), 0));
-			obj.transform.TransformPoint(location);
+			var newRotation = Quaternion.LookRotation (obj.transform.position).eulerAngles;
+			if (p.normalized == Vector3.forward || p.normalized == Vector3.back)
+				newRotation.y = 0;
+			else
+				newRotation.y = 90;
+			Debug.Log ("Normal: " + p.normalized + ", Position: " + obj.transform.position + ", Angle: " + newRotation.y);
+			obj.transform.rotation = Quaternion.Euler (newRotation);
+			obj.transform.position = location;
+			Debug.Log ("Creating hallway at " + location + " with rotation " + obj.transform.rotation);
 			_corridor.Enqueue(obj);
 		}
+		_where = location;
 	}
 }
