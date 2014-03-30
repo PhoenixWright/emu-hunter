@@ -51,7 +51,8 @@ public class EnemyStats : MonoBehaviour {
 
 			if (health < 1) {
 				gameState.EmuKilled();
-				splatter.Splat();
+			
+				//splatter.Splat();
 
 				float bulletLifeTime = 1F;
 				if(rage) {
