@@ -23,8 +23,9 @@ public class EnemyMovements : MonoBehaviour {
 		var newRotation = Quaternion.LookRotation (playerPos - transform.position).eulerAngles;
 		newRotation.x = 90;
 		transform.rotation = Quaternion.Euler (newRotation);
+		
+		var frac = speed / Vector3.Distance (transform.position, playerPos);
+		rigidbody.MovePosition(Vector3.Lerp (transform.position, playerPos, frac));
 
-		//transform.position = Vector3.Lerp(transform.position, playerPos, speed);
-		rigidbody.MovePosition(Vector3.Lerp (transform.position, playerPos, speed));
 	}
 }
