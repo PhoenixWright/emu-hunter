@@ -3,10 +3,15 @@ using System.Collections;
 
 public class GenerateEnemies : MonoBehaviour {
 	private int emuSpawnCount = 20;
-
+	private GenerateEnvironment _generateEnvironment;
 	// Use this for initialization
 	void Start () {
-		StartCoroutine(SpawnEmus (10));
+		var scripts = GameObject.FindGameObjectWithTag("GlobalScripts");
+		if (scripts) {
+			_generateEnvironment = scripts.GetComponent<GenerateEnvironment>();
+		}
+
+		StartCoroutine(SpawnEmus (8));
 	
 	}
 	
@@ -17,12 +22,25 @@ public class GenerateEnemies : MonoBehaviour {
 	
 	private IEnumerator SpawnEmus(int seconds) {
 		yield return new WaitForSeconds(seconds);
-		
-		addNormalEmu (new Vector3(0f,3f,0f));
-		emuSpawnCount -= 1;
-		if(emuSpawnCount > 0) {
-			StartCoroutine(SpawnEmus (1));
+
+		Vector3 where = new Vector3 ();
+		if (_generateEnvironment)
+			where = _generateEnvironment.FrontSpawnPoint;
+		switch (Random.Range (0, 4)) {
+		case 0:
+			addTinyEmu(where);
+			break;
+		case 1:
+			addNormalEmu(where);
+			break;
+		case 2:
+			addNormalEmu(where);
+			break;
+		case 3:
+			addNormalEmu(where);
+			break;
 		}
+		StartCoroutine(SpawnEmus (1));
 	}
 	
 	void addTinyEmu(Vector3 pos) {
