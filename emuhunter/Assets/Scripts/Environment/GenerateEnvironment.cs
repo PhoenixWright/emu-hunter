@@ -14,10 +14,14 @@ public class GenerateEnvironment : MonoBehaviour {
 		_levelGenerator = new GenerateLevel();
 		Vector3? last = null;
 		_where = new Vector3 ();
+		var scripts = GameObject.FindGameObjectWithTag("Player");
+		var rails = scripts.GetComponent<RailsMovement> ();
 		foreach (var p in _levelGenerator.Path) {
 			AppendCorridorSegment(p, last);
 			last = p;
-		}	
+			if (rails)
+				rails.AddWaypoint(p);
+		}
 	}
 	
 	// Update is called once per frame

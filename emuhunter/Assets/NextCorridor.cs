@@ -13,6 +13,9 @@ public class NextCorridor : MonoBehaviour {
 		var scripts = GameObject.FindGameObjectWithTag("GlobalScripts");
 		if (scripts) {
 			_generateEnvironment = scripts.GetComponent<GenerateEnvironment>();
+		}
+		scripts = GameObject.FindGameObjectWithTag("Player");
+		if (scripts) {
 			_railsMovement = scripts.GetComponent<RailsMovement>();
 		}
 	}
