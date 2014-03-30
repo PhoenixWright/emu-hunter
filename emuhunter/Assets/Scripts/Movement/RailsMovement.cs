@@ -3,8 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 
 public class RailsMovement : MonoBehaviour {
-	private Queue<Vector3> positions = new Queue<Vector3>();
 	private CharacterController controller;
+	private GenerateEnvironment environmentGenerator;
 	private Vector3 next;
 
 	// public members
@@ -13,12 +13,9 @@ public class RailsMovement : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		this.controller = GetComponent<CharacterController>();
-
-		positions.Enqueue (new Vector3(1.0f, 1.0f, 0.0f));
-		positions.Enqueue (new Vector3(0.0f, 1.0f, 10.0f));
-		positions.Enqueue (new Vector3(10.0f, 1.0f, 10.0f));
-		positions.Enqueue (new Vector3(0.0f, 1.0f, 0.0f));
-		next = positions.Dequeue ();
+		this.environmentGenerator = GameObject.FindGameObjectWithTag ("GlobalScripts")
+			.GetComponent<GenerateEnvironment> ();
+		next = this.environmentGenerator.Next ();
 	}
 
 	Vector3 GetRotationForCamera() {
@@ -30,28 +27,23 @@ public class RailsMovement : MonoBehaviour {
 	Vector3 GetMovement(Transform transform, Vector3 nextPosition) {
 		Vector3 directionToMove = nextPosition - transform.position;
 		Vector3 normalizedDirection = directionToMove.normalized;
+		/// Multiply the direction, speed, based on the framerate
 		Vector3 movement = normalizedDirection * speed * Time.deltaTime;
 		return movement;
 	}
 
-	// THIS will be the fn I call of Johns
-	Vector3 GetNextPosition(Transform transform) {
+	Vector3 GetTargetPosition(Transform transform) {
 		float difference = (transform.position - next).magnitude;
-		Debug.Log ("difference '" + difference + "'");
-		if (difference < 1.0F && positions.Count > 0) {
-			Debug.LogWarning ("next");
-			next = positions.Dequeue();
-		} else {
-			Debug.LogWarning ("same");
+		if (difference < 1.0F) {
+			next = this.environmentGenerator.Next ();
 		}
 		return next;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		Vector3 nextPosition = GetNextPosition(this.controller.transform);
+		Vector3 nextPosition = GetTargetPosition(this.controller.transform);
 		Vector3 movement = GetMovement (this.controller.transform, nextPosition);
-		Debug.Log ("pos '" + this.controller.transform.position + "'");
 		this.controller.Move (movement);
 	}
 }
