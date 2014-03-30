@@ -4,7 +4,9 @@ using System.Collections;
 public class BloodRageLens : MonoBehaviour {
 
 	public bool rageEnabled = false;
+
 	public int secondsLeft = 0;
+	
 	public int bloodRageLength = 10;
 
 	// Use this for initialization
@@ -19,7 +21,7 @@ public class BloodRageLens : MonoBehaviour {
 
 	public void Enable() {
 		rageEnabled = true;
-		secondsLeft = 10;
+		secondsLeft = bloodRageLength;
 		StartCoroutine(WaitAndDisable());
 	}
 
@@ -28,14 +30,27 @@ public class BloodRageLens : MonoBehaviour {
 	}
 	
 	void OnGUI () {
+		if (!rageEnabled) {
+			/*if (GUI.Button(new Rect (0, 0, 200, 200), "Blood Bonus")) {
+				Enable();
+			}*/
+		}
+
 		if (rageEnabled) {
 			GUI.backgroundColor = Color.red;
+			GUI.skin.label.fontSize = 60;
+
+			if (secondsLeft % 2 == 0) {
+				GUI.Label(new Rect (0, 0, Screen.width, Screen.height), "BLOOD BONUS");
+			}
+
 			GUI.Button(new Rect (0, 0, Screen.width, Screen.height), secondsLeft.ToString());
 		}
 	}
 
 	private IEnumerator WaitAndDisable() {
 		yield return new WaitForSeconds(1);
+
 		bloodRageLength -= 1;
 
 		if (secondsLeft != 0) {
