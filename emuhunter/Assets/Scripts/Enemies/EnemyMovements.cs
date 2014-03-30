@@ -14,6 +14,10 @@ public class EnemyMovements : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+	
+	}
+	
+	void FixedUpdate () {
 		// TODO: move this into a coroutine that is time dependent and uses smaller values
 	
 		// goals

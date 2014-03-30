@@ -19,7 +19,11 @@ public class EnemyStats : MonoBehaviour {
 	
 	}
 
-	void OnCollisionEnter(Collision collision) {	
+	void OnCollisionEnter(Collision collision) {
+		// checking for Blood Rage!!
+		
+		bool rage = Camera.main.GetComponent<BloodRageLens>().enabled;
+		
 		// grab all components we want to try
 		PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
 		BulletStats bullet = collision.gameObject.GetComponent<BulletStats>();
@@ -36,7 +40,7 @@ public class EnemyStats : MonoBehaviour {
 			movements.AddKnockback();
 		}
 		else if (bullet) {
-			health -= bullet.damage;
+			health -= rage ? 2 * bullet.damage : bullet.damage;
 
 			if (health < 1) {
 				gameState.EmuKilled();

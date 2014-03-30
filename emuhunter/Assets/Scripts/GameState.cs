@@ -15,6 +15,7 @@ public class GameState : MonoBehaviour
 
 	private BloodRageLens bloodRage;
 	private GUIStyle guiStyle;
+	private Queue killTimes = new Queue();
 
 	// Use this for initialization
 	void Start ()
@@ -37,8 +38,22 @@ public class GameState : MonoBehaviour
 
 	public void EmuKilled() {
 		emusDestroyed += 1;
-		if (emusDestroyed == 3) {
-			bloodRage.Enable();
+		killTimes.Enqueue(Time.fixedTime);
+		
+		if(bloodRage.rageEnabled) {
+			bloodRage.secondsLeft++;
+		}
+		else {
+			while(killTimes.Count > 3) {
+				killTimes.Dequeue();
+			}
+			if(killTimes.Count == 3) {
+				var thirdRecentKill = (float)killTimes.Dequeue();
+				if(thirdRecentKill + 5.0f > Time.fixedTime) {
+					bloodRage.Enable();
+					bloodRage.secondsLeft = 10;	
+				}
+			}
 		}
 	}
 }

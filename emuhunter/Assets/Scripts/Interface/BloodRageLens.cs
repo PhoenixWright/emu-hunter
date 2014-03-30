@@ -53,7 +53,7 @@ public class BloodRageLens : MonoBehaviour {
 
 		bloodRageLength -= 1;
 
-		if (secondsLeft != 0) {
+		if (secondsLeft > 0) {
 			secondsLeft -= 1;
 			StartCoroutine(WaitAndDisable());
 		}
