@@ -7,20 +7,16 @@ public class GenerateLevel : MonoBehaviour {
 	public int SegmentMinimum = 1;
 	public int SegmentMaximum = 10;
 	public uint InitialSegmentCount = 2;
+	public Queue<Vector3> Path {
+		get { return _path; }
+		private set { Path = value; }
+	}
 
-	private enum Direction {
-		NorthDirection = 0,
-		EastDirection,
-		SouthDirection,
-		WestDirection,
-		DirectionMax
-	};
-
-	private Queue<KeyValuePair<Direction, int>> _path; // int == segment length
+	private Queue<Vector3> _path; // int == segment length
 
 	// Use this for initialization
 	void Start () {
-		_path = new Queue<KeyValuePair<Direction, int>> ();
+		_path = new Queue<Vector3> ();
 		// Initially generate segments
 		for (uint i = 0; i < InitialSegmentCount; ++i) {
 			AppendValidSegmentToPath();
@@ -34,17 +30,36 @@ public class GenerateLevel : MonoBehaviour {
 	void AppendValidSegmentToPath () {
 		var segment = GenerateSegment ();
 		// Verify that new segment is not the same direction as the most recently generated segment
-		while ((_path.Count == 0) || (segment.Key != _path.Peek ().Key)) {
+		while ((_path.Count == 0) || (segment.normalized != _path.Peek().normalized)) {
 			segment = GenerateSegment ();
 		}
 		_path.Enqueue (segment);
 	}
 
 	// Create a new segment
-	KeyValuePair<Direction, int> GenerateSegment () {
-		return new KeyValuePair<Direction, int> (
-			(Direction)Random.Range((int)Direction.NorthDirection, (int)Direction.DirectionMax), // Some random direction
-			Random.Range(SegmentMinimum, SegmentMaximum) // Some random length
-			); 
+	Vector3 GenerateSegment () {
+		Vector3 direction = new Vector3(); // Some random direction
+		switch (Random.Range (0, 4)) {
+		case 0:
+			direction = Vector3.forward;
+			break;
+		case 1:
+			direction = Vector3.right;
+			break;
+		case 2:
+			direction = Vector3.back;
+			break;
+		case 3:
+			direction = Vector3.left;
+			break;
 	}
+		direction *= Random.Range (SegmentMinimum, SegmentMaximum); // Some random length
+		return direction;
+	}
+
+	public Vector3 Next() {
+		AppendValidSegmentToPath ();
+		return _path.Dequeue();
+	}
+
 }
