@@ -6,9 +6,9 @@ public class Score : MonoBehaviour
 	public GameState gameState;
 	public int highKills;
 	public float bestTime;
-
+	
 	public Texture sriracha;
-
+	
 	// Use this for initialization
 	void Start ()
 	{
@@ -18,7 +18,7 @@ public class Score : MonoBehaviour
 		bestTime = PlayerPrefs.GetFloat ("bestTime");
 		sriracha = (Texture)Resources.Load("sriracha");
 	}
-
+	
 	// Update is called once per frame
 	void Update ()
 	{
@@ -31,22 +31,23 @@ public class Score : MonoBehaviour
 			bestTime = Time.fixedTime;
 		}
 	}
-
+	
 	void OnGUI ()
 	{
 		// bloodrage
 		if (gameState.rageValue > 0 && gameState.rageValue < 100.0f && gameState.gameMode != GameModes.BloodRage) {
 			GUI.Box(new Rect(0, 0, 150, 50), "RAGE METER\r\n" + gameState.rageValue.ToString() + '%');
 		}
-
-
+		
 		// score
+
+		GUI.DrawTexture(new Rect(Screen.width - 200, 0, 50, 50), sriracha);
 		GUI.Box(new Rect(Screen.width - 150, 0, 150, 100), 
-			"Health: " + gameState.playerScript.health.ToString() + 
-			"\r\nEmus Murdered: " + gameState.emusDestroyed.ToString() + 
-			"\r\nTime survived: " + Time.fixedTime.ToString("N2") +
-			"\r\n\r\nMost Kills: " + highKills.ToString() + 
-			"\r\nBest Time: " + bestTime.ToString("N2")
-			); 
+		        "Health: " + gameState.playerScript.health.ToString() + 
+		        "\r\nEmus Murdered: " + gameState.emusDestroyed.ToString() + 
+		        "\r\nTime survived: " + Time.fixedTime.ToString("N2") +
+		        "\r\n\r\nMost Kills: " + highKills.ToString() + 
+		        "\r\nBest Time: " + bestTime.ToString("N2")
+		        ); 
 	}
 }
