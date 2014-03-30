@@ -64,6 +64,7 @@ public class PlayerStats : MonoBehaviour {
 				endMsg += "\r\nNEW BEST TIME";
 			}
 
+			GUI.skin.label.fontSize = 48;
 			GUI.skin.button.fontSize = 48;
 			GUI.Label(new Rect(0, 0, Screen.width, Screen.height), endMsg);
 			if (GUI.Button(new Rect ((Screen.width / 2) - 100, Screen.height - 100, 200, 50), "Restart")){
