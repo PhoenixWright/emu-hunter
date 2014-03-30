@@ -10,16 +10,12 @@ public class GenerateEnvironment : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		_corridor = new Queue<GameObject> ();
-		var scripts = GameObject.FindGameObjectWithTag ("GlobalScripts");
-		if (scripts) {
-			_levelGenerator = scripts.GetComponent<GenerateLevel> ();
-			Vector3? last = null;
-			foreach (var p in _levelGenerator.Path) {
-				AppendCorridorSegment(p, last);
-				last = p;
-			}
-		}
-	
+		_levelGenerator = new GenerateLevel();
+		Vector3? last = null;
+		foreach (var p in _levelGenerator.Path) {
+			AppendCorridorSegment(p, last);
+			last = p;
+		}	
 	}
 	
 	// Update is called once per frame

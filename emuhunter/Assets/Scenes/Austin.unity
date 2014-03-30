@@ -739,6 +739,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 775774497}
   - 114: {fileID: 775774496}
+  - 114: {fileID: 775774498}
   m_Layer: 0
   m_Name: Global Scripts
   m_TagString: GlobalScripts
@@ -773,6 +774,18 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &775774498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 9f3b808562a9b4093843a0f3650dbe1c,
+    type: 2}
+  m_PrefabInternal: {fileID: 1883752022}
+  m_GameObject: {fileID: 775774495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86077b1869c114820ab31d0ec4df4790, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &816242424
 Prefab:
   m_ObjectHideFlags: 0
