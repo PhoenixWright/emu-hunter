@@ -26,11 +26,5 @@ public class EnemyMovements : MonoBehaviour {
 
 		//transform.position = Vector3.Lerp(transform.position, playerPos, speed);
 		rigidbody.MovePosition(Vector3.Lerp (transform.position, playerPos, speed));
-
-	}
-
-	public void OnMouseDown() {
-		// tell GameState that an emu was killed
-		Destroy(this.gameObject);	
 	}
 }
