@@ -59,7 +59,7 @@ public class GenerateEnvironment : MonoBehaviour {
 		}
 		for (int i = 0; i < p.magnitude; ++i, location += p.normalized * 10) {
 			var obj = (GameObject)Instantiate(Resources.Load("Hallway"));
-			obj.transform.Rotate(new Vector3(0, Vector3.Angle(obj.transform.position, location.normalized + obj.transform.position), 0));
+			obj.transform.Rotate(new Vector3(0, Vector3.Angle(obj.transform.position, p.normalized + obj.transform.position), 0));
 			obj.transform.TransformPoint(location);
 			_corridor.Enqueue(obj);
 		}

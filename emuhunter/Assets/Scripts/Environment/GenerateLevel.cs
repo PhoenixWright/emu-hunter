@@ -26,7 +26,7 @@ public class GenerateLevel {
 	void AppendValidSegmentToPath () {
 		var segment = GenerateSegment ();
 		// Verify that new segment is not the same direction as the most recently generated segment
-		while ((_path.Count == 0) || (segment.normalized != _path.Peek().normalized)) {
+		while ((_path.Count > 0) && (segment.normalized == _path.Peek().normalized)) {
 			segment = GenerateSegment ();
 		}
 		_path.Enqueue (segment);
