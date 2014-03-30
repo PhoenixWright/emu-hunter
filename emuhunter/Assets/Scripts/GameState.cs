@@ -13,7 +13,7 @@ public class GameState : MonoBehaviour
 	public int emusDestroyed = 0;
 	public GameModes gameMode = GameModes.Normal;
 
-	public int recentKillCount = 0;
+	public float rageValue;
 
 	private BloodRageLens bloodRage;
 	private GUIStyle guiStyle;
@@ -42,17 +42,17 @@ public class GameState : MonoBehaviour
 	public void EmuKilled() {
 		emusDestroyed += 1;
 
-		if (recentKillCount == 0) {
+		if (rageValue == 0) {
 			StartCoroutine(WaitAndCalmDown());
 		}
 
-		++recentKillCount;
+		rageValue += 33.0f;
 		
 		if(bloodRage.rageEnabled) {
 			bloodRage.secondsLeft++;
 		}
 		else {
-			if(recentKillCount >= 3) {
+			if(rageValue >= 100.0f) {
 				bloodRage.Enable();
 				bloodRage.secondsLeft = 10;
 			}
@@ -60,13 +60,13 @@ public class GameState : MonoBehaviour
 	}
 
 	IEnumerator WaitAndCalmDown() {
-		yield return new WaitForSeconds(3);
+		yield return new WaitForSeconds(0.2f);
 
-		if (recentKillCount > 0) {
-			recentKillCount -= 1;
+		if (rageValue > 0) {
+			rageValue -= 2.0f;
 		}
 
-		if (recentKillCount != 0) {
+		if (rageValue != 0) {
 			StartCoroutine(WaitAndCalmDown());
 		}
 	}

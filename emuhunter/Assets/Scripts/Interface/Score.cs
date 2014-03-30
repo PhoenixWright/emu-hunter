@@ -20,9 +20,8 @@ public class Score : MonoBehaviour
 	void OnGUI ()
 	{
 		// bloodrage
-		if (gameState.recentKillCount > 0 && gameState.recentKillCount < 3 && gameState.gameMode != GameModes.BloodRage) {
-			float percent = gameState.recentKillCount * 33;
-			GUI.Box(new Rect(0, 0, 150, 50), "RAGE METER\r\n" + percent.ToString() + '%');
+		if (gameState.rageValue > 0 && gameState.rageValue < 100.0f && gameState.gameMode != GameModes.BloodRage) {
+			GUI.Box(new Rect(0, 0, 150, 50), "RAGE METER\r\n" + gameState.rageValue.ToString() + '%');
 		}
 
 

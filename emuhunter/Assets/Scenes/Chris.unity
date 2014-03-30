@@ -108,7 +108,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1
   attack: 10
 --- !u!54 &109131913
 Rigidbody:
@@ -446,7 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1
   attack: 10
 --- !u!54 &688908134
 Rigidbody:
@@ -578,7 +578,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1
   attack: 10
 --- !u!54 &884609515
 Rigidbody:
@@ -769,6 +769,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 11400002, guid: 0ab9856ab7242d642ae23683e22dfc6a, type: 2}
+      propertyPath: health
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 0ab9856ab7242d642ae23683e22dfc6a, type: 2}
@@ -809,7 +813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1
   attack: 10
 --- !u!54 &992651688
 Rigidbody:
@@ -941,7 +945,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1
   attack: 10
 --- !u!54 &1053950022
 Rigidbody:
@@ -2443,7 +2447,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1807689425}
   m_GameObject: {fileID: 1485203593}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75953f816805c48eaae5f2938e4c1b93, type: 3}
   m_Name: 
@@ -2801,7 +2805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 1
   attack: 10
 --- !u!1001 &1574541252
 Prefab:
@@ -3015,7 +3019,8 @@ MonoBehaviour:
   rageEnabled: 0
   secondsLeft: 0
   bloodRageLength: 10
-  announceThisShit: {fileID: 0}
+  announceThisShit:
+  - {fileID: 0}
 --- !u!81 &1718034804
 AudioListener:
   m_ObjectHideFlags: 0
@@ -3182,6 +3187,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   emusDestroyed: 0
   gameMode: 1
+  recentKillCount: 0
 --- !u!4 &1728642639
 Transform:
   m_ObjectHideFlags: 0
@@ -3311,6 +3317,10 @@ Prefab:
     - target: {fileID: 400018, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
       propertyPath: m_LocalPosition.z
       value: .999999762
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400008, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
