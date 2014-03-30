@@ -1,17 +1,19 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BulletStats : MonoBehaviour {
+public class PlayerStats : MonoBehaviour {
 
-	public int damage = 1;
+	public int health;
 
 	// Use this for initialization
 	void Start () {
-	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+
+	void OnCollisionEnter(Collision collision) {
 	}
 }

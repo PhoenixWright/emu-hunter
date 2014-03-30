@@ -3,11 +3,15 @@ using System.Collections;
 
 public class EnemyStats : MonoBehaviour {
 
+	GameState gameState;
+
 	public int health;
 	public int attack; // damage done by emu
 
 	// Use this for initialization
 	void Start () {
+		var obj = GameObject.FindGameObjectWithTag("GlobalScripts");
+		gameState = obj.GetComponent<GameState>();
 	}
 	
 	// Update is called once per frame
@@ -18,7 +22,7 @@ public class EnemyStats : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		// grab all components we want to try
 		PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
-		//Bullet bullet = collision.gameObject.GetComponent<>();
+		BulletStats bullet = collision.gameObject.GetComponent<BulletStats>();
 		//Weapon weapon = etc.
 
 		// goals
@@ -29,9 +33,13 @@ public class EnemyStats : MonoBehaviour {
 		if (player) {
 			Attack(player);
 		}
-		//else if (bullet) {
-			//  get hurn
-		//}
+		else if (bullet) {
+			health -= bullet.damage;
+			if (health < 1) {
+				gameState.EmuKilled();
+				Destroy(gameObject);
+			}
+		}
 
 	}
 
