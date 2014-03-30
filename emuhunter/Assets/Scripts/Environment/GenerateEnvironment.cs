@@ -7,6 +7,7 @@ public class GenerateEnvironment : MonoBehaviour {
 	private GenerateLevel _levelGenerator;
 	private Queue<GameObject> _corridor;
 	private Vector3 _where;
+	public Vector3 FrontSpawnPoint { get; private set; }
 
 	// Use this for initialization
 	void Start () {
@@ -31,20 +32,23 @@ public class GenerateEnvironment : MonoBehaviour {
 	public Vector3 Next ()
 	{
 		Debug.Log ("Generating new content...");
-		Vector3 direction = new Vector3();
-		var last = _levelGenerator.Path.Peek(); // Must be executed before Next()
+		var last = _levelGenerator.Last; // Must be executed before Next()
 		var next = _levelGenerator.Next();
 		AppendCorridorSegment(next, last);
 
-		string name = _corridor.Peek ().name;
-		do {
-			Debug.Log ("Destroying " + name);
-			var obj = _corridor.Dequeue ();
-			obj.transform.position = new Vector3(0, 100, 0);
-			name = _corridor.Peek ().name;
-		} while (!name.Contains("Corner"));
-
-		direction = next;
+		int corners = 0;
+		foreach (var c in _corridor) {
+			if (c.name.Contains("Corner"))
+				++corners;
+		}
+		if (corners >= 4) {
+			string name = _corridor.Peek ().name;
+			do {
+				var obj = _corridor.Dequeue ();
+				Destroy(obj);
+				name = _corridor.Peek ().name;
+			} while (!name.Contains("Corner"));
+		}
 		return _where;
 	}
 	
@@ -53,7 +57,6 @@ public class GenerateEnvironment : MonoBehaviour {
 		Vector3 location = _where;
 		int corner_y_rot = 0;
 		if (lastDir.HasValue) {
-			Debug.Log("LastDir: " + lastDir.Value + ", Current: " + p);
 			if (p.normalized == Vector3.forward) {
 				corner_y_rot = ((lastDir.Value.normalized == Vector3.right) ? 180 : 270);
 			} else if (p.normalized == Vector3.back) {
@@ -68,7 +71,6 @@ public class GenerateEnvironment : MonoBehaviour {
 			newRotation.y = corner_y_rot;
 			obj.transform.rotation = Quaternion.Euler (newRotation);
 			obj.transform.position = location;
-			Debug.Log ("Creating corner at " + location + " with rotation " + obj.transform.rotation);
 			_corridor.Enqueue(obj);
 			location += p.normalized * 10;
 		}
@@ -79,12 +81,13 @@ public class GenerateEnvironment : MonoBehaviour {
 				newRotation.y = 0;
 			else
 				newRotation.y = 90;
-			Debug.Log ("Normal: " + p.normalized + ", Position: " + obj.transform.position + ", Angle: " + newRotation.y);
 			obj.transform.rotation = Quaternion.Euler (newRotation);
 			obj.transform.position = location;
-			Debug.Log ("Creating hallway at " + location + " with rotation " + obj.transform.rotation);
 			_corridor.Enqueue(obj);
+			FrontSpawnPoint = obj.renderer.bounds.center;
+			Debug.Log("Front spawn point: " + FrontSpawnPoint);
 		}
 		_where = location;
 	}
+	
 }

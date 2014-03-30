@@ -13,9 +13,10 @@ public class GameState : MonoBehaviour
 	public int emusDestroyed = 0;
 	public GameModes gameMode = GameModes.Normal;
 
+	public float rageValue;
+
 	private BloodRageLens bloodRage;
 	private GUIStyle guiStyle;
-	private Queue killTimes = new Queue();
 
 	// Use this for initialization
 	void Start ()
@@ -23,6 +24,8 @@ public class GameState : MonoBehaviour
 		playerObject = GameObject.FindGameObjectWithTag("Player");
 		playerScript = playerObject.GetComponent<PlayerStats>();
 		bloodRage = Camera.main.GetComponent<BloodRageLens>();
+
+		StartCoroutine(WaitAndCalmDown());
 	}
 
 	// Update is called once per frame
@@ -36,24 +39,35 @@ public class GameState : MonoBehaviour
 		}
 	}
 
-	public void EmuKilled() {
+	public void EmuKilled(float rageToAdd = 33.0f) {
 		emusDestroyed += 1;
-		killTimes.Enqueue(Time.fixedTime);
+
+		if (rageValue == 0) {
+			StartCoroutine(WaitAndCalmDown());
+		}
+
+		rageValue += rageToAdd;
 		
 		if(bloodRage.rageEnabled) {
 			bloodRage.secondsLeft++;
 		}
 		else {
-			while(killTimes.Count > 3) {
-				killTimes.Dequeue();
+			if(rageValue >= 100.0f) {
+				bloodRage.Enable();
+				bloodRage.secondsLeft = 10;
 			}
-			if(killTimes.Count == 3) {
-				var thirdRecentKill = (float)killTimes.Dequeue();
-				if(thirdRecentKill + 5.0f > Time.fixedTime) {
-					bloodRage.Enable();
-					bloodRage.secondsLeft = 10;	
-				}
-			}
+		}
+	}
+
+	IEnumerator WaitAndCalmDown() {
+		yield return new WaitForSeconds(0.2f);
+
+		if (rageValue > 0) {
+			rageValue -= 2.0f;
+		}
+
+		if (rageValue != 0) {
+			StartCoroutine(WaitAndCalmDown());
 		}
 	}
 }

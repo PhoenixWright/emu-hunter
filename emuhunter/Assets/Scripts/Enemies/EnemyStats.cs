@@ -16,7 +16,10 @@ public class EnemyStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if(transform.position.y < -100) {
+			health = 0;
+			Destroy(gameObject);
+		}
 	}
 
 	void OnCollisionEnter(Collision collision) {
@@ -54,16 +57,14 @@ public class EnemyStats : MonoBehaviour {
 						instantiatedProjectile.velocity = transform.TransformDirection(velocityVector);
 						Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
 					}
-				}
 
-				if (rage) {
-					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
+					// explode
+					Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
 					SplitMeshIntoTriangles splitter = GetComponent<SplitMeshIntoTriangles>();
 					if (splitter) {
-						StartCoroutine(splitter.SplitMesh());
+						splitter.SplitMesh();
 					}
 				}
-
 
 				Destroy(gameObject);
 			}

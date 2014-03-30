@@ -4,12 +4,12 @@ using System.Collections;
 public class PlayerStats : MonoBehaviour {
 
 	public int health;
-	private float endTime = -1.0f;
 	private CameraShake cameraShake;
 
 	private GameObject armLeft;
 	private Weapon     weaponLeft;
 	private GameObject armRight;
+	private float pauseEndTime;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +21,10 @@ public class PlayerStats : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		if (transform.position.y < -100) {
+			health = 0;
+		}
+
 		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
 			fireLeftArm ();
 		}
@@ -48,16 +52,24 @@ public class PlayerStats : MonoBehaviour {
 	
 	void OnGUI() {
 		if (health < 1) {
-			GUI.skin.label.fontSize = 120;
-			GUI.Label(new Rect (Screen.width/2, Screen.height/2, Screen.width, Screen.height), "GAME OVER");
-			
-			if(endTime == -1.0f) {
-				Time.timeScale = 0;
-				endTime = Time.realtimeSinceStartup;
+			Time.timeScale = 0.0f; // this DISABLES MOVEMENT AND UPDATES OF EVERYTHING!
+
+			string endMsg = "GAME OVER";
+		
+			Score scoreComponent = (GameObject.FindGameObjectWithTag ("Interface")).GetComponent<Score>();
+			if(scoreComponent.gameState.emusDestroyed == scoreComponent.highKills) {
+				endMsg += "\r\nNEW HIGH SCORE";
+			}
+			if(Time.realtimeSinceStartup > scoreComponent.bestTime) {
+				endMsg += "\r\nNEW BEST TIME";
 			}
 			
-			if((endTime + 5.0f) < Time.realtimeSinceStartup) {
-				Application.Quit();
+		
+			GUI.skin.button.fontSize = 120;
+			if(GUI.Button(new Rect (Screen.width/5, Screen.height/3, 4*Screen.width/5, 2*Screen.height/3), endMsg)){
+				Application.LoadLevel(Application.loadedLevel);
+				Time.timeScale = 1.0f;
+				health = 100;
 			}
 		}
 	}

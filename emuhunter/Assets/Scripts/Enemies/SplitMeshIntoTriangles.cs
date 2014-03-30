@@ -5,7 +5,7 @@ using System.Collections;
 
 public class SplitMeshIntoTriangles : MonoBehaviour
 {
-	public IEnumerator SplitMesh ()
+	public void SplitMesh ()
 	{
 		MeshFilter MF = GetComponent<MeshFilter>();
 		MeshRenderer MR = GetComponent<MeshRenderer>();
@@ -47,10 +47,18 @@ public class SplitMeshIntoTriangles : MonoBehaviour
 			}
 		}
 		MR.enabled = false;
-		
-		Time.timeScale = 0.2f;
-		yield return new WaitForSeconds(0.8f);
-		Time.timeScale = 1.0f;
+
+		//StartCoroutine(SlowMo());
 		Destroy(gameObject);
+	}
+
+	IEnumerator SlowMo() {
+		Time.timeScale = 0.2f;
+		float slowEndTime = Time.realtimeSinceStartup + 0.6f;
+		if (Time.realtimeSinceStartup < slowEndTime)
+		{
+			yield return 0;
+		}
+		Time.timeScale = 1.0f;
 	}
 }
