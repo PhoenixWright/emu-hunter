@@ -19,6 +19,14 @@ public class Score : MonoBehaviour
 
 	void OnGUI ()
 	{
+		// bloodrage
+		if (gameState.recentKillCount > 0 && gameState.recentKillCount < 3 && gameState.gameMode != GameModes.BloodRage) {
+			float percent = gameState.recentKillCount * 33;
+			GUI.Box(new Rect(0, 0, 150, 50), "RAGE METER\r\n" + percent.ToString() + '%');
+		}
+
+
+		// score
 		GUI.Box(new Rect(Screen.width - 150, 0, 150, 50), "Health: " + gameState.playerScript.health.ToString() + "\r\nEmus Murdered: " + gameState.emusDestroyed.ToString()); 
 	}
 }

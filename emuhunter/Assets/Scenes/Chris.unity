@@ -88,6 +88,7 @@ GameObject:
   - 114: {fileID: 109131914}
   - 54: {fileID: 109131913}
   - 114: {fileID: 109131912}
+  - 114: {fileID: 109131919}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -193,6 +194,18 @@ Transform:
   m_LocalScale: {x: .200000003, y: .400000006, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &109131919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1174415276}
+  m_GameObject: {fileID: 109131911}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &177411215
 Prefab:
   m_ObjectHideFlags: 0
@@ -391,7 +404,7 @@ Renderer:
   m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
   m_Materials:
   - {fileID: 0}
-  m_SubsetIndices:
+  m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
@@ -413,6 +426,7 @@ GameObject:
   - 114: {fileID: 688908135}
   - 54: {fileID: 688908134}
   - 114: {fileID: 688908133}
+  - 114: {fileID: 688908140}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -518,6 +532,18 @@ Transform:
   m_LocalScale: {x: .200000003, y: .400000006, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &688908140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1265293394}
+  m_GameObject: {fileID: 688908132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &884609513
 GameObject:
   m_ObjectHideFlags: 0
@@ -532,6 +558,7 @@ GameObject:
   - 114: {fileID: 884609516}
   - 54: {fileID: 884609515}
   - 114: {fileID: 884609514}
+  - 114: {fileID: 884609521}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -637,6 +664,18 @@ Transform:
   m_LocalScale: {x: .200000003, y: .400000006, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &884609521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1574541252}
+  m_GameObject: {fileID: 884609513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &888214129
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +789,7 @@ GameObject:
   - 114: {fileID: 992651689}
   - 54: {fileID: 992651688}
   - 114: {fileID: 992651687}
+  - 114: {fileID: 992651694}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -855,6 +895,18 @@ Transform:
   m_LocalScale: {x: .200000003, y: .400000006, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &992651694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 177411215}
+  m_GameObject: {fileID: 992651686}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1053950020
 GameObject:
   m_ObjectHideFlags: 0
@@ -869,6 +921,7 @@ GameObject:
   - 114: {fileID: 1053950023}
   - 54: {fileID: 1053950022}
   - 114: {fileID: 1053950021}
+  - 114: {fileID: 1053950028}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -974,6 +1027,18 @@ Transform:
   m_LocalScale: {x: .200000003, y: .400000006, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1053950028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 956041875}
+  m_GameObject: {fileID: 1053950020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1141504789
 GameObject:
   m_ObjectHideFlags: 0
@@ -2620,6 +2685,7 @@ GameObject:
   - 114: {fileID: 1532814263}
   - 54: {fileID: 1532814264}
   - 114: {fileID: 1532814265}
+  - 114: {fileID: 1532814262}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -2681,6 +2747,18 @@ Transform:
   m_LocalScale: {x: .200000003, y: .400000006, z: .200000003}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &1532814262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400004, guid: 0ab9856ab7242d642ae23683e22dfc6a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1926572588}
+  m_GameObject: {fileID: 1532814257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 143fb2c38f9f346a2a95ecda70e268b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &1532814263
 MonoBehaviour:
   m_ObjectHideFlags: 0

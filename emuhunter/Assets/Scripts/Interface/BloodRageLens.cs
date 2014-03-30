@@ -28,7 +28,6 @@ public class BloodRageLens : MonoBehaviour {
 		// play sound
 		announceThisShit.PlayOneShot(announceThisShit.clip);
 
-
 		StartCoroutine(WaitAndDisable());
 	}
 

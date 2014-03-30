@@ -54,16 +54,14 @@ public class EnemyStats : MonoBehaviour {
 						instantiatedProjectile.velocity = transform.TransformDirection(velocityVector);
 						Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
 					}
-				}
 
-				if (rage) {
+					// explode
 					GameObject explosion = (GameObject)Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
 					SplitMeshIntoTriangles splitter = GetComponent<SplitMeshIntoTriangles>();
 					if (splitter) {
 						StartCoroutine(splitter.SplitMesh());
 					}
 				}
-
 
 				Destroy(gameObject);
 			}
