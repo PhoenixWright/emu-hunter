@@ -27,6 +27,12 @@ public class GameState : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+		if (bloodRage.rageEnabled) {
+			gameMode = GameModes.BloodRage;
+		}
+		else {
+			gameMode = GameModes.Normal;
+		}
 	}
 
 	public void EmuKilled() {
