@@ -51,6 +51,7 @@ public class RocketGun : Weapon {
 	override public void Attack() {
 		GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
 		BulletStats bulletStats = bullet.GetComponent<BulletStats>();
+		bulletStats.damage = 50;
 		bulletStats.explode = true;
 		var forward = Camera.main.transform.TransformDirection(Vector3.forward);
 		var front = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1.0f));

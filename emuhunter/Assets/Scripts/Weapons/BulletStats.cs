@@ -19,6 +19,15 @@ public class BulletStats : MonoBehaviour {
 	void OnCollisionEnter(Collision collision) {
 		if (explode) {
 			MonoBehaviour.Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
+			Collider[] hitColliders = Physics.OverlapSphere(transform.position, 10.0F);
+			int i = 0;
+			while (i < hitColliders.Length) {
+				EmuBehavior emuBehavior = hitColliders[i].gameObject.GetComponent<EmuBehavior>();
+				if (emuBehavior) {
+					emuBehavior.Damage(damage);
+				}
+				i++;
+			}
 		}
 	}
 }
