@@ -8,9 +8,11 @@ public class GenerateEnvironment : MonoBehaviour {
 	private Queue<GameObject> _corridor;
 	private Vector3 _where;
 	public Vector3 FrontSpawnPoint { get; private set; }
+	public int LevelLimit { get; set; }
 
 	// Use this for initialization
 	void Start () {
+		LevelLimit = 30;
 		_corridor = new Queue<GameObject> ();
 		_levelGenerator = new GenerateLevel();
 		Vector3? last = null;
@@ -19,6 +21,7 @@ public class GenerateEnvironment : MonoBehaviour {
 		var rails = scripts.GetComponent<RailsMovement> ();
 		foreach (var p in _levelGenerator.Path) {
 			AppendCorridorSegment(p, last);
+			LevelLimit -= (int)p.magnitude;
 			last = p;
 			if (rails)
 				rails.AddWaypoint(_where);
@@ -28,9 +31,10 @@ public class GenerateEnvironment : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 	}
-
+	
 	public Vector3 Next ()
 	{
+		if (LevelLimit > 0) {
 		Debug.Log ("Generating new content...");
 		var last = _levelGenerator.Last; // Must be executed before Next()
 		var next = _levelGenerator.Next();
@@ -48,6 +52,7 @@ public class GenerateEnvironment : MonoBehaviour {
 				Destroy(obj);
 				name = _corridor.Peek ().name;
 			} while (!name.Contains("Corner"));
+		}
 		}
 		return _where;
 	}
@@ -79,7 +84,7 @@ public class GenerateEnvironment : MonoBehaviour {
 			_corridor.Enqueue(obj);
 			location += p.normalized * 10;
 		}
-		for (int i = 0; i < p.magnitude; ++i, location += p.normalized * 10) {
+		for (int i = 0; i < p.magnitude; ++i, location += p.normalized * 10, --LevelLimit) {
 			var obj = (GameObject)Instantiate(Resources.Load("Hallway"));
 			var newRotation = Quaternion.LookRotation (obj.transform.position).eulerAngles;
 			if (p.normalized == Vector3.forward || p.normalized == Vector3.back)
@@ -92,6 +97,27 @@ public class GenerateEnvironment : MonoBehaviour {
 			FrontSpawnPoint = obj.renderer.bounds.center;
 			//Debug.Log("Front spawn point: " + FrontSpawnPoint);
 		}
+		if (LevelLimit <= 0) {
+			corner_y_rot = 0;
+			Debug.Log("Last: " + p);
+			if (lastDir.HasValue)
+				Debug.Log("Next: " + lastDir.Value);
+			if (p.normalized == Vector3.forward) {
+				corner_y_rot = 180;
+			} else if (p.normalized == Vector3.back) {
+				corner_y_rot = 0;
+			} else if (p.normalized == Vector3.left) {
+				corner_y_rot = 90;
+			} else if (p.normalized == Vector3.right) {
+				corner_y_rot = 270;
+			}
+			var obj = (GameObject)Instantiate(Resources.Load("LevelEnd"));
+			var newRotation = Quaternion.LookRotation (obj.transform.position).eulerAngles;
+			newRotation.y = corner_y_rot;
+			obj.transform.rotation = Quaternion.Euler (newRotation);
+			obj.transform.position = location;
+		}
+
 		_where = location;
 	}
 	
