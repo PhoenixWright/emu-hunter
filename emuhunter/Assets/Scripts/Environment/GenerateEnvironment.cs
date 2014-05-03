@@ -73,6 +73,11 @@ public class GenerateEnvironment : MonoBehaviour {
 			obj.transform.position = location;
 			_corridor.Enqueue(obj);
 			location += p.normalized * 10;
+		} else if (_corridor.Count == 0) {
+			var obj = (GameObject)Instantiate(Resources.Load("End"));
+			obj.transform.position = location;
+			_corridor.Enqueue(obj);
+			location += p.normalized * 10;
 		}
 		for (int i = 0; i < p.magnitude; ++i, location += p.normalized * 10) {
 			var obj = (GameObject)Instantiate(Resources.Load("Hallway"));

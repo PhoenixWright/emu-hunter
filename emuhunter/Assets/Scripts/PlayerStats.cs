@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class PlayerStats : MonoBehaviour {
@@ -69,7 +69,7 @@ public class PlayerStats : MonoBehaviour {
 	}
 
 	void OnCollisionEnter(Collision collision) {
-		EnemyStats enemy = collision.gameObject.GetComponent<EnemyStats>();
+		EmuBehavior enemy = collision.gameObject.GetComponent<EmuBehavior>();
 		if (enemy) {
 			if (cameraShake) {
 				cameraShake.Shake();
