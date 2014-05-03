@@ -370,10 +370,6 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400008, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
   m_RootGameObject: {fileID: 1485203593}
@@ -411,6 +407,7 @@ MonoBehaviour:
   highKills: 0
   bestTime: 0
   sriracha: {fileID: 0}
+  startup: 0
 --- !u!4 &1393925316
 Transform:
   m_ObjectHideFlags: 0
@@ -435,9 +432,9 @@ GameObject:
   - 114: {fileID: 1485203599}
   - 114: {fileID: 1485203598}
   - 114: {fileID: 1485203597}
-  - 114: {fileID: 1485203596}
   - 114: {fileID: 1485203595}
   - 114: {fileID: 1485203602}
+  - 114: {fileID: 1485203596}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -479,10 +476,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1485203593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b4dacd4fde34ebe84f8d685baea337, type: 3}
+  m_Script: {fileID: 11500000, guid: 147277a10c489400996ce1c1c61cddc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  velocityVector: {x: 0, y: 0, z: 100}
 --- !u!114 &1485203597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -607,10 +604,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1485203593}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147277a10c489400996ce1c1c61cddc4, type: 3}
+  m_Script: {fileID: 11500000, guid: b071e30df2311cf4eacd456b47b83142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
+  health: 100
+  score: {fileID: 0}
 --- !u!1001 &1511397052
 Prefab:
   m_ObjectHideFlags: 0
@@ -737,6 +735,7 @@ GameObject:
   - 114: {fileID: 1718034803}
   - 82: {fileID: 1718034809}
   - 82: {fileID: 1718034810}
+  - 114: {fileID: 1718034811}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -963,6 +962,19 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!114 &1718034811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400002, guid: 679a7103c5f0a4162a82e72981210535,
+    type: 2}
+  m_PrefabInternal: {fileID: 1060842255}
+  m_GameObject: {fileID: 1718034801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 147277a10c489400996ce1c1c61cddc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityVector: {x: 0, y: 0, z: 100}
 --- !u!1 &1728642637
 GameObject:
   m_ObjectHideFlags: 0
