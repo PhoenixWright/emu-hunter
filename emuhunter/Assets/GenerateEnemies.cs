@@ -60,17 +60,13 @@ public class GenerateEnemies : MonoBehaviour {
 	}
 	
 	void addEmu(Vector3 pos, float speed, float size, int health, int attack) {
-		GameObject enemy = (GameObject)Instantiate(Resources.Load("Enemy"));
-
 		/// The instantiate call above automatically adds the Emu to the scene.
 		new EmuBuilder ()
 			.withPosition (pos)
 			.withLocalScale(new Vector3(size, (float)(2.0 * size), size))
+			//.withSpeed(speed)
 			.withAttack (attack)
 			.withHealth (health)
 			.build ();
-
-		EnemyMovements moves = enemy.GetComponent<EnemyMovements>();
-		moves.speed = speed;
 	}
 }

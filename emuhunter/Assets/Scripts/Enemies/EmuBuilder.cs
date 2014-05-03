@@ -4,8 +4,19 @@ public class EmuBuilder
 {
 	private int health = 0;
 	private int attack = 0;
+	private float speed = 0;
 	private Vector3 position = new Vector3();
 	private Vector3 localScale = new Vector3();
+	private EnemyMovements enemyMovements;
+	private EnemyMovements moves;
+
+	private GameObject enemy;
+
+	public EmuBuilder()
+	{
+		enemy = (GameObject)MonoBehaviour.Instantiate(Resources.Load("Enemy"));
+		moves = enemy.GetComponent<EnemyMovements>();
+	}
 
 	public EmuBuilder withAttack(int attack)
 	{
@@ -27,7 +38,13 @@ public class EmuBuilder
 
 	public EmuBuilder withLocalScale(Vector3 localScale)
 	{
-		localScale = localScale;
+		this.localScale = localScale;
+		return this;
+	}
+
+	public EmuBuilder withSpeed(float speed)
+	{
+		this.speed = speed;
 		return this;
 	}
 
