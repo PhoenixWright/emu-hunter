@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class GenerateEnemies : MonoBehaviour {
@@ -64,7 +64,7 @@ public class GenerateEnemies : MonoBehaviour {
 		Transform trans = enemy.GetComponent<Transform>();
 		trans.position = pos;
 		trans.localScale = new Vector3(size, (float)(2.0 * size), size);
-		EnemyStats stats = enemy.GetComponent<EnemyStats>();
+		EmuBehavior stats = enemy.GetComponent<EmuBehavior>();
 		stats.health = health;
 		stats.attack = attack;
 		EnemyMovements moves = enemy.GetComponent<EnemyMovements>();
