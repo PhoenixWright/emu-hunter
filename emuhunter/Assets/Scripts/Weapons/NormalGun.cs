@@ -13,9 +13,6 @@ public class NormalGun : Weapon {
 
 	// Use this for initialization
 	void Start () {
-		Debug.Log("Animator: " + animation);
-		sprite = Camera.allCameras[0].GetComponent<SpriteRenderer>();
-		sprite.transform.position = Camera.main.ViewportToWorldPoint(Vector3.zero);
 		texture = (Texture)Resources.Load("NormalGun/SPRPA0", typeof(Texture));
 	}
 
