@@ -12,7 +12,7 @@ public class GenerateEnvironment : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		LevelLimit = 30;
+		LevelLimit = 100;
 		_corridor = new Queue<GameObject> ();
 		_levelGenerator = new GenerateLevel();
 		Vector3? last = null;
@@ -21,11 +21,12 @@ public class GenerateEnvironment : MonoBehaviour {
 		var rails = scripts.GetComponent<RailsMovement> ();
 		foreach (var p in _levelGenerator.Path) {
 			AppendCorridorSegment(p, last);
-			LevelLimit -= (int)p.magnitude;
 			last = p;
 			if (rails)
 				rails.AddWaypoint(_where);
 		}
+		Debug.Log ("LevelLimit: " + LevelLimit);
+
 	}
 	
 	// Update is called once per frame
@@ -34,6 +35,7 @@ public class GenerateEnvironment : MonoBehaviour {
 	
 	public Vector3 Next ()
 	{
+		Debug.Log ("Next..." + LevelLimit);
 		if (LevelLimit > 0) {
 		Debug.Log ("Generating new content...");
 		var last = _levelGenerator.Last; // Must be executed before Next()
