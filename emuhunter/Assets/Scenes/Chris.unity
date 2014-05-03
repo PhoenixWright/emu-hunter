@@ -2562,6 +2562,7 @@ MonoBehaviour:
   gameState: {fileID: 0}
   highKills: 0
   bestTime: 0
+  sriracha: {fileID: 0}
 --- !u!4 &1393925316
 Transform:
   m_ObjectHideFlags: 0
@@ -2634,7 +2635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b4dacd4fde34ebe84f8d685baea337, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 1
+  health: 100
 --- !u!114 &1485203597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3592,7 +3593,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400006, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
       propertyPath: health
-      value: 1
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
@@ -3654,6 +3655,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d6e2d63a629749f78f4e4133fd768ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  velocityVector: {x: 0, y: 0, z: 100}
   projectile: {fileID: 5400000, guid: 946c724ec98d34a0bae304a505830ea5, type: 2}
 --- !u!1001 &1926572588
 Prefab:
