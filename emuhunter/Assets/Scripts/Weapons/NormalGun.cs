@@ -8,8 +8,15 @@ public class NormalGun : Weapon {
 	private float lightIntensity = 10.0F;
 	private Color lightColor = Color.red + Color.yellow;
 
+	private SpriteRenderer sprite;
+	private Texture texture;
+
 	// Use this for initialization
 	void Start () {
+		Debug.Log("Animator: " + animation);
+		sprite = Camera.allCameras[0].GetComponent<SpriteRenderer>();
+		sprite.transform.position = Camera.main.ViewportToWorldPoint(Vector3.zero);
+		texture = (Texture)Resources.Load("NormalGun/SPRPA0", typeof(Texture));
 	}
 
 	// Update is called once per frame
@@ -20,6 +27,13 @@ public class NormalGun : Weapon {
 		}
 	}
 
+	void OnGUI() {
+		Rect rect = new Rect(((Screen.width / 2) - (texture.width * 2)),
+		                     (Screen.height - (texture.height * 2)),
+		                     texture.width * 4,
+		                     texture.height * 2);
+		GUI.DrawTexture(rect, texture);
+	}
 
 	override public void Attack() {
 		GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
