@@ -12,12 +12,10 @@ public abstract class Weapon : MonoBehaviour {
 
 	protected IEnumerator PlayAnimation () {
 		float waitTime = 1.0F / fps;
-		for (int idx = 0; idx < textures.Count; ++idx) {
-			texture = textures[idx];
+		foreach (var item in textures) {
+			texture = item;
 			yield return new WaitForSeconds(waitTime);
 		}
-
 		texture = textures[0];
 	}
-
 }
