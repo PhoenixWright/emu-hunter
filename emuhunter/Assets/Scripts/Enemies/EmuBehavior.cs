@@ -27,7 +27,7 @@ public class EmuBehavior : MonoBehaviour {
 		// checking for Blood Rage!!
 		bool rage = Camera.main.GetComponent<BloodRageLens>().rageEnabled;
 		// grab all components we want to try
-		PlayerStats player = collision.gameObject.GetComponent<PlayerStats>();
+		PlayerBehavior player = collision.gameObject.GetComponent<PlayerBehavior>();
 		BulletStats bullet = collision.gameObject.GetComponent<BulletStats>();
 		//Weapon weapon = etc.
 		// goals
@@ -65,7 +65,7 @@ public class EmuBehavior : MonoBehaviour {
 		}
 	}
 
-	private void Attack(PlayerStats player)
+	private void Attack(PlayerBehavior player)
 	{
 		player.health -= attack;
 	}
