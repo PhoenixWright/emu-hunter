@@ -21,7 +21,7 @@ public class NextCorridor : MonoBehaviour {
 	}
 
 	void OnTriggerEnter(Collider collision) {
-		if (!_cornerTriggered && collision.gameObject.GetComponent<PlayerStats> ()) {
+		if (!_cornerTriggered && collision.gameObject.GetComponent<PlayerBehavior> ()) {
 			_cornerTriggered = true;
 			if (_generateEnvironment) {
 				var nextWayPoint = _generateEnvironment.Next();

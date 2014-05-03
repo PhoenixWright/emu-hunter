@@ -2554,8 +2554,8 @@ GameObject:
   - 114: {fileID: 1269291548}
   - 114: {fileID: 1269291547}
   - 114: {fileID: 1269291546}
-  - 114: {fileID: 1269291545}
   - 114: {fileID: 1269291544}
+  - 114: {fileID: 1269291545}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -2593,13 +2593,13 @@ MonoBehaviour:
 --- !u!114 &1269291545
 MonoBehaviour:
   m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: 679a7103c5f0a4162a82e72981210535,
+  m_PrefabParentObject: {fileID: 11400000, guid: 679a7103c5f0a4162a82e72981210535,
     type: 2}
   m_PrefabInternal: {fileID: 2135581711}
   m_GameObject: {fileID: 1269291542}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e0b4dacd4fde34ebe84f8d685baea337, type: 3}
+  m_Script: {fileID: 11500000, guid: b071e30df2311cf4eacd456b47b83142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
@@ -3395,7 +3395,8 @@ Prefab:
       propertyPath: m_Radius
       value: .600000024
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_ParentPrefab: {fileID: 100100000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
   m_RootGameObject: {fileID: 1269291542}
   m_IsPrefabParent: 0
