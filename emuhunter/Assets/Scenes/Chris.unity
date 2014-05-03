@@ -724,6 +724,7 @@ GameObject:
   - 114: {fileID: 1718034813}
   - 114: {fileID: 1718034812}
   - 114: {fileID: 1718034811}
+  - 114: {fileID: 1718034814}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -957,7 +958,7 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1060842255}
   m_GameObject: {fileID: 1718034801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c23383475c57a46b188cc88d90f45662, type: 3}
   m_Name: 
@@ -986,6 +987,19 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 147277a10c489400996ce1c1c61cddc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityVector: {x: 0, y: 0, z: 100}
+--- !u!114 &1718034814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400006, guid: 679a7103c5f0a4162a82e72981210535,
+    type: 2}
+  m_PrefabInternal: {fileID: 1060842255}
+  m_GameObject: {fileID: 1718034801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f85ada8049184158a31d1a3aa0b804d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   velocityVector: {x: 0, y: 0, z: 100}
