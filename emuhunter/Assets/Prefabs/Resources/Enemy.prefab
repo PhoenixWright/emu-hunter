@@ -13,9 +13,9 @@ GameObject:
   - 65: {fileID: 6500000}
   - 114: {fileID: 11400000}
   - 54: {fileID: 5400000}
-  - 114: {fileID: 11400002}
   - 114: {fileID: 11400004}
   - 114: {fileID: 11400006}
+  - 114: {fileID: 11400002}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -110,11 +110,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b6822c5c2bd84592a37bfc07f75818e, type: 3}
+  m_Script: {fileID: 11500000, guid: b6c3d44684ada446a80c9b59d96402c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
-  attack: 10
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
