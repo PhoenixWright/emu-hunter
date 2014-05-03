@@ -9,7 +9,7 @@ public enum GameModes {
 public class GameState : MonoBehaviour
 {
 	public GameObject playerObject;
-	public PlayerStats playerScript;
+	public PlayerBehavior playerScript;
 	public int emusDestroyed = 0;
 	public GameModes gameMode = GameModes.Normal;
 
@@ -22,7 +22,7 @@ public class GameState : MonoBehaviour
 	void Start ()
 	{
 		playerObject = GameObject.FindGameObjectWithTag("Player");
-		playerScript = playerObject.GetComponent<PlayerStats>();
+		playerScript = playerObject.GetComponent<PlayerBehavior>();
 		bloodRage = Camera.main.GetComponent<BloodRageLens>();
 
 		StartCoroutine(WaitAndCalmDown());

@@ -2,21 +2,11 @@ using UnityEngine;
 
 public class EmuBuilder
 {
-	private int health = 0;
-	private int attack = 0;
-	private float speed = 0;
-	private Vector3 position = new Vector3();
-	private Vector3 localScale = new Vector3();
-	private EnemyMovements enemyMovements;
-	private EnemyMovements moves;
-
-	private GameObject enemy;
-
-	public EmuBuilder()
-	{
-		enemy = (GameObject)MonoBehaviour.Instantiate(Resources.Load("Enemy"));
-		moves = enemy.GetComponent<EnemyMovements>();
-	}
+	private int health;
+	private int attack;
+	private float speed;
+	private Vector3 position;
+	private Vector3 localScale ;
 
 	public EmuBuilder withAttack(int attack)
 	{
@@ -48,14 +38,22 @@ public class EmuBuilder
 		return this;
 	}
 
-	public Emu build() {
-		var obj = GameObject.FindGameObjectWithTag ("GlobalScripts");
-		GameState gameState = obj.GetComponent<GameState> ();
-		BloodSplatter bloodSplatter = obj.GetComponent<BloodSplatter>();
-		EmuBehavior emuBehavior = new EmuBehavior ();
-		emuBehavior.transform.position = this.position;
-		Emu emu = new Emu (emuBehavior, bloodSplatter, gameState, this.health, this.attack);
-		emuBehavior.emu = emu;
-		return emu;
+	///  Normally you would return the object you are building here, but unit does not require us
+	/// to do that. Calling Initialize automatically adds it to the scene.
+	public void build() {
+		var globalScripts = GameObject.FindGameObjectWithTag ("GlobalScripts");
+		var loadedEnemyObject = Resources.Load ("Enemy");
+
+		GameObject emu = (GameObject)MonoBehaviour.Instantiate (loadedEnemyObject);
+		emu.transform.position = this.position;
+		emu.transform.localScale = this.localScale;
+
+		EmuBehavior emuBehavior = emu.GetComponent<EmuBehavior> ();
+		emuBehavior.gameState = globalScripts.GetComponent<GameState> ();
+		emuBehavior.attack = this.attack;
+		emuBehavior.health = this.health;
+
+		EnemyMovements moves = emu.GetComponent<EnemyMovements>();
+		moves.speed = this.speed;
 	}
 }
