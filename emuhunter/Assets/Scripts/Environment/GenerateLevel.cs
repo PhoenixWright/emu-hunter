@@ -84,7 +84,7 @@ public class GenerateLevel {
 		} else {
 			direction = Vector3.forward;
 		}
-		direction *= Random.Range (SegmentMinimum, SegmentMaximum); // Some random length
+		direction *= 10;//Random.Range (SegmentMinimum, SegmentMaximum); // Some random length
 		return direction;
 	}
 

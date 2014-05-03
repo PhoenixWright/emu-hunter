@@ -21,7 +21,7 @@ public class EndOfLevel : MonoBehaviour {
 	}
 	
 	void OnTriggerEnter(Collider collision) {
-		if (!_triggered && collision.gameObject.GetComponent<PlayerStats> ()) {
+		if (!_triggered && collision.gameObject.GetComponent<PlayerBehavior> ()) {
 			_triggered = true;
 			if (_generateEnvironment) {
 				// TODO end of level

@@ -12,13 +12,12 @@ public class GenerateEnemies : MonoBehaviour {
 		}
 
 		StartCoroutine(SpawnEmus (8));
-	
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		Vector3 where = _generateEnvironment.FrontSpawnPoint;
-		addBigEmu (where);
+
 	}
 	
 	private IEnumerator SpawnEmus(int seconds) {
