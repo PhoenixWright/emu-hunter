@@ -51,16 +51,6 @@ public class GenerateLevel {
 		}
 		_path.Enqueue (segment);
 		_last = segment;
-/*
-		Vector3 v;
-		if (_loc < _points.Length) {
-			v = _points [_loc++];
-		} else {
-			v = (((_loc++ & 2) == 1) ? Vector3.back : Vector3.right);
-		}
-		_path.Enqueue (v);
-		_last = v;
-		*/
 	}
 
 	// Create a new segment
@@ -84,7 +74,7 @@ public class GenerateLevel {
 		} else {
 			direction = Vector3.forward;
 		}
-		direction *= 10;//Random.Range (SegmentMinimum, SegmentMaximum); // Some random length
+		direction *= Random.Range (SegmentMinimum, SegmentMaximum); // Some random length
 		return direction;
 	}
 
