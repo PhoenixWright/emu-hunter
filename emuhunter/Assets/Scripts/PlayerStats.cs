@@ -14,19 +14,12 @@ public class PlayerStats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		cameraShake = Camera.main.GetComponent<CameraShake>();
-		armLeft = transform.FindChild ("ArmLeft").gameObject;
-		armRight = transform.FindChild ("ArmRight").gameObject;
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (transform.position.y < -100) {
 			health = 0;
-		}
-
-		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
-			fireLeftArm ();
 		}
 	}
 

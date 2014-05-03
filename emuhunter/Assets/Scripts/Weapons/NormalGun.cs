@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Shooting : Weapon {
+public class NormalGun : Weapon {
 	/// constants
 	public Vector3 velocityVector = new Vector3(0.0F, 0.0F, 100.0F);
 
@@ -11,30 +11,31 @@ public class Shooting : Weapon {
 	
 	private Transform ammoExit;
 
-	/// mutables
-	public Rigidbody projectile;
-
 	// Use this for initialization
 	void Start () {
-		ammoExit = this.transform.FindChild ("Barrel").FindChild ("AmmoExit");
+		ammoExit = this.transform;
 	}
 
 	// Update is called once per frame
 	void Update () {
-		
+		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
+			Debug.Log("Normal Gun Firing.");
+			Attack();
+		}
 	}
 
 
 	override public void Attack() {
-		Rigidbody instantiatedProjectile = Instantiate(projectile, ammoExit.position, Quaternion.identity)
-			as Rigidbody;
-		instantiatedProjectile.velocity = transform.TransformDirection(velocityVector);
+		GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
+		bullet.rigidbody.position = ammoExit.position;
+		bullet.rigidbody.rotation = Quaternion.identity;
+		bullet.rigidbody.velocity = transform.TransformDirection(velocityVector);
 
-		Light lightGameObject = instantiatedProjectile.gameObject.AddComponent<Light> ();
+		Light lightGameObject = bullet.gameObject.AddComponent<Light> ();
 		lightGameObject.light.color = this.lightColor;
 		lightGameObject.light.intensity = this.lightIntensity;
 
-		Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
+		Destroy(bullet.gameObject, bulletLifeTime);
 	}
 	
 }
