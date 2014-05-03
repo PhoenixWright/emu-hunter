@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class RocketGun : Weapon {
 	/// constants
-	public Vector3 velocityVector = new Vector3(0.0F, 0.0F, 100.0F);
+	public Vector3 velocityVector = new Vector3(0.0F, 0.0F, 0.0F);
 	private float bulletLifeTime = 3F;
 	private float lightIntensity = 10.0F;
 	private Color lightColor = Color.red + Color.yellow;
@@ -50,6 +50,8 @@ public class RocketGun : Weapon {
 	
 	override public void Attack() {
 		GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
+		BulletStats bulletStats = bullet.GetComponent<BulletStats>();
+		bulletStats.explode = true;
 		var forward = Camera.main.transform.TransformDirection(Vector3.forward);
 		var front = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1.0f));
 		bullet.rigidbody.position = front;
