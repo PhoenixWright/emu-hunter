@@ -25,7 +25,7 @@ public class EmuBehavior : MonoBehaviour {
 	void OnCollisionEnter(Collision collision)
 	{
 		// checking for Blood Rage!!
-		bool rage = Camera.main.GetComponent<BloodRageLens>().rageEnabled;
+
 		// grab all components we want to try
 		PlayerBehavior player = collision.gameObject.GetComponent<PlayerBehavior>();
 		BulletStats bullet = collision.gameObject.GetComponent<BulletStats>();
@@ -40,28 +40,32 @@ public class EmuBehavior : MonoBehaviour {
 			movements.AddKnockback();
 		}
 		else if (bullet) {
-			health -= rage ? 2 * bullet.damage : bullet.damage;
-			if (health < 1) {
-				gameState.EmuKilled();
-				//splatter.Splat();
-				float bulletLifeTime = 1F;
-				if(rage) {
-					int n = Random.Range (5, 15);
-					for(int i = 0; i < n; i++) {
-						Vector3 velocityVector = new Vector3(Random.Range (-80.0f, 80.0f), Random.Range (-80.0f, 80.0f), Random.Range (-80.0f, 80.0f));
-						Rigidbody instantiatedProjectile = ((GameObject)MonoBehaviour.Instantiate(Resources.Load("Bullet"))).GetComponent<Rigidbody>();
-						instantiatedProjectile.velocity = transform.TransformDirection(velocityVector);
-						MonoBehaviour.Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
-					}
-					// explode
-					MonoBehaviour.Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
-					SplitMeshIntoTriangles splitter = this.GetComponent<SplitMeshIntoTriangles>();
-					if (splitter) {
-						splitter.SplitMesh();
-					}
+			Damage(bullet.damage);
+		}
+	}
+
+	public void Damage(int amount) {
+		bool rage = Camera.main.GetComponent<BloodRageLens>().rageEnabled;
+		health -= rage ? 2 * amount : amount;
+		if (health < 1) {
+			gameState.EmuKilled();
+			float bulletLifeTime = 1F;
+			if(rage) {
+				int n = Random.Range (5, 15);
+				for(int i = 0; i < n; i++) {
+					Vector3 velocityVector = new Vector3(Random.Range (-80.0f, 80.0f), Random.Range (-80.0f, 80.0f), Random.Range (-80.0f, 80.0f));
+					Rigidbody instantiatedProjectile = ((GameObject)MonoBehaviour.Instantiate(Resources.Load("Bullet"))).GetComponent<Rigidbody>();
+					instantiatedProjectile.velocity = transform.TransformDirection(velocityVector);
+					MonoBehaviour.Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
 				}
-				MonoBehaviour.Destroy(this.gameObject);
+				// explode
+				MonoBehaviour.Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
+				SplitMeshIntoTriangles splitter = this.GetComponent<SplitMeshIntoTriangles>();
+				if (splitter) {
+					splitter.SplitMesh();
+				}
 			}
+			MonoBehaviour.Destroy(this.gameObject);
 		}
 	}
 
