@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class NormalGun : Weapon {
 	/// constants
@@ -9,11 +10,22 @@ public class NormalGun : Weapon {
 	private Color lightColor = Color.red + Color.yellow;
 
 	private SpriteRenderer sprite;
+
 	private Texture texture;
+	private List<Texture> textures;
+	private float fps = 20.0F;
 
 	// Use this for initialization
 	void Start () {
-		texture = (Texture)Resources.Load("NormalGun/SPRPA0", typeof(Texture));
+		textures = new List<Texture>();
+		textures.Add((Texture)Resources.Load("NormalGun/SPRPA0", typeof(Texture)));
+		textures.Add((Texture)Resources.Load("NormalGun/SPRPB0", typeof(Texture)));
+		textures.Add((Texture)Resources.Load("NormalGun/SPRPC0", typeof(Texture)));
+		textures.Add((Texture)Resources.Load("NormalGun/SPRPD0", typeof(Texture)));
+		textures.Add((Texture)Resources.Load("NormalGun/SPRPE0", typeof(Texture)));
+		textures.Add((Texture)Resources.Load("NormalGun/SPRPF0", typeof(Texture)));
+		textures.Add((Texture)Resources.Load("NormalGun/SPRPG0", typeof(Texture)));
+		texture = textures[0];
 	}
 
 	// Update is called once per frame
@@ -32,6 +44,14 @@ public class NormalGun : Weapon {
 		GUI.DrawTexture(rect, texture);
 	}
 
+	IEnumerator PlayAnimation () {
+		float waitTime = 1.0F / fps;
+		for (int idx = 0; idx < textures.Count; ++idx) {
+			texture = textures[idx];
+			yield return new WaitForSeconds(waitTime);
+		}
+	}
+
 	override public void Attack() {
 		GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
 		var forward = Camera.main.transform.TransformDirection(Vector3.forward);
@@ -45,6 +65,8 @@ public class NormalGun : Weapon {
 		lightGameObject.light.intensity = this.lightIntensity;
 
 		Destroy(bullet.gameObject, bulletLifeTime);
+
+		StartCoroutine(PlayAnimation());
 	}
 	
 }
