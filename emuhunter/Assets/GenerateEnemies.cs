@@ -17,7 +17,8 @@ public class GenerateEnemies : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		Vector3 where = _generateEnvironment.FrontSpawnPoint;
+		addBigEmu (where);
 	}
 	
 	private IEnumerator SpawnEmus(int seconds) {
@@ -64,7 +65,7 @@ public class GenerateEnemies : MonoBehaviour {
 		new EmuBuilder ()
 			.withPosition (pos)
 			.withLocalScale(new Vector3(size, (float)(2.0 * size), size))
-			//.withSpeed(speed)
+			.withSpeed(speed)
 			.withAttack (attack)
 			.withHealth (health)
 			.build ();
