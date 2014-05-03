@@ -4,6 +4,8 @@ using System.Collections;
 public class PlayerBehavior : MonoBehaviour {
 
 	public int health;
+	public Score score;
+	
 	private CameraShake cameraShake;
 
 	private GameObject armLeft;
@@ -18,7 +20,7 @@ public class PlayerBehavior : MonoBehaviour {
 		cameraShake = Camera.main.GetComponent<CameraShake>();
 		armLeft = transform.FindChild ("ArmLeft").gameObject;
 		armRight = transform.FindChild ("ArmRight").gameObject;
-
+		score = GameObject.FindGameObjectWithTag ("Interface").GetComponent<Score>();
 	}
 	
 	// Update is called once per frame
@@ -37,12 +39,20 @@ public class PlayerBehavior : MonoBehaviour {
 				gamePaused = true;
 				Time.timeScale = 0.0f; // this DISABLES MOVEMENT AND UPDATES OF EVERYTHING!
 				Debug.Log("Game Paused");
+				
+				foreach(MouseLook mouseLook in GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MouseLook>()) {
+					mouseLook.enabled = false;
+				}
 			}
 			else if(gamePaused) {
 				// unpause game
 				gamePaused = false;
 				Time.timeScale = 1.0f;
 				Debug.Log("Game Unpaused");
+				
+				foreach(MouseLook mouseLook in GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MouseLook>()) {
+					mouseLook.enabled = true;
+				}
 			}
 		}
 		
@@ -84,14 +94,20 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 	
 	void drawPauseMenu(string titleMsg) {
+		GUI.skin.label.fontSize = 72;
+		GUI.skin.button.fontSize = 72;
+		GUI.Label(new Rect((Screen.width / 2) - 200, 0, Screen.width, Screen.height), titleMsg);
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 450, 600, 75), "High Scores")){
 		
-		GUI.skin.label.fontSize = 48;
-		GUI.skin.button.fontSize = 48;
-		GUI.Label(new Rect(0, 0, Screen.width, Screen.height), titleMsg);
-		if (GUI.Button(new Rect ((Screen.width / 2) - 100, Screen.height - 100, 200, 50), "New Game")){
+		}
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "Choose Weapon")){
+		
+		}
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "New Game")){
 			Application.LoadLevel(Application.loadedLevel);
 			Time.timeScale = 1.0f;
 			health = 100;
+			score.startup = Time.realtimeSinceStartup;
 		}
 	}
 	
@@ -106,9 +122,9 @@ public class PlayerBehavior : MonoBehaviour {
 			endMsg += "\r\nNEW BEST TIME";
 		}
 		
-		GUI.skin.label.fontSize = 48;
-		GUI.skin.button.fontSize = 48;
-		GUI.Label(new Rect(0, 0, Screen.width, Screen.height), endMsg);
+		GUI.skin.label.fontSize = 72;
+		GUI.skin.button.fontSize = 72;
+		GUI.Label(new Rect((Screen.width / 2) - 150, 0, Screen.width, Screen.height), endMsg);
 		if (GUI.Button(new Rect ((Screen.width / 2) - 100, Screen.height - 100, 200, 50), "Restart")){
 			Application.LoadLevel(Application.loadedLevel);
 			Time.timeScale = 1.0f;
