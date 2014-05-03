@@ -97,17 +97,20 @@ public class PlayerBehavior : MonoBehaviour {
 		GUI.skin.label.fontSize = 72;
 		GUI.skin.button.fontSize = 72;
 		GUI.Label(new Rect((Screen.width / 2) - 200, 0, Screen.width, Screen.height), titleMsg);
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 450, 600, 75), "High Scores")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 600, 600, 75), "High Scores")){
 		
 		}
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "Choose Weapon")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 450, 600, 75), "Choose Weapon")){
 		
 		}
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "New Game")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "New Game")){
 			Application.LoadLevel(Application.loadedLevel);
 			Time.timeScale = 1.0f;
 			health = 100;
 			score.startup = Time.realtimeSinceStartup;
+		}
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "Exit Game")){
+			Application.Quit();
 		}
 	}
 	
@@ -125,10 +128,13 @@ public class PlayerBehavior : MonoBehaviour {
 		GUI.skin.label.fontSize = 72;
 		GUI.skin.button.fontSize = 72;
 		GUI.Label(new Rect((Screen.width / 2) - 150, 0, Screen.width, Screen.height), endMsg);
-		if (GUI.Button(new Rect ((Screen.width / 2) - 100, Screen.height - 100, 200, 50), "Restart")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "Restart")){
 			Application.LoadLevel(Application.loadedLevel);
 			Time.timeScale = 1.0f;
 			health = 100;
+		}
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "Exit Game")){
+			Application.Quit();
 		}
 	}
 	
