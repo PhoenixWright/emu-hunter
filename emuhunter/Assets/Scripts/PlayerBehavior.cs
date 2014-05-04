@@ -13,6 +13,7 @@ public class PlayerBehavior : MonoBehaviour {
 	private bool gamePaused = false;
 	private bool gameOver = false;
 	private bool showScores = false;
+	private static bool startingGame = true;
 
 	// Use this for initialization
 	void Start () {
@@ -126,6 +127,16 @@ public class PlayerBehavior : MonoBehaviour {
 		}
 	}
 	
+	void drawStartGame() { 
+		Time.timeScale = 0.0f;
+		if (GUI.Button(new Rect((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "New Game")) {
+			Application.LoadLevel(Application.loadedLevel);
+			Time.timeScale = 1.0f;
+			health = 100;
+			startingGame = false;
+		}
+	}
+
 	void OnCollisionEnter(Collision collision) {
 		EmuBehavior enemy = collision.gameObject.GetComponent<EmuBehavior>();
 		if (enemy) {
