@@ -6,7 +6,6 @@ public class PlayerBehavior : MonoBehaviour {
 	public int health;
 	
 	private CameraShake cameraShake;
-	private static bool startingGame = true;
 
 	// Use this for initialization
 	void Start () {
@@ -21,19 +20,6 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 	
 	void OnGUI() {
-		if (startingGame) {
-			drawStartGame ();
-		}
-	}
-	
-	void drawStartGame() { 
-		Time.timeScale = 0.0f;
-		if (GUI.Button(new Rect((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "New Game")) {
-			Application.LoadLevel(Application.loadedLevel);
-			Time.timeScale = 1.0f;
-			health = 100;
-			startingGame = false;
-		}
 	}
 	
 	void OnCollisionEnter(Collision collision) {

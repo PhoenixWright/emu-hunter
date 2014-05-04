@@ -11,9 +11,12 @@ public class Score : MonoBehaviour
 	
 	public Texture sriracha;
 	
-	private bool gamePaused = false;
+	private static bool gamePaused = true;
+	private static bool showScores = false;
+	private static bool startingGame = true;
+	private static string pauseMsg = "New Game";
+	
 	private bool gameOver = false;
-	private bool showScores = false;
 	private bool askName = false;
 	private int rank;
 	private string playerName = "";
@@ -33,7 +36,36 @@ public class Score : MonoBehaviour
 			Debug.Log("High score rank " + i + " name " + highKillsNames[i] + " kills " + highKills[i]);
 		}
 		
+		if(startingGame) {
+			pauseGame ();
+		}
+		
+		
 		sriracha = (Texture)Resources.Load("sriracha");
+	}
+	
+	void pauseGame() {
+		// pause game, show menu
+		gamePaused = true;
+		Time.timeScale = 0.0f; // this DISABLES MOVEMENT AND UPDATES OF EVERYTHING!
+		Debug.Log("Game Paused");
+		
+		foreach(MouseLook mouseLook in GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MouseLook>()) {
+			mouseLook.enabled = false;
+		}
+		
+		startingGame = false;
+	}
+	
+	void unpauseGame() {
+		// unpause game
+		gamePaused = false;
+		Time.timeScale = 1.0f;
+		Debug.Log("Game Unpaused");
+		
+		foreach(MouseLook mouseLook in GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MouseLook>()) {
+			mouseLook.enabled = true;
+		}
 	}
 	
 	// Update is called once per frame
@@ -41,24 +73,11 @@ public class Score : MonoBehaviour
 	{
 		if (Input.GetKeyDown (KeyCode.Escape)) {
 			if (!gamePaused && Time.timeScale > 0) {
-				// pause game, show menu
-				gamePaused = true;
-				Time.timeScale = 0.0f; // this DISABLES MOVEMENT AND UPDATES OF EVERYTHING!
-				Debug.Log("Game Paused");
-				
-				foreach(MouseLook mouseLook in GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MouseLook>()) {
-					mouseLook.enabled = false;
-				}
+				pauseMsg = "Game Paused";
+				pauseGame ();
 			}
 			else if(gamePaused) {
-				// unpause game
-				gamePaused = false;
-				Time.timeScale = 1.0f;
-				Debug.Log("Game Unpaused");
-				
-				foreach(MouseLook mouseLook in GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MouseLook>()) {
-					mouseLook.enabled = true;
-				}
+				unpauseGame ();
 			}
 		}
 		
@@ -98,8 +117,12 @@ public class Score : MonoBehaviour
 			}
 		}
 		
-		if(gamePaused) {
-			drawPauseMenu ("Game Paused");
+		if (startingGame) {
+			drawPauseMenu ();
+		}
+		
+		if (gamePaused) {
+			drawPauseMenu ();
 		}
 		
 		if(showScores) {
@@ -133,10 +156,10 @@ public class Score : MonoBehaviour
 		
 	}
 	
-	void drawPauseMenu(string titleMsg) {
+	void drawPauseMenu() {
 		GUI.skin.label.fontSize = 72;
 		GUI.skin.button.fontSize = 72;
-		GUI.Label(new Rect((Screen.width / 2) - 200, 0, Screen.width, Screen.height), titleMsg);
+		GUI.Label(new Rect((Screen.width / 2) - 200, 0, Screen.width, Screen.height), pauseMsg);
 		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 600, 600, 75), "High Scores")){
 			showScores = !showScores;
 		}
@@ -145,8 +168,7 @@ public class Score : MonoBehaviour
 		}
 		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "New Game")){
 			Application.LoadLevel(Application.loadedLevel);
-			Time.timeScale = 1.0f;
-			player.health = 100;
+			unpauseGame ();
 		}
 		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "Exit Game")){
 			Application.Quit();
