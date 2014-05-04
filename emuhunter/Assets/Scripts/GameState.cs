@@ -12,6 +12,8 @@ public class GameState : MonoBehaviour
 	public PlayerBehavior playerScript;
 	public int emusDestroyed = 0;
 	public GameModes gameMode = GameModes.Normal;
+	public int CurrentLevelMax { get; set; }
+	public static int LevelLimit = 30;
 
 	public float rageValue;
 

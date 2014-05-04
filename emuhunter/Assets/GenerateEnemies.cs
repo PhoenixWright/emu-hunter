@@ -11,7 +11,7 @@ public class GenerateEnemies : MonoBehaviour {
 			_generateEnvironment = scripts.GetComponent<GenerateEnvironment>();
 		}
 
-		StartCoroutine(SpawnEmus (8));
+		StartCoroutine(SpawnEmus (28));
 	}
 	
 	// Update is called once per frame

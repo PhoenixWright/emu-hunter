@@ -8,11 +8,10 @@ public class GenerateEnvironment : MonoBehaviour {
 	private Queue<GameObject> _corridor;
 	private Vector3 _where;
 	public Vector3 FrontSpawnPoint { get; private set; }
-	public int LevelLimit { get; set; }
+	public static int LevelLimit = 30;
 
 	// Use this for initialization
 	void Start () {
-		LevelLimit = 100;
 		_corridor = new Queue<GameObject> ();
 		_levelGenerator = new GenerateLevel();
 		Vector3? last = null;
