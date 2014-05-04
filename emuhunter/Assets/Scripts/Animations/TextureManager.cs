@@ -12,6 +12,6 @@ public class TextureManager : MonoBehaviour {
 
 	void Update() {
 		float offset = Time.time * scrollSpeed;
-		renderer.material.SetTextureOffset("_MainTex", new Vector2(0, 0));//offset, 0));
+		renderer.material.SetTextureOffset("_MainTex", new Vector2(offset, 0));
 	}
 }
