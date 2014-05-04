@@ -9,6 +9,12 @@ public abstract class Weapon : MonoBehaviour {
 	protected List<Texture> textures;
 	protected float fps = 20.0F;
 
+	// reloading
+	protected int clipSize = 15;
+	protected int ammo = 15;
+	protected float reloadTime = 4.0F;
+	protected bool reloading = false;
+
 	// shot delay
 	protected bool canFire = true;
 
@@ -20,8 +26,11 @@ public abstract class Weapon : MonoBehaviour {
 		if (Time.timeScale <= 0) {
 			return;
 		}
-		if (Input.GetButtonDown ("Fire1") && canFire) {
+		if (Input.GetButtonDown ("Fire1") && canFire && !reloading) {
 			Attack();
+			if (--ammo == 0) {
+				StartCoroutine(Reload());
+			}
 		}
 	}
 
@@ -33,6 +42,13 @@ public abstract class Weapon : MonoBehaviour {
 		GUI.DrawTexture(rect, texture);
 	}
 
+	public IEnumerator Reload() {
+		reloading = true;
+		yield return new WaitForSeconds(reloadTime);
+		ammo = clipSize;
+		reloading = false;
+	}
+
 	public IEnumerator PlayAnimation () {
 		float waitTime = 1.0F / fps;
 		canFire = false;
@@ -40,6 +56,7 @@ public abstract class Weapon : MonoBehaviour {
 			texture = item;
 			yield return new WaitForSeconds(waitTime);
 		}
+
 		canFire = true;
 		texture = textures[0];
 	}
