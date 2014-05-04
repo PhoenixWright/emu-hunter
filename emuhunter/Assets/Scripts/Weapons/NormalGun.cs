@@ -30,7 +30,7 @@ public class NormalGun : Weapon {
 		var front = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1.0f));
 		bullet.rigidbody.position = front;
 		bullet.rigidbody.velocity = Camera.main.transform.TransformDirection(velocityVector);
-		Debug.Log(bullet.rigidbody.velocity);
+		//Debug.Log(bullet.rigidbody.velocity);
 
 		Light lightGameObject = bullet.gameObject.AddComponent<Light> ();
 		lightGameObject.light.color = this.lightColor;
