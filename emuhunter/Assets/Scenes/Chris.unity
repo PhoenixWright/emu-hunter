@@ -409,8 +409,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 0}
-  highKills: 0
-  bestTime: 0
+  highKills: 
+  highKillsNames: []
   sriracha: {fileID: 0}
   startup: 0
 --- !u!4 &1393925316
@@ -600,6 +600,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   score: {fileID: 0}
+  state: {fileID: 0}
+  rank: 0
 --- !u!1001 &1511397052
 Prefab:
   m_ObjectHideFlags: 0
@@ -705,7 +707,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1651274288}
-  m_LocalRotation: {x: .408217937, y: -.234569728, z: .109381676, w: .875426054}
+  m_LocalRotation: {x: .408217967, y: -.234569743, z: .109381683, w: .875426114}
   m_LocalPosition: {x: 4.96361589, y: 11.8785915, z: -8.80243111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -730,7 +732,10 @@ GameObject:
   - 114: {fileID: 1718034812}
   - 114: {fileID: 1718034811}
   - 114: {fileID: 1718034814}
+  - 114: {fileID: 1718034818}
+  - 114: {fileID: 1718034817}
   - 114: {fileID: 1718034815}
+  - 114: {fileID: 1718034816}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -1015,12 +1020,48 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1718034801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a82121126608e4240ac68cd7e3d97430, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   velocityVector: {x: 0, y: 0, z: 0}
+--- !u!114 &1718034816
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718034801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a12c3111518d3459aec19862169915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1718034817
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400026, guid: 679a7103c5f0a4162a82e72981210535,
+    type: 2}
+  m_PrefabInternal: {fileID: 1060842255}
+  m_GameObject: {fileID: 1718034801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82121126608e4240ac68cd7e3d97430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityVector: {x: 0, y: 0, z: 10000}
+--- !u!114 &1718034818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400024, guid: 679a7103c5f0a4162a82e72981210535,
+    type: 2}
+  m_PrefabInternal: {fileID: 1060842255}
+  m_GameObject: {fileID: 1718034801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90a12c3111518d3459aec19862169915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1728642637
 GameObject:
   m_ObjectHideFlags: 0
