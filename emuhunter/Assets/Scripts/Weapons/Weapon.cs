@@ -10,7 +10,7 @@ public abstract class Weapon : MonoBehaviour {
 
 	public abstract void Attack();
 
-	protected IEnumerator PlayAnimation () {
+	public IEnumerator PlayAnimation () {
 		float waitTime = 1.0F / fps;
 		foreach (var item in textures) {
 			texture = item;
