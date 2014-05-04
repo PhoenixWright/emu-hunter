@@ -9,6 +9,9 @@ public abstract class Weapon : MonoBehaviour {
 	protected List<Texture> textures;
 	protected float fps = 20.0F;
 
+	// shot delay
+	protected bool canFire = true;
+
 	public abstract WeaponInfo GetInfo();
 	public abstract void Attack();
 
@@ -17,7 +20,7 @@ public abstract class Weapon : MonoBehaviour {
 		if (Time.timeScale <= 0) {
 			return;
 		}
-		if (Input.GetButtonDown ("Fire1")) {
+		if (Input.GetButtonDown ("Fire1") && canFire) {
 			Attack();
 		}
 	}
@@ -32,10 +35,12 @@ public abstract class Weapon : MonoBehaviour {
 
 	public IEnumerator PlayAnimation () {
 		float waitTime = 1.0F / fps;
+		canFire = false;
 		foreach (var item in textures) {
 			texture = item;
 			yield return new WaitForSeconds(waitTime);
 		}
+		canFire = true;
 		texture = textures[0];
 	}
 }
