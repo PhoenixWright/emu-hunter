@@ -4,17 +4,25 @@ using System.Collections;
 public class Score : MonoBehaviour
 {
 	public GameState gameState;
+	public PlayerBehavior player;
+	
 	public int[] highKills;
 	public string[] highKillsNames;
 	
-	
 	public Texture sriracha;
-	public float startup;
+	
+	private bool gamePaused = false;
+	private bool gameOver = false;
+	private bool showScores = false;
+	private bool askName = false;
+	private int rank;
+	private string playerName = "";
 	
 	// Use this for initialization
 	void Start ()
 	{
 		gameState = (GameState)GameObject.FindGameObjectWithTag("GlobalScripts").GetComponent<GameState>();
+		player = (PlayerBehavior)GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>();
 		//PlayerPrefs.DeleteAll();
 		
 		highKills = new int[10];
@@ -25,14 +33,45 @@ public class Score : MonoBehaviour
 			Debug.Log("High score rank " + i + " name " + highKillsNames[i] + " kills " + highKills[i]);
 		}
 		
-		
 		sriracha = (Texture)Resources.Load("sriracha");
-		startup = Time.fixedTime;
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+		if (Input.GetKeyDown (KeyCode.Escape)) {
+			if (!gamePaused && Time.timeScale > 0) {
+				// pause game, show menu
+				gamePaused = true;
+				Time.timeScale = 0.0f; // this DISABLES MOVEMENT AND UPDATES OF EVERYTHING!
+				Debug.Log("Game Paused");
+				
+				foreach(MouseLook mouseLook in GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MouseLook>()) {
+					mouseLook.enabled = false;
+				}
+			}
+			else if(gamePaused) {
+				// unpause game
+				gamePaused = false;
+				Time.timeScale = 1.0f;
+				Debug.Log("Game Unpaused");
+				
+				foreach(MouseLook mouseLook in GameObject.FindGameObjectWithTag("Player").GetComponentsInChildren<MouseLook>()) {
+					mouseLook.enabled = true;
+				}
+			}
+		}
+		
+		if (player.health < 1 && !gameOver) {
+			Debug.Log("Game Over");
+			gameOver = true;
+			Time.timeScale = 0.0f; // this DISABLES MOVEMENT AND UPDATES OF EVERYTHING!
+			
+			askName = true;
+			
+			BloodRageLens rage = (GameObject.FindGameObjectWithTag ("MainCamera")).GetComponent<BloodRageLens>();
+			rage.Disable();
+		}
 	}
 	
 	void OnGUI ()
@@ -49,6 +88,88 @@ public class Score : MonoBehaviour
 		        "\r\nEmus Murdered: " + gameState.emusDestroyed.ToString() + 
 		        "\r\n\r\nMost Kills: " + highKills[0].ToString()
 		        ); 
+		        
+		if(gameOver) {
+			if(askName) {
+				drawAskName ();
+			}
+			else {
+				drawGameOver ();
+			}
+		}
+		
+		if(gamePaused) {
+			drawPauseMenu ("Game Paused");
+		}
+		
+		if(showScores) {
+			drawScores();
+		}
+	}
+	
+	
+	
+	void drawAskName() {
+		GUI.skin.label.fontSize = 48;
+		GUI.skin.textField.fontSize = 48;
+		
+		GUI.Label(new Rect((Screen.width / 2) - 300, 200, 600, 75), "Enter name");
+		
+		playerName = GUI.TextField(new Rect((Screen.width / 2) - 300, 400, 600, 75), playerName, 3).ToUpper();
+		
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 600, 600, 75), "Save")){
+			askName = false;
+			Score scoreComponent = (GameObject.FindGameObjectWithTag ("Interface")).GetComponent<Score>();
+			rank = scoreComponent.SaveScore();
+		}
+	}
+	
+	void drawScores() {
+		GUI.skin.label.fontSize = 48;
+		GUI.skin.button.fontSize = 48;
+		string scoreString = BuildScoresString();
+		
+		GUI.Label(new Rect(50, 50, Screen.width, Screen.height), scoreString);
+		
+	}
+	
+	void drawPauseMenu(string titleMsg) {
+		GUI.skin.label.fontSize = 72;
+		GUI.skin.button.fontSize = 72;
+		GUI.Label(new Rect((Screen.width / 2) - 200, 0, Screen.width, Screen.height), titleMsg);
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 600, 600, 75), "High Scores")){
+			showScores = !showScores;
+		}
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 450, 600, 75), "Choose Weapon")){
+			
+		}
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "New Game")){
+			Application.LoadLevel(Application.loadedLevel);
+			Time.timeScale = 1.0f;
+			player.health = 100;
+		}
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "Exit Game")){
+			Application.Quit();
+		}
+	}
+	
+	void drawGameOver() {
+		string endMsg = "GAME OVER";
+		if (rank < 11) {
+			endMsg += "\r\nNEW HIGH SCORE\r\n" + gameState.emusDestroyed + " EMUS DESTROYED\r\n" + "#" + rank + " SCORE";
+		}
+		
+		GUI.skin.label.fontSize = 72;
+		GUI.skin.button.fontSize = 72;
+		GUI.Label(new Rect((Screen.width / 2) - 150, 0, Screen.width, Screen.height), endMsg);
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "Restart")){
+			Application.LoadLevel(Application.loadedLevel);
+			Time.timeScale = 1.0f;
+			player.health = 100;
+		}
+		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "Exit Game")){
+			Application.Quit();
+		}
 	}
 	
 	public string BuildScoresString() {
@@ -78,7 +199,7 @@ public class Score : MonoBehaviour
 				Debug.Log("High score rank " + i + " name " + highKillsNames[i] + " kills " + highKills[i]);
 			}
 			highKills[rank] = gameState.emusDestroyed;
-			highKillsNames[rank] = "PWN";
+			highKillsNames[rank] = playerName;
 		}
 		
 		for(int i = 0; i < 10; i++) {
