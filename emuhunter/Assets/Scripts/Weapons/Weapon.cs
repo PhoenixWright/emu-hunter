@@ -11,9 +11,10 @@ public abstract class Weapon : MonoBehaviour {
 
 	// reloading
 	protected int clipSize = 15;
-	protected int ammo = 15;
+	protected int ammo = 2;
 	protected float reloadTime = 4.0F;
 	protected bool reloading = false;
+	protected float reloadOffset = 0.0F;
 
 	// shot delay
 	protected bool canFire = true;
@@ -35,7 +36,7 @@ public abstract class Weapon : MonoBehaviour {
 
 	void OnGUI() {
 		Rect rect = new Rect(((Screen.width / 2) - (texture.width * 2)),
-		                     (Screen.height - (texture.height * 2)),
+		                     (Screen.height - (texture.height * 2)) + reloadOffset,
 		                     texture.width * 4,
 		                     texture.height * 2);
 		GUI.DrawTexture(rect, texture);
@@ -43,7 +44,21 @@ public abstract class Weapon : MonoBehaviour {
 
 	public IEnumerator Reload() {
 		reloading = true;
-		yield return new WaitForSeconds(reloadTime);
+
+		float length = reloadTime / fps;
+		Debug.Log("Reloading for " + reloadTime + " seconds");
+		while (length < reloadTime) {
+			yield return new WaitForSeconds(reloadTime);
+			length += length;
+
+			if (length > reloadTime / 2) {
+				reloadOffset -= texture.height / fps;
+			}
+			else {
+				reloadOffset += texture.height / fps;
+			}
+		}
+
 		ammo = clipSize;
 		reloading = false;
 	}
