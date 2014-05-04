@@ -65,6 +65,9 @@ public class PlayerBehavior : MonoBehaviour {
 	}
 	
 	void OnGUI() {
+		if (startingGame) {
+			drawStartGame ();
+		}
 		if(gameOver) {
 			drawGameOver ();
 		}
