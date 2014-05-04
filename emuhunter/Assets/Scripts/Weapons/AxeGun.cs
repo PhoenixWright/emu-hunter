@@ -47,19 +47,16 @@ public class AxeGun : Weapon {
 	}
 	
 	override public void Attack() {
-		GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
-		var forward = Camera.main.transform.TransformDirection(Vector3.forward);
-		var front = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1.0f));
-		bullet.rigidbody.position = front;
-		bullet.rigidbody.velocity = Camera.main.transform.TransformDirection(velocityVector);
-		Debug.Log(bullet.rigidbody.velocity);
-		
-		Light lightGameObject = bullet.gameObject.AddComponent<Light> ();
-		lightGameObject.light.color = this.lightColor;
-		lightGameObject.light.intensity = this.lightIntensity;
-		
-		Destroy(bullet.gameObject, bulletLifeTime);
-		
+		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3.0F);
+		int i = 0;
+		while (i < hitColliders.Length) {
+			EmuBehavior emuBehavior = hitColliders[i].gameObject.GetComponent<EmuBehavior>();
+			if (emuBehavior) {
+				emuBehavior.Damage(100);
+			}
+			i++;
+		}
+
 		StartCoroutine(PlayAnimation());
 	}
 	
