@@ -32,14 +32,6 @@ public class RocketGun : Weapon {
 		texture = textures[0];
 	}
 	
-	void OnGUI() {
-		Rect rect = new Rect(((Screen.width / 2) - (texture.width * 2)),
-		                     (Screen.height - (texture.height * 2)),
-		                     texture.width * 4,
-		                     texture.height * 2);
-		GUI.DrawTexture(rect, texture);
-	}
-	
 	override public void Attack() {
 		GameObject bullet = (GameObject)Instantiate(Resources.Load("Bullet"));
 		BulletStats bulletStats = bullet.GetComponent<BulletStats>();

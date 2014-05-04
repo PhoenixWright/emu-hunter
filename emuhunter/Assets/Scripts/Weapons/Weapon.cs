@@ -20,6 +20,14 @@ public abstract class Weapon : MonoBehaviour {
 		}
 	}
 
+	void OnGUI() {
+		Rect rect = new Rect(((Screen.width / 2) - (texture.width * 2)),
+		                     (Screen.height - (texture.height * 2)),
+		                     texture.width * 4,
+		                     texture.height * 2);
+		GUI.DrawTexture(rect, texture);
+	}
+
 	public IEnumerator PlayAnimation () {
 		float waitTime = 1.0F / fps;
 		foreach (var item in textures) {

@@ -30,14 +30,6 @@ public class AxeGun : Weapon {
 		texture = textures[0];
 	}
 	
-	void OnGUI() {
-		Rect rect = new Rect(((Screen.width / 2) - (texture.width)),
-		                     (Screen.height - (texture.height * 2)),
-		                     texture.width * 2,
-		                     texture.height * 2);
-		GUI.DrawTexture(rect, texture);
-	}
-	
 	override public void Attack() {
 		Collider[] hitColliders = Physics.OverlapSphere(transform.position, 3.0F);
 		int i = 0;
