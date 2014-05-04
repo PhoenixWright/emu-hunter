@@ -16,7 +16,6 @@ public class GenerateEnemies : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
 	}
 	
 	private IEnumerator SpawnEmus(int seconds) {
