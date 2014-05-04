@@ -9,13 +9,23 @@ public class WeaponBehavior : MonoBehaviour
 	private Weapon axeGun;
 	private Weapon bowGun;
 	private Weapon rocketGun;
+	private Weapon emuGun;
 
 	private Weapon equippedWeapon;
 
 	void Start()
 	{
-		equippedWeapon = Camera.main.GetComponent<NormalGun> ();
-		equippedWeapon.enabled = true;
+		normalGun = Camera.main.gameObject.AddComponent<NormalGun>();
+		axeGun = Camera.main.gameObject.AddComponent<AxeGun>();
+		axeGun.enabled = false;
+		bowGun = Camera.main.gameObject.AddComponent<BowGun>();
+		bowGun.enabled = false;
+		rocketGun = Camera.main.gameObject.AddComponent<RocketGun>();
+		rocketGun.enabled = false;
+		emuGun = Camera.main.gameObject.AddComponent<EmuGun>();
+		emuGun.enabled = false;
+
+		equippedWeapon = normalGun;
 	}
 
 	void Update()
@@ -24,26 +34,27 @@ public class WeaponBehavior : MonoBehaviour
 			return;
 		}
 
-		if (Input.GetKeyDown (KeyCode.W)) {
+		if (Input.GetKeyDown (KeyCode.Alpha1)) {
 			equippedWeapon.enabled = false;
-			equippedWeapon = Camera.main.GetComponent<NormalGun>();
+			equippedWeapon = normalGun;
 		}
-		else if (Input.GetKeyDown (KeyCode.A)) {
+		else if (Input.GetKeyDown (KeyCode.Alpha2)) {
 			equippedWeapon.enabled = false;
-			equippedWeapon = Camera.main.GetComponent<AxeGun>();
+			equippedWeapon = axeGun;
 		}
-		else if (Input.GetKeyDown(KeyCode.S)) {
+		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
 			equippedWeapon.enabled = false;
-			equippedWeapon = Camera.main.GetComponent<BowGun>();
+			equippedWeapon = bowGun;
 		}
-		else if (Input.GetKeyDown(KeyCode.D)) {
+		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
 			equippedWeapon.enabled = false;
-			equippedWeapon = Camera.main.GetComponent<RocketGun>();
+			equippedWeapon = rocketGun;
 		}
-		else if (Input.GetKeyDown(KeyCode.R)) {
+		else if (Input.GetKeyDown(KeyCode.Alpha5)) {
 			equippedWeapon.enabled = false;
-			equippedWeapon = Camera.main.GetComponent<EmuGun>();
+			equippedWeapon = emuGun;
 		}
+
 		equippedWeapon.enabled = true;
 	}
 }

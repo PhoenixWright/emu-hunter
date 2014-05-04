@@ -38,12 +38,7 @@ GameObject:
   - 114: {fileID: 11400016}
   - 82: {fileID: 8200000}
   - 82: {fileID: 8200002}
-  - 114: {fileID: 11400002}
-  - 114: {fileID: 11400020}
-  - 114: {fileID: 11400022}
-  - 114: {fileID: 11400006}
   - 114: {fileID: 11400024}
-  - 114: {fileID: 11400026}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -305,18 +300,6 @@ MonoBehaviour:
   score: {fileID: 0}
   state: {fileID: 0}
   rank: 0
---- !u!114 &11400002
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147277a10c489400996ce1c1c61cddc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -328,18 +311,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 104e5334f1707419a9f4ce618ed7c46d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400006
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f85ada8049184158a31d1a3aa0b804d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -470,30 +441,6 @@ MonoBehaviour:
   maximumX: 360
   minimumY: -60
   maximumY: 60
---- !u!114 &11400020
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b0fccbb77c8a445aac42e01d79ff9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
---- !u!114 &11400022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23383475c57a46b188cc88d90f45662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
 --- !u!114 &11400024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -505,18 +452,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a12c3111518d3459aec19862169915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11400026
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 100014}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82121126608e4240ac68cd7e3d97430, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 10000}
 --- !u!124 &12400000
 Behaviour:
   m_ObjectHideFlags: 1

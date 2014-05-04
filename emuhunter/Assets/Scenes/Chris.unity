@@ -371,7 +371,7 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400006, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
@@ -728,13 +728,7 @@ GameObject:
   - 114: {fileID: 1718034803}
   - 82: {fileID: 1718034809}
   - 82: {fileID: 1718034810}
-  - 114: {fileID: 1718034813}
-  - 114: {fileID: 1718034812}
-  - 114: {fileID: 1718034811}
-  - 114: {fileID: 1718034814}
   - 114: {fileID: 1718034818}
-  - 114: {fileID: 1718034817}
-  - 114: {fileID: 1718034815}
   - 114: {fileID: 1718034816}
   m_Layer: 0
   m_Name: PlayerCamera
@@ -962,70 +956,6 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &1718034811
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400022, guid: 679a7103c5f0a4162a82e72981210535,
-    type: 2}
-  m_PrefabInternal: {fileID: 1060842255}
-  m_GameObject: {fileID: 1718034801}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c23383475c57a46b188cc88d90f45662, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
---- !u!114 &1718034812
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400020, guid: 679a7103c5f0a4162a82e72981210535,
-    type: 2}
-  m_PrefabInternal: {fileID: 1060842255}
-  m_GameObject: {fileID: 1718034801}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b0fccbb77c8a445aac42e01d79ff9cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
---- !u!114 &1718034813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400002, guid: 679a7103c5f0a4162a82e72981210535,
-    type: 2}
-  m_PrefabInternal: {fileID: 1060842255}
-  m_GameObject: {fileID: 1718034801}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 147277a10c489400996ce1c1c61cddc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
---- !u!114 &1718034814
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400006, guid: 679a7103c5f0a4162a82e72981210535,
-    type: 2}
-  m_PrefabInternal: {fileID: 1060842255}
-  m_GameObject: {fileID: 1718034801}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f85ada8049184158a31d1a3aa0b804d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 100}
---- !u!114 &1718034815
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1718034801}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82121126608e4240ac68cd7e3d97430, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 0}
 --- !u!114 &1718034816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1037,19 +967,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90a12c3111518d3459aec19862169915, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1718034817
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 11400026, guid: 679a7103c5f0a4162a82e72981210535,
-    type: 2}
-  m_PrefabInternal: {fileID: 1060842255}
-  m_GameObject: {fileID: 1718034801}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a82121126608e4240ac68cd7e3d97430, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  velocityVector: {x: 0, y: 0, z: 10000}
 --- !u!114 &1718034818
 MonoBehaviour:
   m_ObjectHideFlags: 0
