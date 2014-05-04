@@ -5,6 +5,7 @@ public class Score : MonoBehaviour
 {
 	public GameState gameState;
 	public PlayerBehavior player;
+	public BloodRageLens rage;
 	
 	public int[] highKills;
 	public string[] highKillsNames;
@@ -28,6 +29,7 @@ public class Score : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
+		rage = (GameObject.FindGameObjectWithTag ("MainCamera")).GetComponent<BloodRageLens>();
 		gameState = (GameState)GameObject.FindGameObjectWithTag("GlobalScripts").GetComponent<GameState>();
 		player = (PlayerBehavior)GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerBehavior>();
 		//PlayerPrefs.DeleteAll();
@@ -50,6 +52,7 @@ public class Score : MonoBehaviour
 	
 	void pauseGame() {
 		// pause game, show menu
+		rage.rageEnabled = false;
 		gamePaused = true;
 		Time.timeScale = 0.0f; // this DISABLES MOVEMENT AND UPDATES OF EVERYTHING!
 		Debug.Log("Game Paused");
@@ -63,6 +66,9 @@ public class Score : MonoBehaviour
 	
 	void unpauseGame() {
 		// unpause game
+		if(rage.secondsLeft > 0) {
+			rage.rageEnabled = true;
+		}
 		gamePaused = false;
 		Time.timeScale = 1.0f;
 		Debug.Log("Game Unpaused");
@@ -95,7 +101,6 @@ public class Score : MonoBehaviour
 			
 			askName = true;
 			
-			BloodRageLens rage = (GameObject.FindGameObjectWithTag ("MainCamera")).GetComponent<BloodRageLens>();
 			rage.Disable();
 		}
 	}

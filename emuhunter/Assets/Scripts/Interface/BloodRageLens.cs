@@ -7,7 +7,7 @@ public class BloodRageLens : MonoBehaviour {
 
 	public int secondsLeft = 0;
 	
-	public int bloodRageLength = 10;
+	public const int bloodRageLength = 10;
 
 	public AudioSource[] announceThisShit;
 
@@ -78,8 +78,6 @@ public class BloodRageLens : MonoBehaviour {
 
 	private IEnumerator WaitAndDisable() {
 		yield return new WaitForSeconds(1);
-
-		bloodRageLength -= 1;
 
 		if (secondsLeft > 0) {
 			secondsLeft -= 1;
