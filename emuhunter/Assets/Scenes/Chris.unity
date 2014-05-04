@@ -207,6 +207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 1
+  explode: 0
 --- !u!54 &429854910
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -369,6 +370,10 @@ Prefab:
     - target: {fileID: 400008, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400006, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
@@ -725,6 +730,7 @@ GameObject:
   - 114: {fileID: 1718034812}
   - 114: {fileID: 1718034811}
   - 114: {fileID: 1718034814}
+  - 114: {fileID: 1718034815}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -997,12 +1003,24 @@ MonoBehaviour:
     type: 2}
   m_PrefabInternal: {fileID: 1060842255}
   m_GameObject: {fileID: 1718034801}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f85ada8049184158a31d1a3aa0b804d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   velocityVector: {x: 0, y: 0, z: 100}
+--- !u!114 &1718034815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718034801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a82121126608e4240ac68cd7e3d97430, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  velocityVector: {x: 0, y: 0, z: 0}
 --- !u!1 &1728642637
 GameObject:
   m_ObjectHideFlags: 0
