@@ -21,7 +21,7 @@ public class Score : MonoBehaviour
 		highKillsNames = new string[10];
 		for(int i = 0; i < 10; i++) {
 			highKills[i] = PlayerPrefs.GetInt ("highKills" + i.ToString());
-			highKillsNames[i] = PlayerPrefs.GetString ("highKills" + i.ToString());
+			highKillsNames[i] = PlayerPrefs.GetString ("highKillsNames" + i.ToString());
 			Debug.Log("High score rank " + i + " name " + highKillsNames[i] + " kills " + highKills[i]);
 		}
 		
@@ -75,6 +75,7 @@ public class Score : MonoBehaviour
 			for(int i = 9; i > rank; i--) {
 				highKills[i] = highKills[i - 1];
 				highKillsNames[i] = highKillsNames[i - 1];
+				Debug.Log("High score rank " + i + " name " + highKillsNames[i] + " kills " + highKills[i]);
 			}
 			highKills[rank] = gameState.emusDestroyed;
 			highKillsNames[rank] = "PWN";
@@ -82,9 +83,10 @@ public class Score : MonoBehaviour
 		
 		for(int i = 0; i < 10; i++) {
 			PlayerPrefs.SetInt ("highKills" + i.ToString(), highKills[i]);
-			PlayerPrefs.SetString ("highKills" + i.ToString(), highKillsNames[i]);
+			PlayerPrefs.SetString ("highKillsNames" + i.ToString(), highKillsNames[i]);
+			Debug.Log("High score rank " + i + " name " + highKillsNames[i] + " kills " + highKills[i]);
 		}
-		
+		PlayerPrefs.Save();
 		return rank + 1;
 	}
 }
