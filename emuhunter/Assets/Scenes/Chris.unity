@@ -19,7 +19,7 @@ RenderSettings:
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientLight: {r: .200000003, g: .200000003, b: .200000003, a: 1}
-  m_SkyboxMaterial: {fileID: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: a92a888e0ae934aa488cf13803b59d67, type: 2}
   m_HaloStrength: .5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -375,6 +375,18 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
+      propertyPath: m_BackGroundColor.r
+      value: .760784328
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
+      propertyPath: m_BackGroundColor.g
+      value: .760784328
+      objectReference: {fileID: 0}
+    - target: {fileID: 2000000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
+      propertyPath: m_BackGroundColor.b
+      value: .760784328
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 679a7103c5f0a4162a82e72981210535, type: 2}
   m_RootGameObject: {fileID: 1485203593}
@@ -714,6 +726,7 @@ GameObject:
   - 82: {fileID: 1718034810}
   - 114: {fileID: 1718034818}
   - 114: {fileID: 1718034816}
+  - 45: {fileID: 1718034811}
   m_Layer: 0
   m_Name: PlayerCamera
   m_TagString: MainCamera
@@ -802,7 +815,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: .19166474, g: .301966369, b: .474509805, a: 1}
+  m_BackGroundColor: {r: .760784328, g: .760784328, b: .760784328, a: 1}
   m_NormalizedViewPortRect:
     serializedVersion: 2
     x: 0
@@ -940,6 +953,14 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
+--- !u!45 &1718034811
+Skybox:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1718034801}
+  m_Enabled: 1
+  m_CustomSkybox: {fileID: 0}
 --- !u!114 &1718034816
 MonoBehaviour:
   m_ObjectHideFlags: 0
