@@ -9,8 +9,6 @@ public class AxeGun : Weapon {
 	
 	private SpriteRenderer sprite;
 	
-	
-	
 	// Use this for initialization
 	void Start () {
 		textures = new List<Texture>(Resources.LoadAll<Texture>("AxeGun/"));
@@ -29,6 +27,11 @@ public class AxeGun : Weapon {
 		}
 
 		StartCoroutine(PlayAnimation());
+	}
+
+	public override WeaponInfo GetInfo()
+	{
+		return new WeaponInfo ("Axe-Gun", "An axe-related gun! Will out drink you any day!", textures [0]);
 	}
 	
 }

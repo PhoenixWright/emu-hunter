@@ -34,5 +34,9 @@ public class BowGun : Weapon {
 		
 		StartCoroutine(PlayAnimation());
 	}
-	
+
+	public override WeaponInfo GetInfo()
+	{
+		return new WeaponInfo ("Bow-Gun", "A bow! Will punch you in the face!!", textures [0]);
+	}
 }

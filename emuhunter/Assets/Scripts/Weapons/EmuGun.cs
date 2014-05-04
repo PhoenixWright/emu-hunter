@@ -53,5 +53,10 @@ public class EmuGun : Weapon {
 		AudioSource source = emu.gameObject.GetComponent<AudioSource>();
 		source.PlayOneShot(clip);
 	}
+
+	public override WeaponInfo GetInfo()
+	{
+		return new WeaponInfo ("Emu-Gun", "An Emu gun! Will eat dragons for breakfast!", textures [0]);
+	}
 	
 }

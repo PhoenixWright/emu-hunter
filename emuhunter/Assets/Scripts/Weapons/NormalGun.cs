@@ -33,5 +33,9 @@ public class NormalGun : Weapon {
 
 		StartCoroutine(PlayAnimation());
 	}
-	
+
+	public override WeaponInfo GetInfo()
+	{
+		return new WeaponInfo ("The basic NOOOB cannon.", "Bitch plz, let me take a selfie", textures [0]);
+	}
 }

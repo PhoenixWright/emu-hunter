@@ -33,28 +33,38 @@ public class WeaponBehavior : MonoBehaviour
 		if (Time.timeScale <= 0) {
 			return;
 		}
-
 		if (Input.GetKeyDown (KeyCode.Alpha1)) {
-			equippedWeapon.enabled = false;
-			equippedWeapon = normalGun;
+			EquipWeapon(normalGun);
 		}
 		else if (Input.GetKeyDown (KeyCode.Alpha2)) {
-			equippedWeapon.enabled = false;
-			equippedWeapon = axeGun;
+			EquipWeapon(axeGun);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha3)) {
-			equippedWeapon.enabled = false;
-			equippedWeapon = bowGun;
+			EquipWeapon(bowGun);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha4)) {
-			equippedWeapon.enabled = false;
-			equippedWeapon = rocketGun;
+			EquipWeapon(rocketGun);
 		}
 		else if (Input.GetKeyDown(KeyCode.Alpha5)) {
-			equippedWeapon.enabled = false;
-			equippedWeapon = emuGun;
+			EquipWeapon(emuGun);
 		}
+	}
 
+	public IEnumerable<WeaponInfo> WeaponInfos()
+	{
+		return new List<WeaponInfo>() {
+			normalGun.GetInfo(),
+			axeGun.GetInfo(),
+			bowGun.GetInfo(),
+			rocketGun.GetInfo(),
+			emuGun.GetInfo()
+		};
+	}
+
+	public void EquipWeapon(Weapon weapon)
+	{
+		equippedWeapon.enabled = false;
+		equippedWeapon = weapon;
 		equippedWeapon.enabled = true;
 	}
 }

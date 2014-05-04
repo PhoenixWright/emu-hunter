@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
 public abstract class Weapon : MonoBehaviour {
 
@@ -8,6 +9,7 @@ public abstract class Weapon : MonoBehaviour {
 	protected List<Texture> textures;
 	protected float fps = 20.0F;
 
+	public abstract WeaponInfo GetInfo();
 	public abstract void Attack();
 
 	// Update is called once per frame
