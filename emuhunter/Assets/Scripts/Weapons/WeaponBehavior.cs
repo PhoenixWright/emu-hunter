@@ -14,11 +14,6 @@ public class WeaponBehavior : MonoBehaviour
 
 	void Start()
 	{
-		weapons.Add (Camera.main.GetComponent<NormalGun> ());
-		weapons.Add (Camera.main.GetComponent<AxeGun> ());
-		weapons.Add (Camera.main.GetComponent<BowGun> ());
-		weapons.Add (Camera.main.GetComponent<RocketGun> ());
-
 		equippedWeapon = Camera.main.GetComponent<NormalGun> ();
 		equippedWeapon.enabled = true;
 	}
@@ -44,6 +39,10 @@ public class WeaponBehavior : MonoBehaviour
 		else if (Input.GetKeyDown(KeyCode.D)) {
 			equippedWeapon.enabled = false;
 			equippedWeapon = Camera.main.GetComponent<RocketGun>();
+		}
+		else if (Input.GetKeyDown(KeyCode.R)) {
+			equippedWeapon.enabled = false;
+			equippedWeapon = Camera.main.GetComponent<EmuGun>();
 		}
 		equippedWeapon.enabled = true;
 	}
