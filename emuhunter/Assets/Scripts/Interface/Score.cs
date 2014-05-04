@@ -16,10 +16,14 @@ public class Score : MonoBehaviour
 	private static bool startingGame = true;
 	private static string pauseMsg = "New Game";
 	
+	private bool weaponsMenu = false;
 	private bool gameOver = false;
 	private bool askName = false;
 	private int rank;
 	private string playerName = "";
+	
+	private float widthRatio = Screen.width / 1920.0f;
+	private float heightRatio = Screen.height / 1080.0f;
 	
 	// Use this for initialization
 	void Start ()
@@ -76,6 +80,9 @@ public class Score : MonoBehaviour
 				pauseMsg = "Game Paused";
 				pauseGame ();
 			}
+			else if(weaponsMenu) {
+				weaponsMenu = false;
+			}
 			else if(gamePaused) {
 				unpauseGame ();
 			}
@@ -122,7 +129,12 @@ public class Score : MonoBehaviour
 		}
 		
 		if (gamePaused) {
-			drawPauseMenu ();
+			if(weaponsMenu) {
+				drawWeaponsMenu ();
+			}
+			else {
+				drawPauseMenu ();
+			}
 		}
 		
 		if(showScores) {
@@ -131,16 +143,38 @@ public class Score : MonoBehaviour
 	}
 	
 	
+	void drawWeaponsMenu() {
+		WeaponBehavior wb = (GameObject.FindGameObjectWithTag ("MainCamera")).GetComponent<WeaponBehavior>();
+		// todo: get list of weapons
+		// each weapon has icon, description
+		// also know which weapon is equipped, and able to tell wb to equip a given weapon
+		
+		float buttonLeft = (Screen.width / 2) - (500.0f * widthRatio);
+		float buttonWidth = 150.0f * widthRatio;
+		float rowHeight = 150.0f * heightRatio;
+		float descLeft = (Screen.width / 2) - (330.0f * widthRatio);
+		float descWidth = 830.0f * widthRatio;
+		
+		for(int i = 0; i < 5; i++) {
+			GUI.skin.label.fontSize = 24;
+			GUI.skin.button.fontSize = 24;
+			if (GUI.Button(new Rect (buttonLeft, rowHeight * (1 + 1.1f * i), buttonWidth, rowHeight), (Texture)Resources.Load("AxeGun/AXEGA0", typeof(Texture)))){
+			
+			}
+			GUI.Label(new Rect(descLeft, rowHeight * (1 + 1.1f * i), descWidth, rowHeight), "Weapon Name\r\n\r\nWeapon Description goes here mate");
+		}
+	}
+	
 	
 	void drawAskName() {
 		GUI.skin.label.fontSize = 48;
 		GUI.skin.textField.fontSize = 48;
 		
-		GUI.Label(new Rect((Screen.width / 2) - 300, 200, 600, 75), "Enter name");
+		GUI.Label(new Rect((Screen.width / 2) - (300.0f * widthRatio), (200.0f * heightRatio), (600.0f * widthRatio), 75), "Enter name");
 		
-		playerName = GUI.TextField(new Rect((Screen.width / 2) - 300, 400, 600, 75), playerName, 3).ToUpper();
+		playerName = GUI.TextField(new Rect((Screen.width / 2) - (300.0f * widthRatio), (400.0f * heightRatio), (600.0f * widthRatio), 75), playerName, 3).ToUpper();
 		
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 600, 600, 75), "Save")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - (300.0f * widthRatio), (600.0f * heightRatio), (600.0f * widthRatio), 75), "Save")){
 			askName = false;
 			Score scoreComponent = (GameObject.FindGameObjectWithTag ("Interface")).GetComponent<Score>();
 			rank = scoreComponent.SaveScore();
@@ -159,18 +193,18 @@ public class Score : MonoBehaviour
 	void drawPauseMenu() {
 		GUI.skin.label.fontSize = 72;
 		GUI.skin.button.fontSize = 72;
-		GUI.Label(new Rect((Screen.width / 2) - 200, 0, Screen.width, Screen.height), pauseMsg);
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 600, 600, 75), "High Scores")){
+		GUI.Label(new Rect((Screen.width / 2) - (300.0f * widthRatio), (100.0f * heightRatio), (600.0f * widthRatio), 75), pauseMsg);
+		if (GUI.Button(new Rect ((Screen.width / 2) - (300.0f * widthRatio), (250.0f * heightRatio), (600.0f * widthRatio), 75), "High Scores")){
 			showScores = !showScores;
 		}
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 450, 600, 75), "Choose Weapon")){
-			
+		if (GUI.Button(new Rect ((Screen.width / 2) - (300.0f * widthRatio), (400.0f * heightRatio), (600.0f * widthRatio), 75), "Choose Weapon")){
+			weaponsMenu = true;
 		}
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "New Game")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - (300.0f * widthRatio), (550.0f * heightRatio), (600.0f * widthRatio), 75), "New Game")){
 			Application.LoadLevel(Application.loadedLevel);
 			unpauseGame ();
 		}
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "Exit Game")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - (300.0f * widthRatio), (700.0f * heightRatio), (600.0f * widthRatio), 75), "Exit Game")){
 			Application.Quit();
 		}
 	}
@@ -184,12 +218,12 @@ public class Score : MonoBehaviour
 		GUI.skin.label.fontSize = 72;
 		GUI.skin.button.fontSize = 72;
 		GUI.Label(new Rect((Screen.width / 2) - 150, 0, Screen.width, Screen.height), endMsg);
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 300, 600, 75), "Restart")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - (300.0f * widthRatio), (300.0f * heightRatio), (600.0f * widthRatio), 75), "Restart")){
 			Application.LoadLevel(Application.loadedLevel);
 			Time.timeScale = 1.0f;
 			player.health = 100;
 		}
-		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 150, 600, 75), "Exit Game")){
+		if (GUI.Button(new Rect ((Screen.width / 2) - (300.0f * widthRatio), (450.0f * heightRatio), (600.0f * widthRatio), 75), "Exit Game")){
 			Application.Quit();
 		}
 	}
