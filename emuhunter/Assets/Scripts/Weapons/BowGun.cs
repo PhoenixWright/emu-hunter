@@ -35,8 +35,8 @@ public class BowGun : Weapon {
 		StartCoroutine(PlayAnimation());
 	}
 
-	public static override WeaponInfo GetInfo()
+	public static WeaponInfo GetInfo(KeyCode index)
 	{
-		return new WeaponInfo ("Bow-Gun", "A bow! Will punch you in the face!!", Resources.LoadAll<Texture>("BowGun/")[0]);
+		return new WeaponInfo ("Bow-Gun", "A bow! Will punch you in the face!!", Resources.LoadAll<Texture>("BowGun/")[0], index);
 	}
 }

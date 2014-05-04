@@ -18,7 +18,6 @@ public abstract class Weapon : MonoBehaviour {
 	// shot delay
 	protected bool canFire = true;
 
-	public abstract WeaponInfo GetInfo();
 	public abstract void Attack();
 
 	// Update is called once per frame

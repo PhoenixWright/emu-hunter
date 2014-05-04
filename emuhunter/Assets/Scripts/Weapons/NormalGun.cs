@@ -34,8 +34,8 @@ public class NormalGun : Weapon {
 		StartCoroutine(PlayAnimation());
 	}
 
-	public static override WeaponInfo GetInfo()
+	public static WeaponInfo GetInfo(KeyCode index)
 	{
-		return new WeaponInfo ("The basic NOOOB cannon.", "Bitch plz, let me take a selfie", Resources.LoadAll<Texture> ("NormalGun/")[0]);
+		return new WeaponInfo ("The basic NOOOB cannon.", "Bitch plz, let me take a selfie", Resources.LoadAll<Texture> ("NormalGun/")[0], index);
 	}
 }

@@ -161,7 +161,7 @@ public class Score : MonoBehaviour
 			GUI.skin.label.fontSize = 24;
 			GUI.skin.button.fontSize = 24;
 			if (GUI.Button(new Rect (buttonLeft, rowHeight * (1 + 1.1f * i), buttonWidth, rowHeight), weapons.Current.Texture)){
-			
+				wb.EquipWeapon(weapons.Current.Index);
 			}
 			GUI.Label(new Rect(descLeft, rowHeight * (1 + 1.1f * i), descWidth, rowHeight), weapons.Current.Name + "\r\n\r\n" + weapons.Current.Description);
 			
