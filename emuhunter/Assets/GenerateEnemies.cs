@@ -12,12 +12,10 @@ public class GenerateEnemies : MonoBehaviour {
 		}
 
 		StartCoroutine(SpawnEmus (8));
-
 	}
 	
 	// Update is called once per frame
 	void Update () {
-
 	}
 	
 	private IEnumerator SpawnEmus(int seconds) {

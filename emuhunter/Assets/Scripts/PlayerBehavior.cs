@@ -5,32 +5,26 @@ public class PlayerBehavior : MonoBehaviour {
 
 	public int health;
 	public Score score;
+	public GameState state;
+	public int rank;
 	
 	private CameraShake cameraShake;
-
-	private GameObject armLeft;
-	private Weapon     weaponLeft;
-	private GameObject armRight;
 	
 	private bool gamePaused = false;
 	private bool gameOver = false;
+	private bool showScores = true;
 
 	// Use this for initialization
 	void Start () {
 		cameraShake = Camera.main.GetComponent<CameraShake>();
-		armLeft = transform.FindChild ("ArmLeft").gameObject;
-		armRight = transform.FindChild ("ArmRight").gameObject;
 		score = GameObject.FindGameObjectWithTag ("Interface").GetComponent<Score>();
+		state = (GameState)GameObject.FindGameObjectWithTag("GlobalScripts").GetComponent<GameState>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (transform.position.y < -100) {
 			health = 0;
-		}
-
-		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
-			fireLeftArm ();
 		}
 		
 		if (Input.GetKeyDown (KeyCode.Escape)) {
@@ -56,31 +50,17 @@ public class PlayerBehavior : MonoBehaviour {
 			}
 		}
 		
-		if (health < 1) {
+		if (health < 1 && !gameOver) {
 			Debug.Log("Game Over");
 			gameOver = true;
 			Time.timeScale = 0.0f; // this DISABLES MOVEMENT AND UPDATES OF EVERYTHING!
+			
+			Score scoreComponent = (GameObject.FindGameObjectWithTag ("Interface")).GetComponent<Score>();
+			rank = scoreComponent.SaveScore();
+			
+			BloodRageLens rage = (GameObject.FindGameObjectWithTag ("MainCamera")).GetComponent<BloodRageLens>();
+			rage.Disable();
 		}
-	}
-
-	private void fireLeftArm() {
-		if(armLeft.transform.childCount == 0) { 
-			Debug.Log ("Nothing on left arm.");
-			return; 
-		}
-		
-		if(weaponLeft != null) {
-			Debug.Log ("No weapon equipped.");
-			weaponLeft.Attack();
-		}
-
-	}
-
-	private void equipLeftArm(Weapon item) {
-		item.transform.parent = armLeft.transform;
-		item.transform.localPosition = new Vector3(0.0F, 0.0F, 0.0F);
-		weaponLeft = (Weapon)armLeft.transform.GetChild (0).GetComponent (typeof(Weapon));
-		//Debug.Log ("Equipped weapon: " + weaponLeft);
 	}
 	
 	void OnGUI() {
@@ -91,6 +71,19 @@ public class PlayerBehavior : MonoBehaviour {
 		if(gamePaused) {
 			drawPauseMenu ("Game Paused");
 		}
+		
+		if(showScores) {
+			drawScores();
+		}
+	}
+	
+	void drawScores() {
+		GUI.skin.label.fontSize = 48;
+		GUI.skin.button.fontSize = 48;
+		string scoreString = score.BuildScoresString();
+		
+		GUI.Label(new Rect(50, 50, Screen.width, Screen.height), scoreString);
+		
 	}
 	
 	void drawPauseMenu(string titleMsg) {
@@ -98,7 +91,7 @@ public class PlayerBehavior : MonoBehaviour {
 		GUI.skin.button.fontSize = 72;
 		GUI.Label(new Rect((Screen.width / 2) - 200, 0, Screen.width, Screen.height), titleMsg);
 		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 600, 600, 75), "High Scores")){
-		
+			showScores = !showScores;
 		}
 		if (GUI.Button(new Rect ((Screen.width / 2) - 300, Screen.height - 450, 600, 75), "Choose Weapon")){
 		
@@ -116,13 +109,8 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	void drawGameOver() {
 		string endMsg = "GAME OVER";
-		
-		Score scoreComponent = (GameObject.FindGameObjectWithTag ("Interface")).GetComponent<Score>();
-		if (scoreComponent.gameState.emusDestroyed == scoreComponent.highKills) {
-			endMsg += "\r\nNEW HIGH SCORE";
-		}
-		if (Time.realtimeSinceStartup > scoreComponent.bestTime) {
-			endMsg += "\r\nNEW BEST TIME";
+		if (rank < 11) {
+			endMsg += "\r\nNEW HIGH SCORE\r\n" + state.emusDestroyed + " EMUS DESTROYED\r\n" + "#" + rank + " SCORE";
 		}
 		
 		GUI.skin.label.fontSize = 72;
@@ -146,12 +134,4 @@ public class PlayerBehavior : MonoBehaviour {
 			}
 		}
 	}
-
-	void OnTriggerEnter(Collider collision) {
-		Weapon weapon = collision.gameObject.GetComponent<Weapon> ();
-		if (weapon) {
-			equipLeftArm(weapon);	
-		}	
-	}
-
 }
