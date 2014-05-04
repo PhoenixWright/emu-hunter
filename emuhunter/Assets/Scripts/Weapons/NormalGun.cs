@@ -13,31 +13,8 @@ public class NormalGun : Weapon {
 	
 	// Use this for initialization
 	void Start () {
-		textures = new List<Texture>();
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPC0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPD0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPE0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPF0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPG0", typeof(Texture)));
+		textures = new List<Texture>(Resources.LoadAll<Texture> ("NormalGun/"));
 		texture = textures[0];
-	}
-
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
-			Debug.Log("Normal Gun Firing");
-			Attack();
-		}
-	}
-
-	void OnGUI() {
-		Rect rect = new Rect(((Screen.width / 2) - (texture.width * 2)),
-		                     (Screen.height - (texture.height * 2)),
-		                     texture.width * 4,
-		                     texture.height * 2);
-		GUI.DrawTexture(rect, texture);
 	}
 
 	override public void Attack() {
@@ -46,7 +23,7 @@ public class NormalGun : Weapon {
 		var front = Camera.main.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, 1.0f));
 		bullet.rigidbody.position = front;
 		bullet.rigidbody.velocity = Camera.main.transform.TransformDirection(velocityVector);
-		Debug.Log(bullet.rigidbody.velocity);
+		//Debug.Log(bullet.rigidbody.velocity);
 
 		Light lightGameObject = bullet.gameObject.AddComponent<Light> ();
 		lightGameObject.light.color = this.lightColor;

@@ -14,37 +14,8 @@ public class BowGun : Weapon {
 	// Use this for initialization
 	void Start () {
 		fps = 10.0F;
-		textures = new List<Texture>();
-		textures.Add((Texture)Resources.Load("BowGun/BOWFA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFC0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFD0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFE0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFF0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFG0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFH0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFI0", typeof(Texture)));	
-		textures.Add((Texture)Resources.Load("BowGun/BOWGA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWGB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWGC0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWGD0", typeof(Texture)));
+		textures = new List<Texture>(Resources.LoadAll<Texture>("BowGun/"));
 		texture = textures[0];
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
-			Debug.Log("Normal Gun Firing");
-			Attack();
-		}
-	}
-	
-	void OnGUI() {
-		Rect rect = new Rect(((Screen.width / 2) - (texture.width * 2)),
-		                     (Screen.height - (texture.height * 2)),
-		                     texture.width * 4,
-		                     texture.height * 2);
-		GUI.DrawTexture(rect, texture);
 	}
 	
 	override public void Attack() {

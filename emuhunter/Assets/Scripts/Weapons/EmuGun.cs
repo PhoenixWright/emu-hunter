@@ -13,28 +13,8 @@ public class EmuGun : Weapon {
 	
 	// Use this for initialization
 	void Start () {
-		textures = new List<Texture>();
-		textures.Add((Texture)Resources.Load("EmuGun/CHAFA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("EmuGun/CHAFB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("EmuGun/CHANA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("EmuGun/CHANB0", typeof(Texture)));
+		textures = new List<Texture>(Resources.LoadAll<Texture>("EmuGun/"));
 		texture = textures[0];
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
-			Debug.Log("Normal Gun Firing");
-			Attack();
-		}
-	}
-	
-	void OnGUI() {
-		Rect rect = new Rect(((Screen.width / 2) - (texture.width * 2)),
-		                     (Screen.height - (texture.height * 2)),
-		                     texture.width * 4,
-		                     texture.height * 2);
-		GUI.DrawTexture(rect, texture);
 	}
 	
 	override public void Attack() {
