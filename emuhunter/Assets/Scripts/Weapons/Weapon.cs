@@ -10,6 +10,16 @@ public abstract class Weapon : MonoBehaviour {
 
 	public abstract void Attack();
 
+	// Update is called once per frame
+	void Update () {
+		if (Time.timeScale <= 0) {
+			return;
+		}
+		if (Input.GetButtonDown ("Fire1")) {
+			Attack();
+		}
+	}
+
 	public IEnumerator PlayAnimation () {
 		float waitTime = 1.0F / fps;
 		foreach (var item in textures) {

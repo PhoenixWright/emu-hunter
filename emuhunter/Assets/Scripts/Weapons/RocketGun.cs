@@ -32,14 +32,6 @@ public class RocketGun : Weapon {
 		texture = textures[0];
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
-			Debug.Log("Rocket Gun Firing");
-			Attack();
-		}
-	}
-	
 	void OnGUI() {
 		Rect rect = new Rect(((Screen.width / 2) - (texture.width * 2)),
 		                     (Screen.height - (texture.height * 2)),

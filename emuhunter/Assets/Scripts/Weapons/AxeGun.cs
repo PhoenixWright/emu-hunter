@@ -30,14 +30,6 @@ public class AxeGun : Weapon {
 		texture = textures[0];
 	}
 	
-	// Update is called once per frame
-	void Update () {
-		if (Input.GetButtonDown ("Fire1") && Time.timeScale > 0) {
-			Debug.Log("Axe Gun Firing");
-			Attack();
-		}
-	}
-	
 	void OnGUI() {
 		Rect rect = new Rect(((Screen.width / 2) - (texture.width)),
 		                     (Screen.height - (texture.height * 2)),
