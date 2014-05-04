@@ -409,10 +409,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: {fileID: 0}
+  player: {fileID: 0}
   highKills: 
   highKillsNames: []
   sriracha: {fileID: 0}
-  startup: 0
 --- !u!4 &1393925316
 Transform:
   m_ObjectHideFlags: 0
@@ -599,9 +599,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  score: {fileID: 0}
-  state: {fileID: 0}
-  rank: 0
 --- !u!1001 &1511397052
 Prefab:
   m_ObjectHideFlags: 0
