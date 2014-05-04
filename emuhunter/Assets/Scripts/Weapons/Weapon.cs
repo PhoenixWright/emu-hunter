@@ -29,7 +29,7 @@ public abstract class Weapon : MonoBehaviour {
 		if (Input.GetButtonDown ("Fire1") && canFire && !reloading) {
 			Attack();
 			if (--ammo == 0) {
-				StartCoroutine(Reload());
+				//StartCoroutine(Reload());
 			}
 		}
 	}
