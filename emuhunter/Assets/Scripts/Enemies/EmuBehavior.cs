@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class EmuBehavior : MonoBehaviour {
 	/**
@@ -12,6 +13,24 @@ public class EmuBehavior : MonoBehaviour {
 	 */
 	public int attack { private get; set; } // damage done by emu
 	public int health { private get; set; }
+
+	private List<string> explosionTypes = new List<string>();
+
+	void Start() {
+		explosionTypes.Add("Detonator-Base");
+		explosionTypes.Add("Detonator-Chunks");
+		explosionTypes.Add("Detonator-Crazysparks");
+		explosionTypes.Add("Detonator-Ignitor");
+		explosionTypes.Add("Detonator-Insanity");
+		explosionTypes.Add("Detonator-MultiExample");
+		explosionTypes.Add("Detonator-MushroomCloud");
+		explosionTypes.Add("Detonator-Simple");
+		explosionTypes.Add("Detonator-Sounds");
+		explosionTypes.Add("Detonator-Spray");
+		explosionTypes.Add("Detonator-Tiny");
+		explosionTypes.Add("Detonator-Upwards");
+		explosionTypes.Add("Detonator-Wide");
+	}
 
 	// Update is called once per frame
 	void Update ()
@@ -59,7 +78,8 @@ public class EmuBehavior : MonoBehaviour {
 					MonoBehaviour.Destroy(instantiatedProjectile.gameObject, bulletLifeTime);
 				}
 				// explode
-				MonoBehaviour.Instantiate(Resources.Load("Detonator-Upwards"), transform.position, Quaternion.identity);
+				int explosionIdx = (int)Random.Range(0, explosionTypes.Count);
+				MonoBehaviour.Instantiate(Resources.Load(explosionTypes[explosionIdx]), transform.position, Quaternion.identity);
 				SplitMeshIntoTriangles splitter = this.GetComponent<SplitMeshIntoTriangles>();
 				if (splitter) {
 					splitter.SplitMesh();
