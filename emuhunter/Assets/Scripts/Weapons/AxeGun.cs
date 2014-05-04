@@ -29,9 +29,9 @@ public class AxeGun : Weapon {
 		StartCoroutine(PlayAnimation());
 	}
 
-	public override WeaponInfo GetInfo()
+	public static override WeaponInfo GetInfo()
 	{
-		return new WeaponInfo ("Axe-Gun", "An axe-related gun! Will out drink you any day!", textures [0]);
+		return new WeaponInfo ("Axe-Gun", "An axe-related gun! Will out drink you any day!", Resources.LoadAll<Texture>("AxeGun/")[0]);
 	}
 	
 }

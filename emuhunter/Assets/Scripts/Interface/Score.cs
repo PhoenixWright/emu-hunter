@@ -149,19 +149,22 @@ public class Score : MonoBehaviour
 		// each weapon has icon, description
 		// also know which weapon is equipped, and able to tell wb to equip a given weapon
 		
+		var weapons = wb.WeaponInfos().GetEnumerator();
+		
 		float buttonLeft = (Screen.width / 2) - (500.0f * widthRatio);
 		float buttonWidth = 150.0f * widthRatio;
 		float rowHeight = 150.0f * heightRatio;
 		float descLeft = (Screen.width / 2) - (330.0f * widthRatio);
 		float descWidth = 830.0f * widthRatio;
 		
-		for(int i = 0; i < 5; i++) {
+		for(int i = 0; weapons.MoveNext() != false; i++) {
 			GUI.skin.label.fontSize = 24;
 			GUI.skin.button.fontSize = 24;
-			if (GUI.Button(new Rect (buttonLeft, rowHeight * (1 + 1.1f * i), buttonWidth, rowHeight), (Texture)Resources.Load("AxeGun/AXEGA0", typeof(Texture)))){
+			if (GUI.Button(new Rect (buttonLeft, rowHeight * (1 + 1.1f * i), buttonWidth, rowHeight), weapons.Current.Texture)){
 			
 			}
-			GUI.Label(new Rect(descLeft, rowHeight * (1 + 1.1f * i), descWidth, rowHeight), "Weapon Name\r\n\r\nWeapon Description goes here mate");
+			GUI.Label(new Rect(descLeft, rowHeight * (1 + 1.1f * i), descWidth, rowHeight), weapons.Current.Name + "\r\n\r\n" + weapons.Current.Description);
+			
 		}
 	}
 	

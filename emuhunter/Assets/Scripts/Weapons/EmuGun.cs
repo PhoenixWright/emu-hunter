@@ -54,9 +54,9 @@ public class EmuGun : Weapon {
 		source.PlayOneShot(clip);
 	}
 
-	public override WeaponInfo GetInfo()
+	public static override WeaponInfo GetInfo()
 	{
-		return new WeaponInfo ("Emu-Gun", "An Emu gun! Will eat dragons for breakfast!", textures [0]);
+		return new WeaponInfo ("Emu-Gun", "An Emu gun! Will eat dragons for breakfast!", Resources.LoadAll<Texture>("EmuGun/")[0]);
 	}
 	
 }

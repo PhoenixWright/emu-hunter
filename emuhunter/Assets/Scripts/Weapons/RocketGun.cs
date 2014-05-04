@@ -37,8 +37,8 @@ public class RocketGun : Weapon {
 		StartCoroutine(PlayAnimation());
 	}
 
-	public override WeaponInfo GetInfo()
+	public static override WeaponInfo GetInfo()
 	{
-		return new WeaponInfo ("Rocket-Gun", "Odin.", textures [0]);
+		return new WeaponInfo ("Rocket-Gun", "Odin.", Resources.LoadAll<Texture>("RocketGun/")[0]);
 	}
 }

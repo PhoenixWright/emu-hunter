@@ -53,11 +53,11 @@ public class WeaponBehavior : MonoBehaviour
 	public IEnumerable<WeaponInfo> WeaponInfos()
 	{
 		return new List<WeaponInfo>() {
-			normalGun.GetInfo(),
-			axeGun.GetInfo(),
-			bowGun.GetInfo(),
-			rocketGun.GetInfo(),
-			emuGun.GetInfo()
+			NormalGun.GetInfo(),
+			AxeGun.GetInfo(),
+			BowGun.GetInfo(),
+			RocketGun.GetInfo(),
+			EmuGun.GetInfo()
 		};
 	}
 
