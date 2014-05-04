@@ -12,7 +12,7 @@ public class PlayerBehavior : MonoBehaviour {
 	
 	private bool gamePaused = false;
 	private bool gameOver = false;
-	private bool showScores = true;
+	private bool showScores = false;
 
 	// Use this for initialization
 	void Start () {
