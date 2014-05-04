@@ -13,11 +13,7 @@ public class EmuGun : Weapon {
 	
 	// Use this for initialization
 	void Start () {
-		textures = new List<Texture>();
-		textures.Add((Texture)Resources.Load("EmuGun/CHAFA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("EmuGun/CHAFB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("EmuGun/CHANA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("EmuGun/CHANB0", typeof(Texture)));
+		textures = new List<Texture>(Resources.LoadAll<Texture>("EmuGun/"));
 		texture = textures[0];
 	}
 	

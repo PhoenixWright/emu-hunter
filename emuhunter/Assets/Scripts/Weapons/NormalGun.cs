@@ -13,14 +13,7 @@ public class NormalGun : Weapon {
 	
 	// Use this for initialization
 	void Start () {
-		textures = new List<Texture>();
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPC0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPD0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPE0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPF0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("NormalGun/SPRPG0", typeof(Texture)));
+		textures = new List<Texture>(Resources.LoadAll<Texture> ("NormalGun/"));
 		texture = textures[0];
 	}
 

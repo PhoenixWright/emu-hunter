@@ -13,22 +13,7 @@ public class RocketGun : Weapon {
 	
 	// Use this for initialization
 	void Start () {
-		textures = new List<Texture>();
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GC0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GD0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GE0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GF0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GG0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GH0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GI0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GJ0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GK0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GL0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GM0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GN0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("RocketGun/BG2GO0", typeof(Texture)));
+		textures = new List<Texture>(Resources.LoadAll<Texture>("RocketGun/"));
 		texture = textures[0];
 	}
 	

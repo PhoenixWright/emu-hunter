@@ -14,20 +14,7 @@ public class BowGun : Weapon {
 	// Use this for initialization
 	void Start () {
 		fps = 10.0F;
-		textures = new List<Texture>();
-		textures.Add((Texture)Resources.Load("BowGun/BOWFA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFC0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFD0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFE0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFF0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFG0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFH0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWFI0", typeof(Texture)));	
-		textures.Add((Texture)Resources.Load("BowGun/BOWGA0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWGB0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWGC0", typeof(Texture)));
-		textures.Add((Texture)Resources.Load("BowGun/BOWGD0", typeof(Texture)));
+		textures = new List<Texture>(Resources.LoadAll<Texture>("BowGun/"));
 		texture = textures[0];
 	}
 	
